@@ -4,13 +4,37 @@ import "../styles.css";
 export default function SocialMarquee() {
   // Ordered array of your requested social channels
   const channels = [
-    { name: "Instagram", href: "#insta", icon: "instagram" },
-    { name: "Youtube", href: "#youtube", icon: "youtube" },
-    { name: "Facebook", href: "#facebook", icon: "facebook" },
-    { name: "Linkedin", href: "#linkedin", icon: "linkedin" },
-    { name: "Twitter", href: "#x", icon: "twitter" }, // Using Twitter vector box frame for X
-    { name: "Whatsapp", href: "#whatsapp", icon: "message-circle" },
-    { name: "Telegram", href: "#telegram", icon: "send" },
+    {
+      name: "Instagram",
+      href: "www.instagram.com/zamzamcapitalindia",
+      icon: "instagram",
+    },
+    {
+      name: "Youtube",
+      href: "https://www.youtube.com/@zamzamcapital ",
+      icon: "youtube",
+    },
+    {
+      name: "Facebook",
+      href: "https://www.facebook.com/zamzamcapitalindia ",
+      icon: "facebook",
+    },
+    {
+      name: "Linkedin",
+      href: " https://www.linkedin.com/company/zamzam-capital ",
+      icon: "linkedin",
+    },
+    {
+      name: "Twitter",
+      href: "https://www.x.com/zamzamcapital  ",
+      icon: "twitter",
+    }, // Using Twitter vector box frame for X
+    {
+      name: "Whatsapp",
+      href: "https://web.whatsapp.com/send/?phone=%2B918694010200&text=Hi%2C+please+let+me+know+more+about+your+products+on+Zamzam+Capital&type=phone_number&app_absent=0",
+      icon: "message-circle",
+    },
+    { name: "Telegram", href: "https://t.me/zamzamcapital", icon: "send" },
   ];
 
   // We duplicate the stream array once to guarantee seamless loop connectivity without edge gaps
