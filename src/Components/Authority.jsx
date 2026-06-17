@@ -6,7 +6,7 @@ export default function AuthoritySection() {
     <section className="zamzam-authority-section py-5 bg-white">
       <div className="container text-center mb-5">
         <h2 className="authority-main-heading fw-extrabold mb-3">
-          The <span className="brand-text-green">ZamZam</span> Authority
+          The <span className="brand-text-green">ZamZam</span> Ecosystem
         </h2>
 
         <p className="authority-subtext mx-auto">
