@@ -1,0 +1,1551 @@
+/* ==========================================================================
+   1. GLOBAL ZAMZAM DESIGN TOKENS & CORE VARIABLES
+   ========================================================================== */
+:root {
+  --zz-mint: #0fa978;
+  --zz-mint-hover: #0c8c63;
+  --zz-mint-light: #f4fbf8;
+  --zz-gold: #b58900;
+  --zz-slate: #4b5563;
+  --zz-dark: #111827;
+  --zz-light-gray: #f8f9fa;
+  --zz-border-color: #eef0f2;
+  --zz-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+/* Base App Wrapper Context Reset */
+.Entirebar {
+  font-family: var(--zz-font-stack);
+  width: 100%;
+}
+
+/* ==========================================================================
+     2. TOP EXTRA ANNOUNCEMENT BAR SUB-MODULE
+     ========================================================================== */
+.zamzam-topbar-strip {
+  background-color: var(--zz-mint);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+}
+
+.topbar-divider {
+  color: rgba(255, 255, 255, 0.4);
+  user-select: none;
+}
+
+.topbar-link-item {
+  transition: opacity 0.2s ease;
+}
+
+.topbar-link-item:hover {
+  opacity: 0.85;
+}
+
+.topbar-icon-svg {
+  width: 13px;
+  height: 13px;
+  stroke: #ffffff;
+}
+
+@media (max-width: 576px) {
+  .zamzam-topbar-strip .container > * {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+     3. LIVE STOCK TICKER SHUTTLE SUB-MODULE
+     ========================================================================== */
+.ticker-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--zz-light-gray);
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.ticker-wrapper {
+  display: flex;
+  white-space: nowrap;
+  animation: zzTickerScrollScroll 30s linear infinite;
+  gap: 40px;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+@keyframes zzTickerScrollScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================================================
+     4. PRIMARY BRAND NAVBAR BASE LAYOUTS
+     ========================================================================== */
+.zamzam-main-navbar {
+  z-index: 1030;
+}
+
+.brand-text-green {
+  color: var(--zz-mint);
+}
+.brand-text-gold {
+  color: var(--zz-gold);
+}
+
+/* Desktop Dropdown Host Anchors */
+.zamzam-nav-dropdown-host {
+  position: relative;
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+.nav-clickable-trigger,
+.nav-static-link {
+  font-size: 14.5px;
+  color: var(--zz-slate) !important;
+  transition: color 0.15s ease;
+}
+
+.chevron-arrow {
+  font-size: 8px;
+  color: #9ca3af;
+  margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.zamzam-nav-dropdown-host:hover .nav-clickable-trigger,
+.nav-static-link:hover {
+  color: var(--zz-mint) !important;
+}
+
+.zamzam-nav-dropdown-host:hover .chevron-arrow {
+  transform: rotate(180deg);
+  color: var(--zz-mint);
+}
+
+/* ==========================================================================
+     5. DESKTOP INTERACTIVE MEGA PANELS
+     ========================================================================== */
+.zamzam-mega-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 480px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  opacity: 0;
+  visibility: hidden;
+  border-top: 3px solid var(--zz-mint) !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease,
+    visibility 0.15s;
+  z-index: 1050;
+}
+
+.zamzam-mega-dropdown.dropdown-narrow {
+  width: 280px;
+  left: 0;
+  transform: translateX(0) translateY(8px);
+}
+
+.zamzam-nav-dropdown-host:hover .zamzam-mega-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.zamzam-nav-dropdown-host:hover .zamzam-mega-dropdown.dropdown-narrow {
+  transform: translateX(0) translateY(0);
+}
+
+.dropdown-column-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--zz-gold);
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  margin-bottom: 12px;
+}
+
+.dropdown-link-card {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+}
+
+.dropdown-link-card:hover {
+  background-color: var(--zz-mint-light);
+}
+
+.dropdown-link-card .link-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--zz-dark);
+  margin-bottom: 2px;
+}
+
+.dropdown-link-card:hover .link-title {
+  color: var(--zz-mint);
+}
+
+.dropdown-link-card .link-desc {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.4;
+  white-space: normal;
+}
+
+/* ==========================================================================
+     6. EXCLUSIVE GREEN OUTLINE BUTTON DEFINITION (REUSABLE UI CLASS)
+     ========================================================================== */
+.zamzam-btn-outline {
+  color: var(--zz-mint) !important;
+  background-color: transparent;
+  border: 2px solid var(--zz-mint) !important;
+  font-size: 14.5px;
+  border-radius: 50px;
+  padding: 8px 20px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none !important;
+  transition: all 0.23s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zamzam-btn-outline:hover {
+  color: #ffffff !important;
+  background-color: var(--zz-mint) !important;
+  box-shadow: 0 4px 12px rgba(15, 169, 120, 0.2);
+  transform: translateY(-1px);
+}
+
+.zamzam-btn-outline:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 6px rgba(15, 169, 120, 0.15);
+}
+
+/* ==========================================================================
+     7. MOBILE SLIDEOUT DRAWER DECORATIVE FRAMEWORKS
+     ========================================================================== */
+.border-start-brand {
+  border-left: 2px solid var(--zz-mint);
+}
+
+.chevron-arrow-mobile {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.line-height-none {
+  line-height: 1;
+}
+
+/* Setup explicit layout rules inside mobile viewports for full compatibility */
+.mobile-drawer-auth-actions .zamzam-btn-outline {
+  width: 100%;
+  text-align: center;
+  padding: 11px 20px;
+}
+
+/* ==========================================================================
+   UPDATED CENTERED NAVIGATION & UNDERBAR ARCHITECTURE
+   ========================================================================== */
+
+/* Host element for hover state rules */
+.zamzam-nav-item-host {
+  position: static; /* Forces the child underbar to expand to the full width of the navbar */
+  padding: 12px 0;
+  cursor: pointer;
+}
+
+/* Links inside the center desktop header array */
+.nav-heading-link {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--zz-slate) !important;
+  transition: color 0.18s ease;
+}
+
+.zamzam-nav-item-host:hover .nav-heading-link {
+  color: var(--zz-mint) !important;
+}
+
+/* Custom Full-Width Dropdown Underbar Section */
+.zamzam-fullwidth-underbar {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  z-index: 1040;
+  animation: zzUnderbarSlideIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  border-top: 1px solid var(--zz-border-color);
+}
+
+.underbar-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--zz-dark);
+  margin-bottom: 6px;
+}
+
+.underbar-text {
+  font-size: 13.5px;
+  color: var(--zz-slate);
+  margin-bottom: 0;
+  max-width: 700px;
+}
+
+/* Clean animation for smooth layout appearance */
+@keyframes zzUnderbarSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   8. HERO ROW GRID STRUCTURE & RESPONSIVE VERTICAL FIXES
+   ========================================================================== */
+.zamzam-hero-viewport {
+  min-height: auto; /* Stops structural height explosion across device breakpoints */
+  padding: 60px 0; /* Clean balanced spacing layout structure */
+  background-color: #ffffff;
+}
+
+@media (min-width: 992px) {
+  .zamzam-hero-viewport {
+    min-height: calc(
+      100vh - 120px
+    ); /* Keeps desktop clean without causing mobile overlap splits */
+    padding: 80px 0;
+  }
+}
+
+/* Badge Tracker Pill */
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--zz-mint-light);
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(15, 169, 120, 0.15);
+}
+
+.badge-pill-text {
+  font-size: 11px;
+  color: var(--zz-mint);
+  letter-spacing: 0.5px;
+}
+
+/* Text Hierarchy Specifications */
+.hero-main-title {
+  font-size: 2.8rem;
+  line-height: 1.2;
+  color: var(--zz-dark);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+@media (max-width: 768px) {
+  .hero-main-title {
+    font-size: 2rem;
+    line-height: 1.25;
+  }
+}
+
+/* Bullet Checkmark Stream Layout configurations */
+.hero-checkmark-list {
+  max-width: 600px;
+}
+
+.checkmark-icon-wrapper {
+  color: var(--zz-mint);
+  background-color: var(--zz-mint-light);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.checkmark-item-text {
+  font-size: 15px;
+  color: var(--zz-slate);
+  line-height: 1.5;
+}
+
+.checkmark-item-text strong {
+  color: var(--zz-dark);
+}
+
+/* Responsive action alignment tweaks */
+@media (max-width: 576px) {
+  .hero-action-triple-set {
+    flex-direction: column;
+    gap: 12px !important;
+  }
+  .hero-action-triple-set .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+     HORIZONTAL METRICS ROW BELOW CTA BUTTONS
+     ========================================================================== */
+.hero-metrics-inline-row {
+  border-top: 1px solid var(--zz-border-color) !important;
+}
+
+.metric-inline-item {
+  flex: 0 1 auto;
+}
+
+.metric-large-number {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  color: var(--zz-dark);
+}
+
+.metric-sub-label {
+  font-size: 13px;
+  color: var(--zz-slate) !important;
+}
+
+@media (max-width: 576px) {
+  .hero-metrics-inline-row {
+    display: grid !important;
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Forms a clean 2x2 structural split grid box layout on mobile */
+    gap: 20px !important;
+  }
+}
+
+/* ==========================================================================
+     RIGHT-SIDE NEW BRAND IMAGE CONTAINER ASSIST
+     ========================================================================== */
+.hero-image-wrapper {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.hero-frame-asset {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 1px solid var(--zz-border-color);
+  z-index: 2;
+  position: relative;
+}
+
+.hero-image-decorative-backdrop {
+  position: absolute;
+  top: 20px;
+  right: -20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  background-color: var(--zz-mint-light);
+  z-index: 1;
+}
+
+@media (max-width: 991.98px) {
+  .hero-image-wrapper {
+    margin-top: 40px; /* Provides separation directly between the left column data stack and image card grid */
+  }
+  .hero-image-decorative-backdrop {
+    display: none; /* Strip back decorative asset complexity space limits on phones */
+  }
+}
+/* ==========================================================================
+   SOLID BRAND-GREEN COUNTER INTERACTIVE PANELS
+   ========================================================================== */
+.zamzam-dashboard-section {
+  background-color: #ffffff;
+}
+
+/* Master Panel Container with Deep Forest Green Core theme */
+.zamzam-metric-panel {
+  background-color: #061912; /* Premium rich corporate Islamic background */
+  border: 1px solid rgba(255, 255, 255, 0.04) !important;
+  min-height: 165px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
+}
+
+.zamzam-metric-panel:hover {
+  transform: translateY(-4px);
+  border-color: rgba(15, 169, 120, 0.3) !important;
+  box-shadow: 0 12px 30px rgba(6, 25, 18, 0.25);
+}
+
+/* Subtle specialized highlights mapped from the second panel design grid */
+.highlight-panel-border {
+  border-color: rgba(15, 169, 120, 0.15) !important;
+}
+
+/* Top Badge Row Elements */
+.panel-icon-box {
+  background-color: rgba(255, 255, 255, 0.03);
+  color: var(--zz-mint); /* Your signature green token tracker */
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+/* Accentuated highlight variation for primary tracking cards */
+.active-icon-box {
+  background-color: var(--zz-mint);
+  color: #061912;
+}
+
+.panel-tag {
+  font-size: 11px;
+  letter-spacing: 1px;
+  color: #8fa09a; /* Perfect high-contrast reading text against deep green */
+}
+
+.active-tag {
+  color: var(--zz-mint);
+}
+
+/* Big Display Numbers Matching image_9f8646.png */
+.panel-value-display {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  font-family: var(--zz-font-stack), sans-serif;
+}
+
+@media (max-width: 1200px) {
+  .panel-value-display {
+    font-size: 2.1rem;
+  }
+}
+
+/* ==========================================================================
+   METRIC CARDS
+   ========================================================================== */
+
+.matrix-card {
+  background-color: #ffffff;
+}
+.zamzam-strict-card {
+  /* Rule 1: Lighter shade of green filling the entire element background */
+  background-color: #ffffff;
+
+  /* Rule 2: Theme green border color */
+  border: 2px solid var(--zz-mint) !important;
+
+  min-height: 165px;
+  cursor: pointer;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Rule 2: Theme green emojicon/svg stroke color */
+.strict-card-icon {
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+/* Rule 2: Theme green text colors */
+.strict-card-tag {
+  font-size: 11px;
+  letter-spacing: 0.8px;
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+.strict-card-value {
+  font-family: var(--zz-font-stack);
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.1;
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+/* ==========================================================================
+     HOVER RULES (Rule 3)
+     ========================================================================== */
+
+/* When the box is hovered, whole box becomes theme green */
+.zamzam-strict-card:hover {
+  background-color: var(--zz-mint);
+  border-color: var(--zz-mint) !important;
+}
+
+/* ...and all other box elements turn white */
+.zamzam-strict-card:hover .strict-card-icon,
+.zamzam-strict-card:hover .strict-card-tag,
+.zamzam-strict-card:hover .strict-card-value {
+  color: #ffffff !important;
+}
+
+@media (max-width: 1200px) {
+  .strict-card-value {
+    font-size: 2rem;
+  }
+}
+
+/* ==========================================================================
+   INFINITE SLIDEOUT SOCIAL MARQUEE SYSTEM
+   ========================================================================== */
+.zamzam-social-marquee-container {
+  height: 54px;
+  background-color: #ffffff;
+  border-color: var(--zz-border-color) !important;
+  overflow: hidden;
+}
+
+/* Left Title Heading */
+.marquee-left-title {
+  font-size: 14.5px;
+  color: var(--zz-dark);
+  z-index: 10;
+  position: relative;
+  box-shadow: 10px 0 15px -5px #ffffff; /* Fades out elements right behind it */
+}
+
+/* Endless Slider Track Frame */
+.marquee-sliding-viewport {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+
+.marquee-infinite-track {
+  width: max-content;
+  animation: zzSocialMarqueeGlance 25s linear infinite;
+}
+
+/* Pause the animation timeline when cursor hovers over any part of the stream */
+.marquee-sliding-viewport:hover .marquee-infinite-track {
+  animation-play-state: paused;
+}
+
+/* Anchors in default Gray Ink */
+.marquee-social-anchor {
+  color: #9ca3af !important; /* Elegant slate-gray fallback */
+  font-size: 14px;
+  letter-spacing: 0.1px;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-marquee-svg {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Hover Action rule: Item transforms to Theme Green */
+.marquee-social-anchor:hover {
+  color: var(--zz-mint) !important;
+}
+
+.marquee-social-anchor:hover .social-marquee-svg {
+  transform: scale(1.08);
+}
+
+/* ==========================================================================
+     INFINITE MARQUEE TRANSLATION TIMELINE ENGINE
+     ========================================================================== */
+@keyframes zzSocialMarqueeGlance {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Moves exactly halfway down the dual-joined array chain */
+    transform: translateX(-50%);
+  }
+}
+
+/* ==========================================================================
+   9. UNIFIED HOVER VARIATION AUTHORITY SECTION
+   ========================================================================== */
+.zamzam-authority-section {
+  background-color: #ffffff;
+  padding: 80px 0;
+}
+
+.authority-pill {
+  font-size: 11px;
+  background-color: var(--zz-mint-light);
+  color: var(--zz-mint);
+  padding: 6px 16px;
+  border-radius: 50px;
+  border: 1px solid rgba(15, 169, 120, 0.15);
+  letter-spacing: 1px;
+}
+
+.authority-main-heading {
+  color: var(--zz-dark);
+  font-size: 2.5rem;
+  letter-spacing: -0.5px;
+}
+
+.authority-subtext {
+  color: var(--zz-slate);
+  font-size: 15px;
+  max-width: 620px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+     STRICT METRICS-MATCHING CARD LAYOUTS
+     ========================================================================== */
+.authority-strict-card {
+  /* Rule 1: Ultra light green background default */
+  background-color: #ffffff;
+
+  /* Rule 2: Theme green border */
+  border: 2px solid var(--zz-mint) !important;
+
+  cursor: pointer;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+}
+
+/* Base structural sub-elements mapped in theme green ink */
+.strict-card-icon-frame {
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+.strict-card-title {
+  font-size: 19px;
+  color: var(--zz-mint);
+  letter-spacing: -0.2px;
+  transition: color 0.25s ease;
+}
+
+.strict-card-desc {
+  font-size: 13.5px;
+  color: var(--zz-mint);
+  opacity: 0.85;
+  line-height: 1.6;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+.portfolio-heading-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* ==========================================================================
+     METRICS INVERSION ENGINE HOVER LAWS
+     ========================================================================== */
+.authority-strict-card:hover {
+  background-color: var(--zz-mint);
+  border-color: var(--zz-mint) !important;
+  transform: translateY(-4px);
+}
+
+/* Force all inner elements to pop crisp white cleanly upon hover trigger */
+.authority-strict-card:hover .strict-card-icon-frame,
+.authority-strict-card:hover .strict-card-title,
+.authority-strict-card:hover .strict-card-desc {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   10. SYSTEM SCHEMA DASHBOARD & PERFORMANCE DATA
+   ========================================================================== */
+.zamzam-schema-section {
+  padding: 80px 0;
+}
+
+.schema-main-heading {
+  color: var(--zz-dark);
+  font-size: 2.35rem;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+
+.schema-subtext {
+  color: var(--zz-slate);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+     STRICT METRICS-MATCHING HOVER CARD SYSTEM
+     ========================================================================== */
+.schema-strict-card {
+  /* Rule 1: Lighter shade of green filling the entire backdrop default */
+  background-color: #ebf8f4;
+
+  /* Rule 2: Theme green border */
+  border: 2px solid var(--zz-mint) !important;
+
+  cursor: pointer;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+}
+
+/* Rule 2: Icons, Headers, and Text elements starting in theme green ink */
+.schema-icon-wrapper {
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+.schema-card-title {
+  font-size: 17.5px;
+  color: var(--zz-mint);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+
+.schema-card-desc {
+  font-size: 13.5px;
+  color: var(--zz-mint);
+  opacity: 0.85;
+  line-height: 1.5;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* ==========================================================================
+     HOVER ENGINE OPERATION (Rule 3)
+     ========================================================================== */
+.schema-strict-card:hover {
+  /* Box completely fills to theme green */
+  background-color: var(--zz-mint);
+  border-color: var(--zz-mint) !important;
+  transform: translateY(-4px);
+}
+
+/* All text and icon structures transition beautifully to pure white */
+.schema-strict-card:hover .schema-icon-wrapper,
+.schema-strict-card:hover .schema-card-title,
+.schema-strict-card:hover .schema-card-desc {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* ==========================================================================
+     LOWER LEVEL FLAT INTEGRATION METRICS ROW
+     ========================================================================== */
+.performance-data-node {
+  padding: 10px;
+}
+
+.performance-value {
+  font-size: 2.5rem;
+  color: var(--zz-dark);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+
+.performance-label {
+  font-size: 14.5px;
+  color: var(--zz-slate);
+}
+
+/* ==========================================================================
+   UPDATED INVERTED INVESTMENT SCHEMA SECTION
+   ========================================================================== */
+.schema-bg-light {
+  background-color: #ebf8f4 !important; /* Entire section layout now takes the light green color */
+}
+
+.schema-main-heading {
+  font-size: 2.35rem;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+}
+
+/* Schematic Green styling for the "Zam Zam" snippet */
+.brand-text-green {
+  color: var(--zz-mint);
+}
+
+.schema-subtext {
+  color: #6b7280; /* Clean readable grey text to stand out against the light green backdrop */
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+     INVERTED VARIATION CARD STATES (White Background Default)
+     ========================================================================== */
+.schema-strict-card.inverted-variant {
+  background-color: #ffffff; /* Card background is white defaults */
+  border: 2px solid var(--zz-mint) !important;
+  cursor: pointer;
+  transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s ease;
+}
+
+/* Title and description labels begin in thematic green text color */
+.schema-strict-card.inverted-variant .schema-icon-wrapper {
+  color: var(--zz-mint);
+  transition: color 0.25s ease;
+}
+
+.schema-strict-card.inverted-variant .schema-card-title {
+  font-size: 17.5px;
+  color: var(--zz-mint);
+  letter-spacing: -0.3px;
+  line-height: 1.3;
+  transition: color 0.25s ease;
+}
+
+.schema-strict-card.inverted-variant .schema-card-desc {
+  font-size: 13.5px;
+  color: var(--zz-mint);
+  opacity: 0.85;
+  line-height: 1.5;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* ==========================================================================
+     HOVER ACTIONS (Flips entirely to green backdrop with white internal text)
+     ========================================================================== */
+.schema-strict-card.inverted-variant:hover {
+  background-color: var(--zz-mint);
+  border-color: var(--zz-mint) !important;
+  transform: translateY(-4px);
+}
+
+.schema-strict-card.inverted-variant:hover .schema-icon-wrapper,
+.schema-strict-card.inverted-variant:hover .schema-card-title,
+.schema-strict-card.inverted-variant:hover .schema-card-desc {
+  color: #ffffff !important;
+  opacity: 1;
+}
+
+/* ==========================================================================
+   CENTERED MINT-THEMED DOUBT COUPLING
+   ========================================================================== */
+.schema-doubt-title {
+  color: var(--zz-mint); /* Pure thematic green accent */
+  font-size: 24px;
+  letter-spacing: -0.3px;
+}
+
+.schema-doubt-lead {
+  color: #4b5563; /* Accessible gray context line */
+  font-size: 15px;
+}
+
+/* Flex Anchor Anchors */
+.schema-action-link {
+  background-color: #ffffff;
+  color: var(--zz-mint) !important;
+  border: 2px solid var(--zz-mint);
+  padding: 10px 24px;
+  border-radius: 30px;
+  font-size: 14.5px;
+  box-shadow: 0 4px 12px rgba(15, 169, 120, 0.04);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.schema-action-link:hover {
+  background-color: var(--zz-mint);
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 169, 120, 0.15);
+}
+
+/* ==========================================================================
+   11. 3D FLIP ARCHITECTURE ABOUT US SECTION
+   ========================================================================== */
+.zamzam-about-section {
+  padding: 80px 0;
+}
+
+/* Unified 3D Perspective Stage wrapper */
+.about-stage-wrapper {
+  background-color: var(--zz-mint-light); /* Matching light green backdrop */
+  border: 2px solid var(--zz-mint) !important;
+  box-shadow: 0 12px 32px rgba(15, 169, 120, 0.05);
+  overflow: hidden;
+  transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Container limits for fallback spaces */
+.min-vh-50 {
+  min-height: 420px;
+}
+
+/* ==========================================================================
+     FLIP TRANSFORM ENGINE 
+     (Swaps spatial parameters cleanly over left/right side barriers)
+     ========================================================================== */
+@media (min-width: 992px) {
+  .about-stage-wrapper.is-flipping {
+    animation: spatialFlipAnimation 0.6s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  }
+}
+
+@keyframes spatialFlipAnimation {
+  0% {
+    transform: rotateY(0deg) scale(1);
+    opacity: 1;
+  }
+  48% {
+    opacity: 0.3;
+    transform: rotateY(90deg) scale(0.92); /* Disappears cleanly deep into screen middle */
+  }
+  52% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotateY(180deg) scale(1); /* Left lands smoothly on Right, Right to Left */
+    opacity: 1;
+  }
+}
+
+/* Counter-rotate nested children layout elements inside when stage scales 180deg */
+.about-stage-wrapper.is-flipping .panel-container-left,
+.about-stage-wrapper.is-flipping .panel-container-right {
+  transform: rotateY(180deg);
+}
+
+/* ==========================================================================
+     ASSET STYLING ELEMENTS
+     ========================================================================== */
+.about-asset-img {
+  display: block;
+  background-color: var(--zz-dark); /* Solid backdrop canvas space holder */
+  min-height: 420px;
+}
+
+/* Bottom 10% Floating Overlay Badge Rule */
+.founder-overlay-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15%; /* Spans bottom 10-15% container space gracefully */
+  background: linear-gradient(
+    to top,
+    rgba(17, 24, 39, 0.95),
+    rgba(17, 24, 39, 0.7)
+  );
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge-subtitle {
+  color: var(--zz-mint);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+/* Sharia Board Visual Stack Cover */
+.sharia-overlay-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 169, 120, 0.1),
+    rgba(17, 24, 39, 0.85)
+  );
+  display: flex;
+  align-items: flex-end;
+}
+
+/* ==========================================================================
+     STATE TEXT WRAPPERS & SPLIT CARDS
+     ========================================================================== */
+.about-mini-tag {
+  color: var(--zz-mint);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.about-panel-heading {
+  color: var(--zz-mint); /* Thematic Green Heading alignment rule */
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+
+.about-lorem-text {
+  color: var(--zz-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* State 2 Left Side Half Division Containers */
+.divided-core-wrapper {
+  background-color: #ffffff;
+}
+
+.core-half-panel {
+  flex: 1;
+  background-color: var(--zz-mint-light);
+}
+
+.core-half-panel:nth-child(even) {
+  background-color: #ffffff;
+}
+
+.core-title {
+  color: var(--zz-mint);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.core-desc {
+  color: var(--zz-dark);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+     NAVIGATION HOVER BUTTON SYSTEMS
+     ========================================================================== */
+.about-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  color: var(--zz-mint);
+  border: 2px solid var(--zz-mint);
+  border-radius: 50%;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-nav-arrow:hover {
+  background-color: var(--zz-mint);
+  color: #ffffff;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.arrow-left {
+  left: -22px;
+}
+.arrow-right {
+  right: -22px;
+}
+
+@media (max-width: 991.98px) {
+  .arrow-left {
+    left: 4px;
+  }
+  .arrow-right {
+    right: 4px;
+  }
+  .about-nav-arrow {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+/* ==========================================================================
+   HORIZONTAL SLIDE MOVEMENT SYSTEM (ABOUT US)
+   ========================================================================== */
+.about-view-window {
+  width: 100%;
+  border: 2px solid var(--zz-mint) !important;
+  box-shadow: 0 12px 32px rgba(15, 169, 120, 0.05);
+  position: relative;
+}
+
+/* Linear horizontal track holding both states concurrently */
+.about-sliding-track {
+  display: flex;
+  width: 200%; /* Spans two full widescreen views */
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+/* Slide shifting rule */
+.about-sliding-track.shift-active {
+  transform: translateX(
+    -50%
+  ); /* Moves layout cleanly over right block borders */
+}
+
+.about-layout-slide {
+  width: 50%; /* Each screen section layer takes exact 50% of the active track width */
+  flex-shrink: 0;
+}
+
+/* Fallback canvas structure sizes */
+.min-vh-50 {
+  min-height: 440px;
+}
+@media (max-width: 991.98px) {
+  .min-vh-50 {
+    min-height: 320px;
+  }
+  .about-sliding-track {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .about-layout-slide {
+    width: 100%;
+    display: block;
+  }
+}
+
+/* ==========================================================================
+   ELEMENT LABELS & COLOR CARDS
+   ========================================================================== */
+.bg-light-mint {
+  background-color: var(--zz-mint-light);
+}
+
+.about-asset-img {
+  display: block;
+  background-color: var(--zz-dark);
+}
+
+.founder-overlay-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(
+    to top,
+    rgba(17, 24, 39, 0.95),
+    rgba(17, 24, 39, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.badge-subtitle {
+  color: var(--zz-mint);
+  font-size: 13px;
+}
+
+.sharia-overlay-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 169, 120, 0.05),
+    rgba(17, 24, 39, 0.8)
+  );
+  display: flex;
+  align-items: flex-end;
+}
+
+.about-mini-tag {
+  color: var(--zz-mint);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.about-panel-heading {
+  color: var(--zz-mint);
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+
+.about-lorem-text,
+.core-desc {
+  color: var(--zz-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.core-title {
+  color: var(--zz-mint);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.core-half-panel {
+  flex: 1;
+}
+
+/* ==========================================================================
+   NAVIGATION DESIGNS
+   ========================================================================== */
+.about-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  color: var(--zz-mint);
+  border: 2px solid var(--zz-mint);
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.about-nav-arrow:hover {
+  background-color: var(--zz-mint);
+  color: #ffffff;
+}
+
+.arrow-left {
+  left: -22px;
+}
+.arrow-right {
+  right: -22px;
+}
+
+@media (max-width: 991.98px) {
+  .arrow-left {
+    left: 8px;
+    transform: translateY(-50%);
+  }
+  .arrow-right {
+    right: 8px;
+    transform: translateY(-50%);
+  }
+}
+
+/* ==========================================================================
+   SOLID RE-ARCHITECTED FLEX SLIDER SYSTEM
+   ========================================================================== */
+.about-view-window {
+  width: 100%;
+  border: 2px solid var(--zz-mint) !important;
+  box-shadow: 0 12px 32px rgba(15, 169, 120, 0.05);
+  position: relative;
+}
+
+/* Master horizontal rail container */
+.about-sliding-track {
+  display: flex;
+  width: 200%; /* Holds two states side by side */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.about-sliding-track.shift-active {
+  transform: translateX(
+    -50%
+  ); /* Moves view exactly by 1 complete state window */
+}
+
+/* Base structural layout state */
+.about-full-state {
+  width: 50%; /* Takes exactly half of the 200% rail (which equals 100% viewport wide) */
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+}
+
+/* Locks each presentation panel to an exact 50-50 split on desktop */
+.about-half-panel {
+  width: 50%;
+  flex-shrink: 0;
+  min-height: 520px;
+}
+
+/* Core half panels for Vision / Mission split */
+.core-half-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Asset Container Configuration */
+.panel-media {
+  background-color: var(--zz-dark);
+}
+
+.about-asset-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+     MOBILE & RESPONSIVE BREAKPOINT CONTROLS
+     ========================================================================== */
+@media (max-width: 991.98px) {
+  .about-sliding-track {
+    width: 200% !important; /* Retains track limits for swipe interactions */
+  }
+
+  .about-full-state {
+    flex-direction: column; /* Stacked layout on smaller screen sizes */
+  }
+
+  .about-half-panel {
+    width: 100%; /* Fill viewport horizontally when stacked */
+    min-height: auto;
+  }
+
+  .panel-media {
+    height: 300px; /* Give images a fixed clean frame space on mobile devices */
+  }
+}
+
+/* ==========================================================================
+     BRAND TEXT & DECORATIVE OVERLAYS
+     ========================================================================== */
+.bg-light-mint {
+  background-color: var(--zz-mint-light);
+}
+
+.founder-overlay-badge {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 15%;
+  min-height: 60px;
+  background: linear-gradient(
+    to top,
+    rgba(17, 24, 39, 0.95),
+    rgba(17, 24, 39, 0.6)
+  );
+  backdrop-filter: blur(4px);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 2;
+}
+
+.badge-subtitle {
+  color: var(--zz-mint);
+  font-size: 13px;
+}
+
+.sharia-overlay-title {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 169, 120, 0.05),
+    rgba(17, 24, 39, 0.8)
+  );
+  display: flex;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.about-mini-tag {
+  color: var(--zz-mint);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+}
+
+.about-panel-heading {
+  color: var(--zz-mint);
+  font-size: 2.2rem;
+  letter-spacing: -0.5px;
+}
+
+.about-lorem-text,
+.core-desc {
+  color: var(--zz-dark);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.core-title {
+  color: var(--zz-mint);
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+/* Nav Control Arrows positioning overrides */
+.about-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #ffffff;
+  color: var(--zz-mint);
+  border: 2px solid var(--zz-mint);
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.about-nav-arrow:hover {
+  background-color: var(--zz-mint);
+  color: #ffffff;
+}
+
+.arrow-left {
+  left: -22px;
+}
+.arrow-right {
+  right: -22px;
+}
+
+@media (max-width: 991.98px) {
+  .arrow-left {
+    left: 10px;
+  }
+  .arrow-right {
+    right: 10px;
+  }
+}

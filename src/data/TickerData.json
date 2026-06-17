@@ -1,0 +1,7 @@
+[
+  { "id": 1, "symbol": "RELIANCE", "name": "Reliance", "changePercent": 1.25 },
+  { "id": 2, "symbol": "TCS", "name": "TCS", "changePercent": -0.45 },
+  { "id": 3, "symbol": "INFY", "name": "Infosys", "changePercent": 0.82 },
+  { "id": 4, "symbol": "HDFCBANK", "name": "HDFC Bank", "changePercent": -1.1 },
+  { "id": 5, "symbol": "SBIN", "name": "SBI", "changePercent": 0.3 }
+]
