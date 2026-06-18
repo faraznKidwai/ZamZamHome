@@ -1,30 +1,118 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../../styles.css";
 
 export default function InvestmentSchema() {
+  useEffect(() => {
+    const existingScript = document.querySelector(
+      'script[src="https://www.smallcase.com/embed/assets/embed.js"]'
+    );
+
+    if (!existingScript) {
+      const script = document.createElement("script");
+      script.src = "https://www.smallcase.com/embed/assets/embed.js";
+      script.async = true;
+      document.body.appendChild(script);
+    } else {
+      if (
+        window.smallcaseEmbed &&
+        typeof window.smallcaseEmbed.init === "function"
+      ) {
+        window.smallcaseEmbed.init();
+      }
+    }
+  }, []);
+
   return (
-    /* Changed 'bg-white' to 'schema-bg-light' to apply the exact light green background fill */
-    <section className="zamzam-schema-section py-5 schema-bg-light">
-      {/* SECTION HEADER BLOCK */}
+    <section className="zamzam-schema-section py-5 schema-bg-corporate-green text-center">
+      {/* ========================================================
+         1. EMBEDDED SMALLCASE DATA SHOWCASE MODULES
+         ======================================================== */}
       <div className="container mb-5">
-        {/* Title updated to combine white text with schematic green highlighting */}
-        <h2 className="schema-main-heading fw-extrabold mb-3 text-start ">
-          Is <span className="brand-text-green">Zam Zam</span> small case
-          <br className="d-none d-md-block" /> suitable for you?
+        <h2 className="schema-main-heading fw-extrabold text-white mb-4">
+          Our Featured{" "}
+          <span className="brand-text-darker-green">Shariah Smallcases</span>
         </h2>
-        <p className="schema-subtext text-start mb-0">
-          ZamZam strategies are a good fit for you if you are looking for
-          following 4 factors. <br />
+        <div className="row g-4 justify-content-center mb-4">
+          {/* Smallcase Profile Card 1 */}
+          <div className="col-lg-6 col-12">
+            <div className="smallcase-embed-card-frame p-2 bg-white rounded-4 shadow-sm">
+              <p
+                className="sc-embed"
+                data-smallcase="true"
+                data-cta="view"
+                data-cardsize="big"
+                data-scid="ZMZMSB_0001"
+                style={{
+                  maxWidth: "100%",
+                  minHeight: "300px",
+                  display: "flex",
+                  alignItems: "stretch",
+                  justifyContent: "center",
+                }}
+              >
+                Zamzam Shariah Leaders Smart Beta smallcase by Zamzam Capital
+              </p>
+            </div>
+          </div>
+
+          {/* Smallcase Profile Card 2 */}
+          <div className="col-lg-6 col-12">
+            <div className="smallcase-embed-card-frame p-2 bg-white rounded-4 shadow-sm">
+              <p
+                className="sc-embed"
+                data-smallcase="true"
+                data-cta="view"
+                data-cardsize="big"
+                data-scid="ZMZMNM_0001"
+                style={{
+                  maxWidth: "100%",
+                  minHeight: "300px",
+                  display: "flex",
+                  alignItems: "stretch",
+                  justifyContent: "center",
+                }}
+              >
+                Zamzam Shariah New India Theme smallcase by Zamzam Capital
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* NEW BUTTON LOCATED DIRECTLY BELOW THE EMBEDDED SHARIAH SMALLCASES */}
+        <div className="mt-4 pt-2">
+          <a
+            href="https://www.smallcase.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="schema-action-link-explore-more fw-bold text-decoration-none"
+          >
+            View More Smallcases
+          </a>
+        </div>
+      </div>
+
+      <hr className="my-5 border-white opacity-25" />
+
+      {/* ========================================================
+         2. CORE 4-FACTOR LAYOUT SUITABILITY CHECKMARK GRID
+         ======================================================== */}
+      <div className="container mb-5">
+        <h2 className="schema-main-heading fw-extrabold text-white mb-3">
+          Is <span className="brand-text-darker-green">Zam Zam</span> smallcase
+          suitable for you?
+        </h2>
+        <p className="schema-subtext text-white opacity-75 max-w-600 mx-auto mb-0">
+          ZamZam strategies are a good fit for you if you are looking for the
+          following 4 factors:
         </p>
       </div>
 
-      {/* CORE 4-FACTOR CHANNELS GRID */}
       <div className="container">
         <div className="row g-4">
           {/* CARD 1: LONG TERM WEALTH CREATION */}
           <div className="col-xl-3 col-md-6 col-12">
-            <div className="schema-strict-card inverted-variant p-4 rounded-4 h-100 d-flex flex-column align-items-start text-start">
-              <div className="schema-icon-wrapper mb-4 d-flex align-items-center justify-content-center">
+            <div className="schema-strict-card p-4 rounded-4 h-100 d-flex flex-column align-items-center text-center">
+              <div className="schema-icon-wrapper mb-3 d-flex align-items-center justify-content-center">
                 <svg
                   width="22"
                   height="22"
@@ -50,8 +138,8 @@ export default function InvestmentSchema() {
 
           {/* CARD 2: CONSISTENTLY BEATING BENCHMARKS */}
           <div className="col-xl-3 col-md-6 col-12">
-            <div className="schema-strict-card inverted-variant p-4 rounded-4 h-100 d-flex flex-column align-items-start text-start">
-              <div className="schema-icon-wrapper mb-4 d-flex align-items-center justify-content-center">
+            <div className="schema-strict-card p-4 rounded-4 h-100 d-flex flex-column align-items-center text-center">
+              <div className="schema-icon-wrapper mb-3 d-flex align-items-center justify-content-center">
                 <svg
                   width="22"
                   height="22"
@@ -76,8 +164,8 @@ export default function InvestmentSchema() {
 
           {/* CARD 3: FEW MINUTES OF EFFORT */}
           <div className="col-xl-3 col-md-6 col-12">
-            <div className="schema-strict-card inverted-variant p-4 rounded-4 h-100 d-flex flex-column align-items-start text-start">
-              <div className="schema-icon-wrapper mb-4 d-flex align-items-center justify-content-center">
+            <div className="schema-strict-card p-4 rounded-4 h-100 d-flex flex-column align-items-center text-center">
+              <div className="schema-icon-wrapper mb-3 d-flex align-items-center justify-content-center">
                 <svg
                   width="22"
                   height="22"
@@ -91,19 +179,19 @@ export default function InvestmentSchema() {
                 </svg>
               </div>
               <h3 className="schema-card-title fw-bold mb-2">
-                Few minutes of effort every week/ month
+                Few minutes of effort
               </h3>
               <p className="schema-card-desc mb-0">
-                No need to follow the market movements constantly. Your
-                rebalance work is done in just a few minutes.
+                No need to follow market movements constantly. Your rebalance
+                work is done in minutes.
               </p>
             </div>
           </div>
 
           {/* CARD 4: DEDICATED SUPPORT */}
           <div className="col-xl-3 col-md-6 col-12">
-            <div className="schema-strict-card inverted-variant p-4 rounded-4 h-100 d-flex flex-column align-items-start text-start">
-              <div className="schema-icon-wrapper mb-4 d-flex align-items-center justify-content-center">
+            <div className="schema-strict-card p-4 rounded-4 h-100 d-flex flex-column align-items-center text-center">
+              <div className="schema-icon-wrapper mb-3 d-flex align-items-center justify-content-center">
                 <svg
                   width="22"
                   height="22"
@@ -116,30 +204,34 @@ export default function InvestmentSchema() {
                 </svg>
               </div>
               <h3 className="schema-card-title fw-bold mb-2">
-                Having a dedicated support
+                Having dedicated support
               </h3>
               <p className="schema-card-desc mb-0">
-                We strive to have an exceptional support for all our
-                subscribers. Our team is just an email away.
+                We strive to have exceptional support for subscribers. Our team
+                is just an email away.
               </p>
             </div>
           </div>
         </div>
       </div>
-      {/* CENTERED DOUBT CALLOUT BLOCK */}
-      <div className="text-center mt-5 pt-3">
-        <h4 className="schema-doubt-title fw-extrabold mb-3">
+
+      {/* ========================================================
+         3. DOUBT CALLOUT BLOCK (Fixed Contrast & Structure)
+         ======================================================== */}
+      <div className="text-center mt-5 pt-4">
+        <h4 className="schema-doubt-title text-white fw-extrabold mb-2">
           Still have doubts?
         </h4>
-        <p className="schema-doubt-lead mb-4">Contact us directly anytime</p>
+        <p className="schema-doubt-lead text-white opacity-75 mb-4">
+          Contact us directly anytime
+        </p>
 
         <div className="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-          {/* WhatsApp Channel Link */}
           <a
             href="https://wa.me/your_number"
             target="_blank"
             rel="noopener noreferrer"
-            className="schema-action-link d-flex align-items-center gap-2 fw-bold text-decoration-none"
+            className="schema-action-link-white d-flex align-items-center gap-2 fw-bold text-decoration-none"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.455 5.704 1.456h.006c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
@@ -147,10 +239,9 @@ export default function InvestmentSchema() {
             WhatsApp Us
           </a>
 
-          {/* Direct Voice Call Option */}
           <a
             href="tel:+910000000000"
-            className="schema-action-link d-flex align-items-center gap-2 fw-bold text-decoration-none"
+            className="schema-action-link-white d-flex align-items-center gap-2 fw-bold text-decoration-none"
           >
             <svg
               width="18"

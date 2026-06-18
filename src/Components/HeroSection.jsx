@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../styles.css";
-import Hero from "./Hero.jpg";
+import Hero from "./Hero.png";
 
 // Reusable micro-counter engine component
 function CountUp({ endValue, duration = 2000, suffix = "" }) {
