@@ -5,6 +5,8 @@ import SocialMarquee from "./Components/SocialMarquee";
 import Authority from "./Components/Authority";
 import InvestmentSchema from "./Components/SmallCase/InvestmentWork";
 import ScreeningSection from "./Components/Screening";
+import Screener from "./Components/Screener";
+import Footer from "./Components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Authority />
       <InvestmentSchema />
       <ScreeningSection />
+      <Screener />
+      <Footer />
     </div>
   );
 }

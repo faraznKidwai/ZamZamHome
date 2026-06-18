@@ -1302,3 +1302,238 @@
 .zz-slide-item-v2 > * {
   flex: 1;
 }
+
+/* ==========================================================================
+   12. HALAL STOCK SCREENER COMPLIANCE MODULE THEME
+   ========================================================================== */
+.zz-screener-hero-section {
+  background-color: #061912 !important; /* Deep dark green canvas theme token match */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.screener-mini-pill-tag {
+  color: #10b981 !important; /* Vivid secondary green visibility accent */
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.screener-main-title {
+  font-size: 42px;
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  color: #ffffff !important;
+}
+
+.screener-support-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* Primary Screener Interaction Buttons */
+.btn-screener-action {
+  background-color: #0fa978 !important; /* Matches your core var(--zz-mint) variable */
+  border: none !important;
+  font-size: 15px;
+  width: max-content;
+  transition: background-color 0.23s ease, transform 0.1s ease;
+}
+
+.btn-screener-action:hover {
+  background-color: #0c8c63 !important; /* var(--zz-mint-hover) matching parameter */
+}
+
+.btn-screener-action:active {
+  transform: scale(0.98);
+}
+
+.screener-btn-arrow {
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* Inner Preview Card Matrix Frame */
+.screener-preview-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+.stock-ticker-row {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.02);
+  transition: background-color 0.2s ease;
+}
+
+.stock-ticker-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.stock-short-ticker {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  min-width: 80px;
+  display: inline-block;
+}
+
+.stock-full-name {
+  font-size: 13.5px;
+}
+
+/* Compliance Status Badge Visualizations */
+.stock-compliance-badge {
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  min-width: 95px;
+  display: inline-block;
+}
+
+.stock-compliance-badge.status-halal-clean {
+  background-color: rgba(16, 185, 129, 0.15) !important;
+  color: #10b981 !important;
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.stock-compliance-badge.status-nonhalal-alert {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+  color: #ef4444 !important;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+/* ==========================================================================
+     RESPONSIVE DESIGN RESPONSES FOR STOCK SCREENER MODULE
+     ========================================================================== */
+@media (max-width: 991.98px) {
+  .reverse-mobile-layout {
+    display: flex;
+    flex-direction: column !important; /* Force direct single-column stacked data output layout grid */
+  }
+
+  .mobile-top-center {
+    order: 1 !important; /* Enforces LHS marketing context text content maps perfectly to top */
+    text-align: center !important;
+    align-items: center !important;
+    margin-bottom: 24px;
+  }
+
+  .mobile-top-center .screener-support-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .btn-screener-action {
+    order: 2 !important; /* Positions Open Screener primary action button strictly beneath descriptive texts */
+    margin: 10px auto 30px auto !important;
+    width: 100% !important; /* Extends target touch action block context width to clean button row scales */
+    max-width: 340px;
+  }
+
+  .mobile-bottom-stack {
+    order: 3 !important; /* Keeps the 4 styled stock boxes structured neatly at bottom */
+    width: 100%;
+  }
+
+  .screener-main-title {
+    font-size: 32px;
+  }
+}
+
+/* ==========================================================================
+   13. SEBI REGULATORY EXACT GREEN FOOTER LAYOUT
+   ========================================================================== */
+.zamzam-sebi-exact-footer {
+  background-color: #008264 !important; /* Exact crisp green backdrop tone from screenshot */
+  font-family: var(--zz-font-stack), sans-serif;
+  color: #ffffff !important; /* Solid crisp white ink mask */
+  font-size: 13.5px;
+  line-height: 1.6;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Section Matrix Text Typography rules */
+.exact-grid-heading {
+  font-size: 14.5px;
+  color: #ffffff !important;
+  letter-spacing: -0.1px;
+}
+
+.exact-grid-text {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.95) !important;
+  line-height: 1.5;
+}
+
+/* White rule tracking separators */
+.exact-footer-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.6) !important;
+  opacity: 1;
+}
+
+/* Narrative Section Anchor Mapping rules */
+.exact-compliance-narrative p {
+  color: #ffffff !important;
+}
+
+.exact-compliance-narrative a.exact-text-link {
+  color: #ffffff !important;
+  text-decoration: underline !important;
+}
+
+/* Distinct Lime Yellow Hyperlinks */
+.exact-compliance-narrative a.exact-lime-link {
+  color: #ccff00 !important; /* Bold custom text highlighter yellow tint */
+}
+.exact-compliance-narrative a.exact-lime-link:hover {
+  color: #e5ff80 !important;
+}
+
+.exact-store-links a {
+  color: #ccff00 !important;
+  text-decoration: underline;
+}
+
+/* Disclaimers & Standard Warnings Paragraph Styles */
+.exact-regulatory-disclaimers p {
+  color: #ffffff !important;
+  font-size: 13.5px;
+}
+
+/* Lower Base White Strip Component Layout */
+.exact-bottom-white-bar {
+  background-color: #ffffff !important; /* Clean plain white footer strip background color layout */
+  border-top: 1px solid var(--zz-border-color);
+}
+
+.exact-utility-links {
+  font-size: 12.5px;
+  color: var(
+    --zz-slate
+  ) !important; /* Dark slate text for white strip visibility */
+}
+
+.exact-utility-links a {
+  color: #00a877 !important; /* High contrast mid-green link colors inside white base row layout */
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 1px;
+  transition: opacity 0.2s ease;
+}
+
+.exact-utility-links a:hover {
+  text-decoration: underline !important;
+  opacity: 0.85;
+}
+
+/* Responsive Structural Stack Changes */
+@media (max-width: 767.98px) {
+  .zamzam-sebi-exact-footer,
+  .exact-footer-grid {
+    text-align: center !important;
+  }
+
+  .exact-grid-text {
+    margin-bottom: 20px;
+  }
+}
