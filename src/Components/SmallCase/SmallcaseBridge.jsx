@@ -10,7 +10,7 @@ export const smallcasesData = [
     returnsVal: "34.20%",
     minInvest: "₹ 75,548.00",
     updateFreq: "Monthly",
-    functionalTitle: "High-Alpha Quantitative Shariah Screener",
+    functionalTitle: "ZamZam's High Risk Reward Basket",
     subtitle:
       "Best for aggressive investors looking for long-term compounding and index-beating returns.",
     icon: "🚢",
@@ -24,7 +24,7 @@ export const smallcasesData = [
     returnsVal: "28.90%",
     minInvest: "₹ 45,210.00",
     updateFreq: "Weekly",
-    functionalTitle: "Emerging National Growth Horizons Portfolio",
+    functionalTitle: "ZamZam's futuristic target",
     subtitle:
       "Best for investors targeting next-generation manufacturing, technology, and infra tailwinds.",
     icon: "🚀",
@@ -38,7 +38,7 @@ export const smallcasesData = [
     returnsVal: "18.42%",
     minInvest: "₹ 15,000.00",
     updateFreq: "Quarterly",
-    functionalTitle: "Large-Cap Factor Optimized Core Engine",
+    functionalTitle: "ZamZam's Safe Basket",
     subtitle:
       "Best for conservative equity allocation demanding high stability with minimized tracking error.",
     icon: "🛡️",
@@ -52,7 +52,7 @@ export const smallcasesData = [
     returnsVal: "22.10%",
     minInvest: "₹ 32,400.00",
     updateFreq: "Monthly",
-    functionalTitle: "Structural Capital Expenditure Momentum Fund",
+    functionalTitle: "ZamZam's Heavy Industry Basket",
     subtitle:
       "Best for cyclical sector tactical exposure aligning with heavy public developmental spending.",
     icon: "🏗️",
