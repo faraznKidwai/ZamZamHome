@@ -3,7 +3,6 @@ import "../../styles.css";
 import TopBar from "./TopBar.jsx";
 import TickerBar from "./TickerBar.jsx";
 
-// Centralized Navigation Data Configuration
 const NAV_TABS = [
   {
     id: "about",
@@ -14,20 +13,28 @@ const NAV_TABS = [
       "Learn about our mission, Shariah advisory board, and our vision for ethical halal wealth generation.",
   },
   {
-    id: "stocks",
-    label: "Stock Plans",
-    href: "#halal-stocks",
-    title: "Invest in competitive Halal Stock plans",
+    id: "shariah",
+    label: "Shariah Compliance",
+    href: "#shariah-compliance",
+    title: "Shariah Compliance Framework",
     description:
-      "Browse categorized equities meeting strict debt-to-market-cap and liquid asset thresholds.",
+      "Our rigorous screening methodology follows Mufti Taqi Usmani (DB) criteria, endorsed by leading Islamic seminaries in India.",
   },
   {
-    id: "plans",
-    label: "Trading Plans",
-    href: "#trading-plans",
-    title: "Premium Access Tiers",
+    id: "halal-stocks",
+    label: "Halal Stocks",
+    href: "#halal-stocks",
+    title: "Halal Stocks List",
     description:
-      "Choose between monthly and annual plans to unlock expert screening insights and alerts.",
+      "Access our regularly updated list of Shariah-compliant NSE-listed stocks screened using our proprietary 3-stage process.",
+  },
+  {
+    id: "stock-plans",
+    label: "Stock Plans",
+    href: "#stock-plans",
+    title: "Premium Stock Recommendation Service",
+    description:
+      "Browse categorized equities meeting strict debt-to-market-cap and liquid asset thresholds with expert research support.",
   },
   {
     id: "smallcases",
@@ -39,21 +46,11 @@ const NAV_TABS = [
   },
   {
     id: "screener",
-    label: "Halal Screener",
+    label: "Screener",
     href: "#screener",
     title: "Instant Financial Screener",
     description:
-      "Type any global ticker name to query real-time conformity algorithms dynamically.",
-  },
-  {
-    id: "tools",
-    label: "Tools",
-    href: "#compliance",
-    title: "Tools for financial needs",
-    links: [
-      { label: "Zakat Calculator", href: "#zakat-calc" },
-      { label: "Position Size Calculator", href: "#position-calc" },
-    ],
+      "Type any NSE ticker name to query real-time Shariah conformity status using our screening algorithms.",
   },
   {
     id: "blog",
@@ -63,13 +60,20 @@ const NAV_TABS = [
     description:
       "Read editorial write-ups, current Islamic finance breakdowns, and market commentary.",
   },
+  {
+    id: "tools",
+    label: "Tools",
+    href: "#tools",
+    title: "Tools for financial needs",
+    links: [
+      { label: "Zakat Calculator", href: "#zakat-calc" },
+      { label: "Position Size Calculator", href: "#position-calc" },
+    ],
+  },
 ];
 
 export default function MainNavbar() {
-  // Mobile off-canvas drawer visibility state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  // Tracks which heading has its underbar open on desktop (null means closed)
   const [activeUnderbar, setActiveUnderbar] = useState(null);
 
   return (
@@ -81,9 +85,6 @@ export default function MainNavbar() {
 
       <nav className="zamzam-main-navbar sticky-top bg-white border-bottom shadow-sm">
         <div className="container d-flex align-items-center justify-content-between py-3">
-          {/* ========================================================
-            BRAND LOGO SECTION
-            ======================================================== */}
           <div className="brand-logo-placeholder d-flex align-items-center justify-content-center">
             <a
               href="/"
@@ -103,21 +104,15 @@ export default function MainNavbar() {
             </a>
           </div>
 
-          {/* ========================================================
-            DYNAMIC NAVBAR HEADINGS (Desktop)
-            ======================================================== */}
           <ul
-            className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-4"
+            className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-3"
             style={{ position: "relative" }}
           >
             {NAV_TABS.map((tab) => (
               <li
                 key={tab.id}
                 className="zamzam-nav-item-host"
-                style={{
-                  paddingBottom: "15px",
-                  marginBottom: "-15px",
-                }} /* Creates an invisible bridge connecting link to underbar tracking window */
+                style={{ paddingBottom: "15px", marginBottom: "-15px" }}
                 onMouseEnter={() => setActiveUnderbar(tab.id)}
                 onMouseLeave={() => setActiveUnderbar(null)}
               >
@@ -128,7 +123,6 @@ export default function MainNavbar() {
                   {tab.label}
                 </a>
 
-                {/* DYNAMIC FULL-WIDTH UNDERBAR CONTAINER (Keeps original clean bar style) */}
                 {activeUnderbar === tab.id && (
                   <div
                     className="zamzam-fullwidth-underbar border-bottom shadow-sm bg-white"
@@ -149,8 +143,6 @@ export default function MainNavbar() {
                       >
                         {tab.title}
                       </h5>
-
-                      {/* Dynamic structural layout handling for Tools links exception block vs standard description strings */}
                       {tab.links ? (
                         <div className="d-flex flex-wrap align-items-center gap-3 mt-3">
                           {tab.links.map((link, idx) => (
@@ -183,18 +175,15 @@ export default function MainNavbar() {
             ))}
           </ul>
 
-          {/* ========================================================
-            DESKTOP ACTION CTAs
-            ======================================================== */}
           <div className="desktop-actions d-none d-lg-flex align-items-center gap-3">
-            <a href="#login" className="btn zamzam-btn-outline">
-              Halal Stocks List
+            <a
+              href="mailto:support@zamzam-capital.com"
+              className="btn zamzam-btn-outline"
+            >
+              Email Us
             </a>
           </div>
 
-          {/* ========================================================
-            MOBILE HAMBURGER TRIGGER
-            ======================================================== */}
           <button
             className="mobile-hamburger-trigger d-lg-none border-0 bg-transparent p-2"
             onClick={() => setIsMobileMenuOpen(true)}
@@ -215,9 +204,6 @@ export default function MainNavbar() {
           </button>
         </div>
 
-        {/* ========================================================
-          MOBILE SLIDEOUT MENU (Keeps original layout unchanged)
-          ======================================================== */}
         {isMobileMenuOpen && (
           <div
             className="mobile-drawer-overlay"
@@ -249,10 +235,8 @@ export default function MainNavbar() {
                     >
                       {tab.label}
                     </a>
-
-                    {/* Unique layout addition: If it is the tools tab, list its links clearly underneath natively */}
                     {tab.links && (
-                      <div className="ps-3 d-flex flex-column gap-2 my-1 border-start">
+                      <div className="ps-3 d-flex flex-column gap-2 my-1 border-start border-start-brand">
                         {tab.links.map((link, idx) => (
                           <a
                             key={idx}
@@ -272,11 +256,11 @@ export default function MainNavbar() {
 
               <div className="mobile-drawer-auth-actions d-flex flex-column gap-3 mt-5">
                 <a
-                  href="#login"
+                  href="mailto:support@zamzam-capital.com"
                   className="btn zamzam-btn-outline"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  Halal Stocks List
+                  Email Us
                 </a>
               </div>
             </div>

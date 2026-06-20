@@ -86,7 +86,10 @@ export default function InvestmentSchema() {
   }, []);
 
   return (
-    <section className="zamzam-schema-section py-5 schema-bg-corporate-green text-center text-white">
+    <section
+      id="smallcases"
+      className="zamzam-schema-section py-5 schema-bg-corporate-green text-center text-white"
+    >
       <SmallcaseBridge />
 
       <div className="container mb-5">
@@ -97,18 +100,6 @@ export default function InvestmentSchema() {
           Each basket is carefully constructed by our research team with proven
           strategies, strict Shariah compliance and transparent performance
           tracking
-        </p>
-      </div>
-
-      {/* ==========================================
-          DESIGN VARIATION 1: CONTINUOUS DUAL CAROUSEL
-         ========================================== */}
-      <div className="container text-start mb-4 px-3">
-        <h4 className="fw-bold text-white mb-1">
-          Design Option 1: Dual Minimalist Widget Slider
-        </h4>
-        <p className="text-white opacity-70 small">
-          Renders matching data containers shifting across viewports infinitely.
         </p>
       </div>
 
@@ -142,22 +133,7 @@ export default function InvestmentSchema() {
         </div>
       </div>
 
-      <div className="zz-contrast-divider"></div>
-
-      {/* ========================================================
-          DESIGN VARIATION 2: CORRECTED SINGLE FOCUS EXECUTOR
-         ======================================================== */}
-      <div className="container text-start mt-5 mb-4 px-3">
-        <h4 className="fw-bold text-white mb-1">
-          Design Option 2: Full Narrative Single-Focus Slider
-        </h4>
-        <p className="text-white opacity-70 small">
-          Displays centered metadata stacked vertically beneath custom
-          components.
-        </p>
-      </div>
-
-      <div className="position-relative px-md-5 max-w-800 mx-auto mb-5">
+      <div className="position-relative px-md-5 max-w-800 mx-auto mb-5 mt-5">
         <button className="zz-slider-nav-btn prev-arrow" onClick={handleD2Prev}>
           ‹
         </button>

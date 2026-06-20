@@ -1537,3 +1537,469 @@
     margin-bottom: 20px;
   }
 }
+
+/* ==========================================================================
+   14. MOBILE DRAWER OVERLAY
+   ========================================================================== */
+.mobile-drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 2000;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mobile-drawer-content {
+  width: min(320px, 88vw);
+  height: 100%;
+  background: #ffffff;
+  overflow-y: auto;
+  box-shadow: -8px 0 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ==========================================================================
+   15. SCROLL TO TOP FAB
+   ========================================================================== */
+.zz-scroll-to-top {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 2px solid var(--zz-mint);
+  background: #ffffff;
+  color: var(--zz-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1100;
+  box-shadow: 0 4px 16px rgba(15, 169, 120, 0.25);
+  transition: all 0.2s ease;
+}
+
+.zz-scroll-to-top:hover {
+  background: var(--zz-mint);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   16. FOUNDER QUOTE SECTION
+   ========================================================================== */
+.zz-founder-section {
+  background-color: var(--zz-mint-light);
+  border-top: 1px solid var(--zz-border-color);
+  border-bottom: 1px solid var(--zz-border-color);
+}
+
+.founder-photo-frame {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--zz-mint);
+}
+
+.founder-photo-placeholder {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+}
+
+.founder-initials {
+  font-size: 2.5rem;
+  color: var(--zz-mint);
+}
+
+.founder-name {
+  color: var(--zz-dark);
+  font-size: 1.25rem;
+}
+
+.founder-quote-text {
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: var(--zz-dark);
+  font-weight: 600;
+}
+
+.founder-quote-footer {
+  font-size: 14px;
+}
+
+/* ==========================================================================
+   17. SHARIAH SCREENING INFOGRAPHIC
+   ========================================================================== */
+.zz-screening-infographic {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.screening-steps-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.screening-step-card {
+  background: #ffffff;
+  border: 1px solid var(--zz-border-color);
+  border-top: 3px solid var(--zz-mint);
+  border-radius: 10px;
+  padding: 20px 22px;
+}
+
+.screening-step-label {
+  font-size: 11px;
+  color: var(--zz-mint);
+  letter-spacing: 0.8px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.screening-step-title {
+  font-size: 16px;
+  color: var(--zz-dark);
+  margin-bottom: 8px;
+}
+
+.screening-step-question {
+  font-size: 14px;
+  color: var(--zz-dark);
+}
+
+.screening-step-detail {
+  font-size: 13.5px;
+  color: var(--zz-slate);
+  line-height: 1.5;
+}
+
+.screening-ratio-value {
+  font-size: 13px;
+  color: var(--zz-mint);
+  white-space: nowrap;
+}
+
+.screening-status-column {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.screening-status-box {
+  border-radius: 10px;
+  padding: 22px 20px;
+  color: #ffffff;
+  position: relative;
+}
+
+.screening-status-box.status-halal {
+  background-color: #16a34a;
+}
+
+.screening-status-box.status-haram {
+  background-color: #dc2626;
+}
+
+.screening-status-box.status-doubtful {
+  background-color: #eab308;
+  color: #1f2937;
+}
+
+.screening-status-box.status-rejected {
+  opacity: 0.55;
+  text-decoration: line-through;
+}
+
+.status-reject-mark {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.status-box-label {
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.status-box-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+@media (max-width: 991.98px) {
+  .zz-screening-infographic {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   18. TESTIMONIALS MARQUEE
+   ========================================================================== */
+.zz-testimonials-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--zz-border-color);
+}
+
+.zz-testimonial-marquee-viewport {
+  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+
+.zz-testimonial-marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: zzTestimonialScroll 40s linear infinite;
+  padding: 8px 0 16px;
+}
+
+.zz-testimonial-marquee-viewport:hover .zz-testimonial-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes zzTestimonialScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.zz-testimonial-card {
+  flex: 0 0 380px;
+  background: #ffffff;
+  border: 2px solid var(--zz-mint);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 20px rgba(15, 169, 120, 0.08);
+}
+
+.testimonial-quote-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.testimonial-text {
+  font-size: 15px;
+  color: var(--zz-slate);
+  line-height: 1.6;
+}
+
+.testimonial-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--zz-mint-light);
+  color: var(--zz-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  border: 2px solid var(--zz-mint);
+}
+
+.testimonial-name {
+  color: var(--zz-dark);
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   19. INSIGHTS SECTION
+   ========================================================================== */
+.insights-view-all {
+  color: var(--zz-mint);
+  font-size: 14.5px;
+}
+
+.insights-view-all:hover {
+  color: var(--zz-mint-hover);
+  text-decoration: underline !important;
+}
+
+.insights-card-body {
+  border: 2px solid var(--zz-mint);
+  background: #ffffff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.insights-card:hover .insights-card-body {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(15, 169, 120, 0.1);
+}
+
+.insights-tag {
+  font-size: 11px;
+  color: var(--zz-mint);
+  border: 1px solid rgba(15, 169, 120, 0.3);
+  padding: 4px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+}
+
+.insights-title {
+  font-size: 18px;
+  color: var(--zz-dark);
+  line-height: 1.35;
+}
+
+.insights-excerpt {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   20. KNOWLEDGE CENTER
+   ========================================================================== */
+.zz-knowledge-section {
+  background-color: var(--zz-light-gray);
+  border-top: 1px solid var(--zz-border-color);
+}
+
+.knowledge-resource-card {
+  background: #ffffff;
+  border: 1px solid var(--zz-border-color);
+  transition: box-shadow 0.2s ease;
+}
+
+.knowledge-resource-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.knowledge-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  background: var(--zz-mint-light);
+  color: var(--zz-mint);
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.knowledge-resource-title {
+  font-size: 16px;
+  color: var(--zz-dark);
+  line-height: 1.35;
+}
+
+.knowledge-resource-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.btn-knowledge-pdf {
+  background: var(--zz-dark);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 13px;
+  border: none;
+}
+
+.btn-knowledge-pdf:hover {
+  background: #1f2937;
+  color: #ffffff;
+}
+
+.btn-knowledge-calc {
+  background: var(--zz-mint);
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 10px 18px;
+  font-size: 13px;
+  border: none;
+}
+
+.btn-knowledge-calc:hover {
+  background: var(--zz-mint-hover);
+  color: #ffffff;
+}
+
+.knowledge-vault-block {
+  border-top: 1px solid var(--zz-border-color);
+}
+
+.vault-video-card {
+  background: #ffffff;
+  border: 1px solid var(--zz-border-color);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}
+
+.vault-video-caption {
+  background: #ffffff;
+  color: var(--zz-dark);
+  min-height: 64px;
+}
+
+/* ==========================================================================
+   21. FAQ ACCORDION
+   ========================================================================== */
+.zz-faq-section {
+  background-color: #ffffff;
+}
+
+.faq-section-title {
+  font-size: 2.5rem;
+  color: var(--zz-dark);
+  letter-spacing: -0.5px;
+}
+
+.faq-item {
+  border: 1px solid var(--zz-border-color);
+  background: #ffffff;
+  transition: border-color 0.2s ease;
+}
+
+.faq-item-open {
+  border-color: var(--zz-mint);
+  box-shadow: 0 4px 16px rgba(15, 169, 120, 0.08);
+}
+
+.faq-question {
+  padding: 16px 20px;
+  cursor: pointer;
+}
+
+.faq-question-text {
+  color: var(--zz-mint);
+  font-size: 15px;
+}
+
+.faq-toggle-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--zz-mint);
+  color: var(--zz-mint);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.faq-answer {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 576px) {
+  .zz-testimonial-card {
+    flex: 0 0 300px;
+  }
+  .faq-section-title {
+    font-size: 2rem;
+  }
+}
+
