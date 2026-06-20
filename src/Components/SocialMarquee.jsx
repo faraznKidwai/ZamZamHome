@@ -29,11 +29,7 @@ export default function SocialMarquee() {
       href: "https://www.x.com/zamzamcapital  ",
       icon: "twitter",
     }, // Using Twitter vector box frame for X
-    {
-      name: "Whatsapp",
-      href: "https://web.whatsapp.com/send/?phone=%2B918694010200&text=Hi%2C+please+let+me+know+more+about+your+products+on+Zamzam+Capital&type=phone_number&app_absent=0",
-      icon: "message-circle",
-    },
+
     { name: "Telegram", href: "https://t.me/zamzamcapital", icon: "send" },
   ];
 

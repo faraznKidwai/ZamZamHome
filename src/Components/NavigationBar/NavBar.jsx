@@ -3,6 +3,68 @@ import "../../styles.css";
 import TopBar from "./TopBar.jsx";
 import TickerBar from "./TickerBar.jsx";
 
+// Centralized Navigation Data Configuration
+const NAV_TABS = [
+  {
+    id: "about",
+    label: "About",
+    href: "#about",
+    title: "About Zamzam Capital",
+    description:
+      "Learn about our mission, Shariah advisory board, and our vision for ethical halal wealth generation.",
+  },
+  {
+    id: "stocks",
+    label: "Stock Plans",
+    href: "#halal-stocks",
+    title: "Invest in competitive Halal Stock plans",
+    description:
+      "Browse categorized equities meeting strict debt-to-market-cap and liquid asset thresholds.",
+  },
+  {
+    id: "plans",
+    label: "Trading Plans",
+    href: "#trading-plans",
+    title: "Premium Access Tiers",
+    description:
+      "Choose between monthly and annual plans to unlock expert screening insights and alerts.",
+  },
+  {
+    id: "smallcases",
+    label: "smallcases",
+    href: "#smallcases",
+    title: "Managed Ideabaskets",
+    description:
+      "Invest instantly in diversified Shariah-vetted smallcases via your existing stockbroker account.",
+  },
+  {
+    id: "screener",
+    label: "Halal Screener",
+    href: "#screener",
+    title: "Instant Financial Screener",
+    description:
+      "Type any global ticker name to query real-time conformity algorithms dynamically.",
+  },
+  {
+    id: "tools",
+    label: "Tools",
+    href: "#compliance",
+    title: "Tools for financial needs",
+    links: [
+      { label: "Zakat Calculator", href: "#zakat-calc" },
+      { label: "Position Size Calculator", href: "#position-calc" },
+    ],
+  },
+  {
+    id: "blog",
+    label: "Blog",
+    href: "#blog",
+    title: "Insights & Market Analysis",
+    description:
+      "Read editorial write-ups, current Islamic finance breakdowns, and market commentary.",
+  },
+];
+
 export default function MainNavbar() {
   // Mobile off-canvas drawer visibility state
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -42,203 +104,83 @@ export default function MainNavbar() {
           </div>
 
           {/* ========================================================
-            NEW CENTERED NAVBAR HEADINGS (Desktop)
+            DYNAMIC NAVBAR HEADINGS (Desktop)
             ======================================================== */}
-          <ul className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-4">
-            {/* Tab 1: About */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("about")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#about"
-                className="nav-heading-link fw-semibold text-decoration-none"
+          <ul
+            className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-4"
+            style={{ position: "relative" }}
+          >
+            {NAV_TABS.map((tab) => (
+              <li
+                key={tab.id}
+                className="zamzam-nav-item-host"
+                style={{
+                  paddingBottom: "15px",
+                  marginBottom: "-15px",
+                }} /* Creates an invisible bridge connecting link to underbar tracking window */
+                onMouseEnter={() => setActiveUnderbar(tab.id)}
+                onMouseLeave={() => setActiveUnderbar(null)}
               >
-                About
-              </a>
+                <a
+                  href={tab.href}
+                  className="nav-heading-link nav-static-link fw-semibold text-decoration-none"
+                >
+                  {tab.label}
+                </a>
 
-              {/* SAMPLE UNDERBAR FOR ABOUT */}
-              {activeUnderbar === "about" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">About Zamzam Capital</h5>
-                    <p className="underbar-text">
-                      Learn about our mission, Shariah advisory board, and our
-                      vision for ethical halal wealth generation.
-                    </p>
+                {/* DYNAMIC FULL-WIDTH UNDERBAR CONTAINER (Keeps original clean bar style) */}
+                {activeUnderbar === tab.id && (
+                  <div
+                    className="zamzam-fullwidth-underbar border-bottom shadow-sm bg-white"
+                    style={{
+                      position: "absolute",
+                      left: 0,
+                      right: 0,
+                      top: "100%",
+                      width: "100vw",
+                      marginLeft: "calc(-50vw + 50%)",
+                      zIndex: 1000,
+                    }}
+                  >
+                    <div className="container py-4 text-start">
+                      <h5
+                        className="underbar-title fw-bold text-dark mb-2"
+                        style={{ fontSize: "16px" }}
+                      >
+                        {tab.title}
+                      </h5>
+
+                      {/* Dynamic structural layout handling for Tools links exception block vs standard description strings */}
+                      {tab.links ? (
+                        <div className="d-flex flex-wrap align-items-center gap-3 mt-3">
+                          {tab.links.map((link, idx) => (
+                            <a
+                              key={idx}
+                              href={link.href}
+                              className="btn zamzam-btn-outline px-3 py-2 fw-medium text-decoration-none"
+                              style={{ fontSize: "14px" }}
+                            >
+                              {link.label}
+                            </a>
+                          ))}
+                        </div>
+                      ) : (
+                        <p
+                          className="underbar-text text-muted mb-0"
+                          style={{
+                            fontSize: "14px",
+                            maxWidth: "600px",
+                            lineHeight: "1.5",
+                          }}
+                        >
+                          {tab.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 2: Shariah Compliance */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("compliance")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#compliance"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                Shariah Compliance
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR SHARIAH COMPLIANCE */}
-              {activeUnderbar === "compliance" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">
-                      Shariah Compliance Framework
-                    </h5>
-                    <p className="underbar-text">
-                      Explore our comprehensive 5-step screening architecture
-                      and purification calculation methodologies.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 3: Halal Stocks */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("stocks")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#halal-stocks"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                Halal Stocks
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR HALAL STOCKS */}
-              {activeUnderbar === "stocks" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">Halal Stocks List</h5>
-                    <p className="underbar-text">
-                      Browse categorized equities meeting strict
-                      debt-to-market-cap and liquid asset thresholds.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 4: Trading Plans */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("plans")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#trading-plans"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                Trading Plans
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR TRADING PLANS */}
-              {activeUnderbar === "plans" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">Premium Access Tiers</h5>
-                    <p className="underbar-text">
-                      Choose between monthly and annual plans to unlock expert
-                      screening insights and alerts.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 5: smallcases */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("smallcases")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#smallcases"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                smallcases
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR SMALLCASES */}
-              {activeUnderbar === "smallcases" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">Managed Ideabaskets</h5>
-                    <p className="underbar-text">
-                      Invest instantly in diversified Shariah-vetted smallcases
-                      via your existing stockbroker account.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 6: Halal Screener */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("screener")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#screener"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                Halal Screener
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR HALAL SCREENER */}
-              {activeUnderbar === "screener" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">
-                      Instant Financial Screener
-                    </h5>
-                    <p className="underbar-text">
-                      Type any global ticker name to query real-time conformity
-                      algorithms dynamically.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
-
-            {/* Tab 7: Blog */}
-            <li
-              className="zamzam-nav-item-host"
-              onMouseEnter={() => setActiveUnderbar("blog")}
-              onMouseLeave={() => setActiveUnderbar(null)}
-            >
-              <a
-                href="#blog"
-                className="nav-heading-link fw-semibold text-decoration-none"
-              >
-                Blog
-              </a>
-
-              {/* SAMPLE UNDERBAR FOR BLOG */}
-              {activeUnderbar === "blog" && (
-                <div className="zamzam-fullwidth-underbar border-bottom shadow-sm">
-                  <div className="container py-4">
-                    <h5 className="underbar-title">
-                      Insights & Market Analysis
-                    </h5>
-                    <p className="underbar-text">
-                      Read editorial write-ups, current Islamic finance
-                      breakdowns, and market commentary.
-                    </p>
-                  </div>
-                </div>
-              )}
-            </li>
+                )}
+              </li>
+            ))}
           </ul>
 
           {/* ========================================================
@@ -247,14 +189,6 @@ export default function MainNavbar() {
           <div className="desktop-actions d-none d-lg-flex align-items-center gap-3">
             <a href="#login" className="btn zamzam-btn-outline">
               Halal Stocks List
-            </a>
-            <a
-              href="https://zamzamcapital.smallcase.com/"
-              className="btn zamzam-btn-outline"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Smallcase
             </a>
           </div>
 
@@ -282,7 +216,7 @@ export default function MainNavbar() {
         </div>
 
         {/* ========================================================
-          MOBILE INTERACTIVE SLIDEOUT OFF-CANVAS BACKDROP DRAWERS
+          MOBILE SLIDEOUT MENU (Keeps original layout unchanged)
           ======================================================== */}
         {isMobileMenuOpen && (
           <div
@@ -293,7 +227,6 @@ export default function MainNavbar() {
               className="mobile-drawer-content p-4"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Drawer Header Layout block */}
               <div className="drawer-header d-flex align-items-center justify-content-between mb-4 pb-2 border-bottom">
                 <span className="fw-bold brand-text-green fs-5">
                   Menu Navigation
@@ -306,60 +239,37 @@ export default function MainNavbar() {
                 </button>
               </div>
 
-              {/* Mobile Vertical Headings Stream */}
-              <div className="mobile-accordion-stack d-flex flex-column gap-3">
-                <a
-                  href="#about"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  About
-                </a>
-                <a
-                  href="#compliance"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Shariah Compliance
-                </a>
-                <a
-                  href="#halal-stocks"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Halal Stocks
-                </a>
-                <a
-                  href="#trading-plans"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Trading Plans
-                </a>
-                <a
-                  href="#smallcases"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  smallcases
-                </a>
-                <a
-                  href="#screener"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Halal Screener
-                </a>
-                <a
-                  href="#blog"
-                  className="accordion-static-link"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Blog
-                </a>
+              <div className="mobile-accordion-stack d-flex flex-column gap-2">
+                {NAV_TABS.map((tab) => (
+                  <div key={tab.id}>
+                    <a
+                      href={tab.href}
+                      className="nav-static-link d-block py-2 text-decoration-none"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {tab.label}
+                    </a>
+
+                    {/* Unique layout addition: If it is the tools tab, list its links clearly underneath natively */}
+                    {tab.links && (
+                      <div className="ps-3 d-flex flex-column gap-2 my-1 border-start">
+                        {tab.links.map((link, idx) => (
+                          <a
+                            key={idx}
+                            href={link.href}
+                            className="nav-static-link py-1 text-muted text-decoration-none"
+                            style={{ fontSize: "13px" }}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
 
-              {/* Mobile Authentication Call-To-Actions Container */}
               <div className="mobile-drawer-auth-actions d-flex flex-column gap-3 mt-5">
                 <a
                   href="#login"
@@ -367,15 +277,6 @@ export default function MainNavbar() {
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Halal Stocks List
-                </a>
-                <a
-                  href="https://zamzamcapital.smallcase.com/"
-                  className="btn zamzam-btn-outline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  Smallcase
                 </a>
               </div>
             </div>
