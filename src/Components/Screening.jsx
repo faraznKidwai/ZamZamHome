@@ -42,8 +42,8 @@ const STATUS_BOXES = [
   },
   {
     className: "status-doubtful",
-    label: "DOUBTFUL",
-    desc: "A stock is either Halal or Non-Halal — not in between.",
+    label: "",
+    desc: "",
     rejected: true,
     overlayText: "ZamZam believes in clarity not doubtfulness",
   },

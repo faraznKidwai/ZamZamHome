@@ -12,7 +12,8 @@ const RESOURCES = [
   },
   {
     num: "02",
-    title: "The Definitive Guide to Halal Investing in India by Zamzam Capital (2026)",
+    title:
+      "The Definitive Guide to Halal Investing in India by Zamzam Capital (2026)",
     desc: "A detailed coverage of current state of Shariah compliant investments available in the Indian market.",
     action: "Download PDF (1.1 MB)",
     href: "#",
@@ -46,16 +47,17 @@ const RESOURCES = [
 
 const VIDEOS = [
   {
-    id: "Vwy-7kRQhAw",
-    title: "Is Intraday Trading Halal? — Sharia Scholar Interview",
+    id: "-OjKbz_P-tQ",
+    title: "Halal Investment Options Available in India Today?",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Introduction to Halal Investing in India",
+    id: "h03DeDA8wtc",
+    title: "Save Yourself From Haram Ponzi Schemes",
   },
   {
-    id: "dQw4w9WgXcQ",
-    title: "Understanding Shariah Stock Screening",
+    id: "ihonfqu2y8M",
+    title:
+      "Shariah Stock Screening: How are Shariah Screening Ratios Derived? Stock Market Fiqh - Pt 1",
   },
 ];
 
@@ -74,7 +76,10 @@ export default function KnowledgeCenter() {
 
         <div className="d-flex flex-column gap-3 mb-5">
           {RESOURCES.map((item) => (
-            <div className="knowledge-resource-card rounded-4 p-4" key={item.num}>
+            <div
+              className="knowledge-resource-card rounded-4 p-4"
+              key={item.num}
+            >
               <div className="row align-items-center g-3">
                 <div className="col-auto">
                   <span className="knowledge-num fw-bold">{item.num}</span>
@@ -115,7 +120,10 @@ export default function KnowledgeCenter() {
 
           <div className="row g-4">
             {VIDEOS.map((video, idx) => (
-              <div className="col-lg-4 col-md-6 col-12" key={`${video.id}-${idx}`}>
+              <div
+                className="col-lg-4 col-md-6 col-12"
+                key={`${video.id}-${idx}`}
+              >
                 <div className="vault-video-card rounded-4 overflow-hidden">
                   <div className="vault-video-embed ratio ratio-16x9">
                     <iframe
