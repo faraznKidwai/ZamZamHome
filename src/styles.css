@@ -1915,6 +1915,10 @@ Investment Contact section
   white-space: nowrap;
 }
 
+/* ==========================================================================
+   UPDATED RHS SCREENING STATUS CARDS SYSTEM
+   ========================================================================== */
+
 /* Equal distribution setup for right-hand column cards */
 .screening-status-column {
   display: flex;
@@ -1924,10 +1928,10 @@ Investment Contact section
 }
 
 .screening-status-box {
-  flex: 1; /* Assigns exact equal space division across all 3 child elements */
+  flex: 1; /* Assigns exact equal space division across all child elements */
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Vertically centers typography contents inside */
+  justify-content: flex-start; /* Pushes content to start from the top */
   border-radius: 10px;
   padding: 22px 20px;
   color: #ffffff;
@@ -1935,6 +1939,24 @@ Investment Contact section
   overflow: hidden; /* Clips overlay exactly inside the rounded corners */
 }
 
+/* Base Headings layout appearing explicitly on top of cards */
+.status-box-header {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.status-box-desc {
+  font-size: 13.5px;
+  line-height: 1.5;
+  opacity: 0.95;
+  margin: 0;
+}
+
+/* STATE COLOR SCHEMAS */
 .screening-status-box.status-halal {
   background-color: #16a34a;
 }
@@ -1943,20 +1965,23 @@ Investment Contact section
   background-color: #dc2626;
 }
 
+/* Yellow Card Specific Rules */
 .screening-status-box.status-doubtful {
   background-color: #eab308;
   color: #1f2937;
 }
 
-/* Strike-through applied cleanly to heading element */
-.screening-status-box.status-rejected .status-box-label {
+/* Strike-through applied cleanly to heading element when rejected or doubtful */
+.screening-status-box.status-doubtful .status-box-header,
+.screening-status-box.status-rejected .status-box-header {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-/* Soft 60% transparent white overlay block covering entire element container */
+/* OVERLAY BLOCKS: Soft 60% transparent layer covering element containers */
 .status-disabled-overlay {
   position: absolute;
+  /* Change top to pin directly below the header area if needed, or leave at 0 */
   top: 0;
   left: 0;
   width: 100%;
@@ -1965,29 +1990,50 @@ Investment Contact section
     255,
     255,
     255,
-    0.6
-  ); /* 60% transparent overlay layer */
+    0.45
+  ); /* slightly lowered to pop the bold text */
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 24px;
   box-sizing: border-box;
+
+  /* Layering controls */
+  z-index: 2;
+
+  /* Glassmorphism blur targeting the body wrapper */
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
-/* Bold overlay message configuration rules */
 .status-overlay-message {
   color: #1f2937;
-  font-weight: 700;
-  font-size: 14px;
+  font-weight: 800;
+  font-size: 14.5px;
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.45;
+  margin: 0;
+  z-index: 4; /* Keeps the warning message explicitly at the absolute front */
 }
 
-.status-box-label {
-  font-size: 14px;
-  letter-spacing: 0.5px;
+/* When the header is inside the doubtful box, cleanly apply the line-through */
+.screening-status-box.status-doubtful .status-box-header {
+  text-decoration: line-through !important;
+  opacity: 0.6;
 }
 
+@media (max-width: 991.98px) {
+  .zz-screening-infographic {
+    grid-template-columns: 1fr;
+  }
+
+  /* Fallback layout support on stacked mobile resolutions */
+  .screening-status-column {
+    height: auto;
+    min-height: 450px;
+    margin-top: 20px;
+  }
+}
 .status-box-desc {
   font-size: 13px;
   line-height: 1.5;

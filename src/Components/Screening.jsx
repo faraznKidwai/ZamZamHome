@@ -37,20 +37,20 @@ const STEPS = [
 const STATUS_BOXES = [
   {
     className: "status-halal",
-    label: "GREEN – HALAL",
-    desc: "Passes business, financial ratio, and quantitative checks. Safe to invest.",
+    header: "Halal (Green)",
+    desc: "Company passes all business operations and financial ratio screens smoothly.",
   },
   {
     className: "status-doubtful",
-    label: "",
-    desc: "",
-    rejected: true,
-    overlayText: "ZamZam believes in clarity not doubtfulness",
+    header: "Doubtful (Yellow)",
+    desc: "This text will be blurred out visually by the structural layout overlay block sitting on top of it.",
+    hasOverlay: true,
+    overlayText: "ZamZam believes in giving clarity, not doubtfulness.",
   },
   {
     className: "status-haram",
-    label: "RED – NOT HALAL",
-    desc: "Fails Shariah check. Avoid investing.",
+    header: "Haram (Red)",
+    desc: "Company fails essential structural thresholds or core activities rely heavily on interest.",
   },
 ];
 
@@ -70,6 +70,7 @@ export default function ScreeningSection() {
         </div>
 
         <div className="zz-screening-infographic">
+          {/* LEFT COLUMN: STEPS */}
           <div className="screening-steps-column">
             {STEPS.map((item) => (
               <div className="screening-step-card" key={item.step}>
@@ -106,25 +107,45 @@ export default function ScreeningSection() {
             ))}
           </div>
 
+          {/* RIGHT COLUMN: DYNAMIC DATA STATUS CARDS */}
           <div className="screening-status-column">
-            {STATUS_BOXES.map((box) => (
+            {STATUS_BOXES.map((box, index) => (
               <div
-                className={`screening-status-box ${box.className} ${
-                  box.rejected ? "status-rejected" : ""
-                }`}
-                key={box.label}
+                className={`screening-status-box ${box.className}`}
+                key={index}
               >
-                <h4 className="status-box-label fw-bold mb-2">{box.label}</h4>
-                <p className="status-box-desc mb-0">{box.desc}</p>
+                {/* 1. HEADER: Placed at the top layer with explicit inline z-index context */}
+                <span
+                  className={`status-box-header ${
+                    box.hasOverlay
+                      ? "text-decoration-line-through opacity-50"
+                      : ""
+                  }`}
+                  style={{ position: "relative", zIndex: 3 }}
+                >
+                  {box.header}
+                </span>
 
-                {/* Modern overlay container instead of an absolute text-decoration strike line */}
-                {box.rejected && box.overlayText && (
-                  <div className="status-disabled-overlay">
-                    <span className="status-overlay-message">
-                      {box.overlayText}
-                    </span>
-                  </div>
-                )}
+                {/* 2. BODY CONTENT: Wrapped to isolate the blur boundaries */}
+                <div
+                  className="status-body-wrap"
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <p className="status-box-desc">{box.desc}</p>
+
+                  {/* Conditional Rendering for the Blur Layer */}
+                  {box.hasOverlay && (
+                    <div className="status-disabled-overlay">
+                      <p className="status-overlay-message">
+                        {box.overlayText}
+                      </p>
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
