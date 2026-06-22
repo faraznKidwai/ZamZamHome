@@ -53,7 +53,7 @@ const NSE_SYMBOLS = [
   "WIPRO.NS",
 ]; // Trimmed exact non-Nifty placeholders to keep it tight & responsive
 
-const FINNHUB_API_KEY = "d8sgd3pr01qq7apvh5i0d8sgd3pr01qq7apvh5ig";
+const FINNHUB_API_KEY = "APIKEY";
 
 // Helper utility to create a micro-delay between API hits
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));

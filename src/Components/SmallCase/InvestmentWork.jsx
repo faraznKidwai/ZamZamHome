@@ -1,191 +1,187 @@
 import React, { useState, useEffect, useRef } from "react";
-import SmallcaseBridge, {
-  smallcasesData,
-  triggerSmallcaseAction,
-} from "./SmallcaseBridge";
-import { SmallcaseReplicaCard } from "./SmallCard";
 import "../../styles.css";
 import ContactSection from "./Contact";
 
+const SMALLCASES = [
+  {
+    scid: "ZMZMSB_0002",
+    title: "Zamzam Shariah Nifty 50 Smart Beta smallcase by Zamzam Capital",
+  },
+  {
+    scid: "ZMZMNM_0001",
+    title: "Zamzam Shariah New India Theme smallcase by Zamzam Capital",
+  },
+  {
+    scid: "ZMZMSB_0001",
+    title: "Zamzam Shariah Leaders Smart Beta smallcase by Zamzam Capital",
+  },
+  {
+    scid: "ZMZMTR_0001",
+    title: "Zamzam Shariah Infra Tracker smallcase by Zamzam Capital",
+  },
+];
+
+function SmallcaseEmbedCard({ scid, title }) {
+  const containerRef = useRef(null);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+
+    containerRef.current.innerHTML = "";
+
+    const p = document.createElement("p");
+    p.className = "sc-embed";
+    p.setAttribute("data-smallcase", "true");
+    p.setAttribute("data-cta", "view");
+    p.setAttribute("data-cardsize", "big");
+    p.setAttribute("data-scid", scid);
+    p.style.maxWidth = "100%";
+    p.style.minHeight = "300px";
+    p.style.display = "flex";
+    p.style.alignItems = "stretch";
+    p.style.justifyContent = "center";
+    p.innerText = title;
+
+    const script = document.createElement("script");
+    script.async = true;
+    script.src = "https://www.smallcase.com/embed/assets/embed.js";
+
+    containerRef.current.appendChild(p);
+    containerRef.current.appendChild(script);
+  }, [scid, title]);
+
+  return (
+    <div className="bg-white rounded-4 p-3 shadow-sm h-100">
+      <div ref={containerRef} className="w-100 smallcase-embed-wrapper" />
+    </div>
+  );
+}
+
 export default function InvestmentSchema() {
-  // Clone data for continuous loop tracking
-  const doubleData = [...smallcasesData, ...smallcasesData];
-  const totalOriginalItems = smallcasesData.length;
+  const originalLength = SMALLCASES.length;
+  const extendedSlides = [...SMALLCASES, ...SMALLCASES.slice(0, 2)];
 
-  const [d1Index, setD1Index] = useState(0);
-  const [d2Index, setD2Index] = useState(0);
-  const [d1Transition, setD1Transition] = useState(true);
-  const [d2Transition, setD2Transition] = useState(true);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
+  const autoPlayRef = useRef(null);
 
-  const d1Timer = useRef(null);
-  const d2Timer = useRef(null);
-
-  // --- Design 1: Continuous Infinite Loop Tracker ---
-  const startD1AutoSlide = () => {
-    clearInterval(d1Timer.current);
-    d1Timer.current = setInterval(() => {
-      handleD1Next();
-    }, 8000);
-  };
-
-  const handleD1Next = () => {
-    setD1Transition(true);
-    setD1Index((prev) => prev + 1);
-  };
-
-  const handleD1Prev = () => {
-    setD1Transition(true);
-    setD1Index((prev) => (prev === 0 ? totalOriginalItems - 1 : prev - 1));
-  };
-
+  // Dynamically calculate screen size for accurate layout shifting
   useEffect(() => {
-    // When Design 1 slides past the last original item, snap back to the start without an animation flash
-    if (d1Index >= totalOriginalItems) {
-      const snapTimer = setTimeout(() => {
-        setD1Transition(false);
-        setD1Index(0);
-      }, 6000); // Fired right after transition completes
-      return () => clearTimeout(snapTimer);
-    }
-  }, [d1Index, totalOriginalItems]);
-
-  // --- Design 2: Continuous Infinite Loop Tracker ---
-  const startD2AutoSlide = () => {
-    clearInterval(d2Timer.current);
-    d2Timer.current = setInterval(() => {
-      handleD2Next();
-    }, 8000);
-  };
-
-  const handleD2Next = () => {
-    setD2Transition(true);
-    setD2Index((prev) => prev + 1);
-  };
-
-  const handleD2Prev = () => {
-    setD2Transition(true);
-    setD2Index((prev) => (prev === 0 ? totalOriginalItems - 1 : prev - 1));
-  };
-
-  useEffect(() => {
-    if (d2Index >= totalOriginalItems) {
-      const snapTimer = setTimeout(() => {
-        setD2Transition(false);
-        setD2Index(0);
-      }, 6000);
-      return () => clearTimeout(snapTimer);
-    }
-  }, [d2Index, totalOriginalItems]);
-
-  useEffect(() => {
-    startD1AutoSlide();
-    startD2AutoSlide();
-    return () => {
-      clearInterval(d1Timer.current);
-      clearInterval(d2Timer.current);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
     };
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
+
+  const slidesToScroll = isMobile ? 100 : 50;
+
+  const startAutoPlay = () => {
+    stopAutoPlay();
+    autoPlayRef.current = setInterval(() => {
+      handleNext();
+    }, 5000);
+  };
+
+  const stopAutoPlay = () => {
+    if (autoPlayRef.current) clearInterval(autoPlayRef.current);
+  };
+
+  const handleNext = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => prev + 1);
+  };
+
+  const handlePrev = () => {
+    setIsTransitioning(true);
+    setCurrentIndex((prev) => {
+      if (prev === 0) {
+        setIsTransitioning(false);
+        return originalLength - 1;
+      }
+      return prev - 1;
+    });
+  };
+  // Listen for the slide transition finishing to cleanly snap loops behind the scenes
+  useEffect(() => {
+    if (currentIndex >= originalLength) {
+      // FIX: Changed from 6000ms to 600ms to match the 0.6s CSS animation speed perfectly
+      const timer = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(0);
+      }, 600);
+
+      return () => clearTimeout(timer);
+    }
+  }, [currentIndex, originalLength]);
+
+  useEffect(() => {
+    startAutoPlay();
+    return () => stopAutoPlay();
+  }, [currentIndex, isMobile]);
 
   return (
     <section
       id="smallcases"
       className="zamzam-schema-section py-5 schema-bg-corporate-green text-center text-white"
     >
-      <SmallcaseBridge />
-
       <div className="container mb-5">
-        <h2 className="schema-main-heading fw-extrabold mb-2">
+        <h2 className="schema-main-heading fw-extrabold mb-3 text-white">
           Choose Your Investment Strategy
         </h2>
-        <p className="schema-subtext opacity-75 max-w-600 mx-auto">
+        <p className="schema-subtext text-muted max-w-600 mx-auto text-white">
           Each basket is carefully constructed by our research team with proven
-          strategies, strict Shariah compliance and transparent performance
-          tracking
+          strategies, strict Shariah compliance, and transparent performance
+          tracking.
         </p>
       </div>
 
-      <div className="position-relative px-md-5 max-w-1200 mx-auto mb-5">
-        <button className="zz-slider-nav-btn prev-arrow" onClick={handleD1Prev}>
+      <div
+        className="position-relative px-md-5 max-w-1200 mx-auto mb-5 slider-interactive-container"
+        onMouseEnter={stopAutoPlay}
+        onMouseLeave={startAutoPlay}
+      >
+        <button
+          className="zz-slider-nav-btn prev-arrow"
+          onClick={handlePrev}
+          aria-label="Previous slide"
+        >
           ‹
         </button>
-        <button className="zz-slider-nav-btn next-arrow" onClick={handleD1Next}>
+        <button
+          className="zz-slider-nav-btn next-arrow"
+          onClick={handleNext}
+          aria-label="Next slide"
+        >
           ›
         </button>
 
-        <div className="zz-slider-viewport">
+        <div className="zz-slider-viewport overflow-hidden">
           <div
             className="zz-slider-track"
             style={{
-              transform: `translate3d(-${d1Index * 50}%, 0, 0)`,
-              transition: d1Transition
+              display: "flex",
+              transform: `translate3d(-${
+                currentIndex * slidesToScroll
+              }%, 0, 0)`,
+              transition: isTransitioning
                 ? "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
                 : "none",
             }}
           >
-            {doubleData.map((item, idx) => (
+            {extendedSlides.map((item, idx) => (
               <div
                 className="zz-slide-item-v1"
-                key={`d1-card-${item.scid}-${idx}`}
+                key={`sc-slide-${item.scid}-${idx}`}
+                style={{
+                  flex: isMobile ? "0 0 100%" : "0 0 50%",
+                  padding: "0 12px",
+                  boxSizing: "border-box",
+                }}
               >
-                <SmallcaseReplicaCard item={item} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div className="position-relative px-md-5 max-w-800 mx-auto mb-5 mt-5">
-        <button className="zz-slider-nav-btn prev-arrow" onClick={handleD2Prev}>
-          ‹
-        </button>
-        <button className="zz-slider-nav-btn next-arrow" onClick={handleD2Next}>
-          ›
-        </button>
-
-        <div className="zz-slider-viewport">
-          <div
-            className="zz-slider-track"
-            style={{
-              transform: `translate3d(-${d2Index * 100}%, 0, 0)`,
-              transition: d2Transition
-                ? "transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)"
-                : "none",
-            }}
-          >
-            {doubleData.map((item, idx) => (
-              <div
-                className="zz-slide-item-v2"
-                key={`d2-card-${item.scid}-${idx}`}
-              >
-                <div className="bg-white rounded-4 p-4 shadow-lg text-center d-flex flex-column align-items-center">
-                  {/* Item 1: Name of smallcase (Center-aligned) */}
-                  <h2 className="design2-smallcase-name fw-extrabold mb-3 text-dark text-center w-100">
-                    {item.name}
-                  </h2>
-
-                  {/* Item 2: Custom Embedded Replica Box */}
-                  <div className="w-100 mb-4">
-                    <SmallcaseReplicaCard item={item} hideFooter={true} />
-                  </div>
-
-                  {/* Item 3: Center-aligned Custom Title */}
-                  <h3 className="design2-functional-title fw-bold text-success text-center mb-2 px-2 w-100">
-                    {item.functionalTitle}
-                  </h3>
-
-                  {/* Item 4: Center-aligned Strategy Subtitle */}
-                  <p className="design2-audience-subtitle text-muted text-center mb-4 px-3 max-w-600 w-100">
-                    {item.subtitle}
-                  </p>
-
-                  {/* Item 5: View Smallcase Primary Action below subtitle */}
-                  <button
-                    className="btn btn-primary fw-bold px-5 py-2.5 rounded-3 shadow-sm btn-design2-action text-nowrap"
-                    onClick={() => triggerSmallcaseAction(item.scid)}
-                  >
-                    View smallcase
-                  </button>
-                </div>
+                <SmallcaseEmbedCard scid={item.scid} title={item.title} />
               </div>
             ))}
           </div>
