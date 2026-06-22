@@ -30,10 +30,9 @@ export default function FounderSection() {
             </span>
             <blockquote className="founder-quote mb-0">
               <p className="founder-quote-text mb-3">
-                &ldquo;So far only the rich have had access to the right
-                financial products. We are changing that by ensuring every
-                investor has dedicated experts to help them grow wealth
-                ethically — without compromising their faith.&rdquo;
+                &ldquo;Wealth creation should never come at a cost of one's
+                ethical values. Zamzam capital bridges the gap between financial
+                excellence and Sharia Integrity&rdquo;
               </p>
               <footer className="founder-quote-footer text-muted">
                 — Saif Ahmed, Founder &amp; Managing Partner, Zamzam Capital

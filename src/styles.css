@@ -349,6 +349,7 @@
 .hero-badge-pill {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   background-color: var(--zz-mint-light);
   padding: 6px 16px;
@@ -539,6 +540,124 @@
 @media (max-width: 1200px) {
   .panel-value-display {
     font-size: 2.1rem;
+  }
+}
+/* ==========================================================================
+   STABLE FLEX DECK FRAME SYSTEM (NO ABSOLUTE OVERLAP RISK)
+   ========================================================================== */
+
+.cards-equidistant-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+
+@media (min-width: 992px) {
+  /* Forces the 3 anchors to share the text row height space seamlessly */
+  .zz-3d-flip-anchor {
+    height: calc(33.33% - 16px);
+  }
+}
+
+.zz-3d-flip-anchor {
+  text-decoration: none !important;
+  display: block;
+  width: 100%;
+  perspective: 1000px; /* Isolated perspective context per item */
+}
+
+.zz-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+.zz-3d-flip-anchor:hover .zz-flip-card-inner {
+  transform: rotateX(-180deg);
+}
+
+.zz-flip-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 14px;
+  padding: 16px 24px;
+  box-sizing: border-box;
+}
+
+/* FRONT FACE SCHEMA - Eggshell White */
+.zz-flip-front {
+  background-color: #fcfbf7;
+  border: 1px solid #e5e4e0;
+  color: #1c1c1a;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+}
+
+/* BACK FACE SCHEMA - Vibrant ZamZam Green */
+.zz-flip-back {
+  background-color: #0fa978;
+  border: 1px solid #0d9469;
+  transform: rotateX(180deg);
+  display: flex;
+  align-items: center;
+  color: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(15, 169, 120, 0.2);
+}
+
+.front-icon-box {
+  background-color: rgba(28, 28, 26, 0.05);
+  color: #1c1c1a;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.card-accent-chevron {
+  color: #b5b4b0;
+  transition: transform 0.3s ease;
+}
+
+.zz-3d-flip-anchor:hover .card-accent-chevron {
+  transform: translateX(6px);
+}
+
+.interactive-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+.interactive-card-desc {
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+  color: #ffffff;
+}
+
+.action-hint-label {
+  font-size: 11px;
+  color: #e6f7f2;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+/* Mobile & Tablet Layout Flow */
+@media (max-width: 991.98px) {
+  .zz-3d-flip-anchor {
+    height: 105px;
+    margin-bottom: 16px;
+  }
+  .zz-3d-flip-anchor:last-child {
+    margin-bottom: 0;
   }
 }
 
