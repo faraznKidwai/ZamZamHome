@@ -1743,11 +1743,12 @@ Investment Contact section
 /* ==========================================================================
    17. SHARIAH SCREENING INFOGRAPHIC
    ========================================================================== */
+/* Master grid block container matching vertical alignments */
 .zz-screening-infographic {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   gap: 28px;
-  align-items: start;
+  align-items: stretch; /* Stretches columns to equal height */
 }
 
 .screening-steps-column {
@@ -1795,17 +1796,24 @@ Investment Contact section
   white-space: nowrap;
 }
 
+/* Equal distribution setup for right-hand column cards */
 .screening-status-column {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  height: 100%; /* Spans full parental height matching left column */
 }
 
 .screening-status-box {
+  flex: 1; /* Assigns exact equal space division across all 3 child elements */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertically centers typography contents inside */
   border-radius: 10px;
   padding: 22px 20px;
   color: #ffffff;
   position: relative;
+  overflow: hidden; /* Clips overlay exactly inside the rounded corners */
 }
 
 .screening-status-box.status-halal {
@@ -1821,19 +1829,39 @@ Investment Contact section
   color: #1f2937;
 }
 
-.screening-status-box.status-rejected {
-  opacity: 0.55;
+/* Strike-through applied cleanly to heading element */
+.screening-status-box.status-rejected .status-box-label {
   text-decoration: line-through;
+  opacity: 0.6;
 }
 
-.status-reject-mark {
+/* Soft 60% transparent white overlay block covering entire element container */
+.status-disabled-overlay {
   position: absolute;
-  top: 10px;
-  right: 14px;
-  font-size: 28px;
-  font-weight: 800;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.6
+  ); /* 60% transparent overlay layer */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+/* Bold overlay message configuration rules */
+.status-overlay-message {
   color: #1f2937;
-  line-height: 1;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
 }
 
 .status-box-label {
@@ -1850,6 +1878,12 @@ Investment Contact section
 @media (max-width: 991.98px) {
   .zz-screening-infographic {
     grid-template-columns: 1fr;
+  }
+
+  /* Fallback layout support on stacked mobile resolutions */
+  .screening-status-column {
+    height: auto;
+    min-height: 400px;
   }
 }
 

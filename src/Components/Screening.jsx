@@ -25,7 +25,10 @@ const STEPS = [
     title: "Quantitative Screening Check",
     details: [
       { label: "Non-liquid assets", value: "≥ 20% of total assets" },
-      { label: "Market cap vs net liquid assets", value: "Market cap > net liquid assets" },
+      {
+        label: "Market cap vs net liquid assets",
+        value: "Market cap > net liquid assets",
+      },
       { label: "Qualitative review", value: "Manual scholar verification" },
     ],
   },
@@ -38,15 +41,16 @@ const STATUS_BOXES = [
     desc: "Passes business, financial ratio, and quantitative checks. Safe to invest.",
   },
   {
-    className: "status-haram",
-    label: "RED – NOT HALAL",
-    desc: "Fails Shariah check. Avoid investing.",
-  },
-  {
     className: "status-doubtful",
     label: "DOUBTFUL",
     desc: "A stock is either Halal or Non-Halal — not in between.",
     rejected: true,
+    overlayText: "ZamZam believes in clarity not doubtfulness",
+  },
+  {
+    className: "status-haram",
+    label: "RED – NOT HALAL",
+    desc: "Fails Shariah check. Avoid investing.",
   },
 ];
 
@@ -69,7 +73,9 @@ export default function ScreeningSection() {
           <div className="screening-steps-column">
             {STEPS.map((item) => (
               <div className="screening-step-card" key={item.step}>
-                <span className="screening-step-label fw-bold">{item.step}</span>
+                <span className="screening-step-label fw-bold">
+                  {item.step}
+                </span>
                 <h3 className="screening-step-title fw-bold">{item.title}</h3>
                 {item.question && (
                   <p className="screening-step-question fw-semibold mb-2">
@@ -87,7 +93,9 @@ export default function ScreeningSection() {
                         className="screening-ratio-row d-flex justify-content-between gap-2 mb-1"
                         key={idx}
                       >
-                        <span className="screening-step-detail">{detail.label}</span>
+                        <span className="screening-step-detail">
+                          {detail.label}
+                        </span>
                         <span className="screening-ratio-value fw-bold">
                           {detail.value}
                         </span>
@@ -106,13 +114,17 @@ export default function ScreeningSection() {
                 }`}
                 key={box.label}
               >
-                {box.rejected && (
-                  <span className="status-reject-mark" aria-hidden="true">
-                    ✕
-                  </span>
-                )}
                 <h4 className="status-box-label fw-bold mb-2">{box.label}</h4>
                 <p className="status-box-desc mb-0">{box.desc}</p>
+
+                {/* Modern overlay container instead of an absolute text-decoration strike line */}
+                {box.rejected && box.overlayText && (
+                  <div className="status-disabled-overlay">
+                    <span className="status-overlay-message">
+                      {box.overlayText}
+                    </span>
+                  </div>
+                )}
               </div>
             ))}
           </div>
