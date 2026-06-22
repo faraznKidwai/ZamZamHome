@@ -95,11 +95,12 @@ export default function KnowledgeCenter() {
                 <div className="col-lg-auto">
                   <a
                     href={item.href}
-                    className={`btn ${
+                    className="btn text-white fw-semibold text-nowrap"
+                    style={
                       item.type === "pdf"
-                        ? "btn-knowledge-pdf"
-                        : "btn-knowledge-calc"
-                    } fw-semibold text-nowrap`}
+                        ? { backgroundColor: "#000000", color: "#ffffff" }
+                        : { backgroundColor: "#16a34a", color: "#ffffff" }
+                    }
                   >
                     {item.action}
                   </a>
