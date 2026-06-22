@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles.css";
+import Saif from "./SaifA.jpeg";
 
 export default function FounderSection() {
   return (
@@ -7,10 +8,15 @@ export default function FounderSection() {
       <div className="container">
         <div className="row align-items-center g-4 g-lg-5">
           <div className="col-lg-4 col-md-5 col-12 text-center text-md-start">
-            <div className="founder-photo-frame mx-auto mx-md-0">
-              <div className="founder-photo-placeholder d-flex align-items-center justify-content-center">
-                <span className="founder-initials fw-bold">SA</span>
-              </div>
+            <div className="col-lg-4 col-md-5 col-12 text-center text-md-start">
+              {/* 1. Removed the .founder-photo-frame and .founder-photo-placeholder divs entirely */}
+              {/* 2. Added standard Bootstrap classes to the image */}
+              <img
+                src={Saif}
+                alt="Saif Ahmad"
+                className="img-fluid mx-auto d-block"
+                style={{ maxWidth: "300px" }} // Keeps the original size limit while being free-floating
+              />
             </div>
             <h3 className="founder-name fw-bold mt-3 mb-1">Saif Ahmed</h3>
             <p className="founder-title text-muted mb-0">

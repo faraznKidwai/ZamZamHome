@@ -180,7 +180,7 @@ export default function MainNavbar() {
               href="mailto:support@zamzam-capital.com"
               className="btn zamzam-btn-outline"
             >
-              Email Us
+              Halal Stocks
             </a>
           </div>
 

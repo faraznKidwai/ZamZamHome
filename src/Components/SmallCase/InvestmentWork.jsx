@@ -5,6 +5,7 @@ import SmallcaseBridge, {
 } from "./SmallcaseBridge";
 import { SmallcaseReplicaCard } from "./SmallCard";
 import "../../styles.css";
+import ContactSection from "./Contact";
 
 export default function InvestmentSchema() {
   // Clone data for continuous loop tracking
@@ -190,6 +191,7 @@ export default function InvestmentSchema() {
           </div>
         </div>
       </div>
+      <ContactSection />
     </section>
   );
 }

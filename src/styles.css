@@ -1251,6 +1251,116 @@
 }
 
 /* ==========================================================================
+Investment Contact section
+========================================================================== */
+/* Container Layout */
+.zamzam-contact-section {
+  background-color: #0f9f6e; /* Brand Green background */
+  color: #ffffff;
+  padding: 48px 16px;
+  text-align: center;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    sans-serif;
+}
+
+.zamzam-contact-container {
+  max-w: 768px;
+  margin: 0 auto;
+}
+
+/* Typography Details */
+.zamzam-contact-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.zamzam-contact-subheading {
+  font-size: 0.95rem;
+  color: rgba(234, 250, 242, 0.9);
+  margin: 0 0 32px 0;
+  font-weight: 400;
+}
+
+/* Buttons Alignment Block */
+.zamzam-button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Pill-shaped Action Button - Default Style */
+.zamzam-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #ffffff;
+  color: #0f9f6e;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 9999px; /* Perfect pill shape */
+  border: 2px solid #ffffff; /* Transparent-looking border by default to prevent jumping on hover */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.25s ease, color 0.25s ease,
+    border-color 0.25s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+
+/* Button - Inverted Green Hover State */
+.zamzam-btn:hover {
+  background-color: #0f9f6e;
+  color: #ffffff;
+  border-color: #ffffff; /* Gives it the clean white outline over the background */
+}
+
+.zamzam-btn:active {
+  transform: scale(0.97);
+}
+
+/* Fixed Complete Vector Icon Layouts */
+.zamzam-icon-fill {
+  width: 18px;
+  height: 18px;
+  fill: currentColor; /* Forces icon fill to turn white when parent text turns white */
+  transition: fill 0.25s ease;
+}
+
+.zamzam-icon-stroke {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor; /* Forces icon outline to turn white when parent text turns white */
+  stroke-width: 2;
+  transition: stroke 0.25s ease;
+}
+
+/* Responsive Adaptive Fallbacks for Narrow Displays */
+@media (max-width: 640px) {
+  .zamzam-contact-heading {
+    font-size: 1.5rem;
+  }
+
+  .zamzam-button-group {
+    flex-direction: column;
+    width: 100%;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .zamzam-btn {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+/* ==========================================================================
    DESIGN VARIATION 2 TYPOGRAPHY AND STRUCTURE RULES
    ========================================================================== */
 .design2-smallcase-name {
@@ -1752,8 +1862,20 @@
 }
 
 .zz-testimonial-marquee-viewport {
-  mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
 }
 
 .zz-testimonial-marquee-track {
@@ -1769,8 +1891,12 @@
 }
 
 @keyframes zzTestimonialScroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 .zz-testimonial-card {
@@ -2002,4 +2128,3 @@
     font-size: 2rem;
   }
 }
-
