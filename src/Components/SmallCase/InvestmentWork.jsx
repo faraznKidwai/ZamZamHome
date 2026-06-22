@@ -131,7 +131,7 @@ export default function InvestmentSchema() {
         <h2 className="schema-main-heading fw-extrabold mb-3 text-white">
           Choose Your Investment Strategy
         </h2>
-        <p className="schema-subtext text-muted max-w-600 mx-auto text-white">
+        <p className="schema-subtext text-muted max-w-600 mx-auto ">
           Each basket is carefully constructed by our research team with proven
           strategies, strict Shariah compliance, and transparent performance
           tracking.
