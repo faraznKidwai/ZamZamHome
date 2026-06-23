@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../../styles.css";
-import ContactSection from "./Contact";
 
 const SMALLCASES = [
   {
@@ -187,7 +186,6 @@ export default function InvestmentSchema() {
           </div>
         </div>
       </div>
-      <ContactSection />
     </section>
   );
 }

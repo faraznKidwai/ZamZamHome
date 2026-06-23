@@ -13,6 +13,8 @@ import KnowledgeCenter from "./Components/KnowledgeCenter";
 import FAQs from "./Components/FAQs";
 import Footer from "./Components/Footer";
 import ScrollToTop from "./Components/ScrollToTop";
+import ContactSection from "./Components/SmallCase/Contact";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles.css";
 
@@ -31,6 +33,7 @@ function App() {
       <Insights />
       <KnowledgeCenter />
       <FAQs />
+      <ContactSection />
       <Footer />
       <ScrollToTop />
     </div>
