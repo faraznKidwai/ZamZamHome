@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../styles.css";
 
+// 1. Updated Scroll-Triggered CountUp Component
 function CountUp({ endValue, duration = 2000, suffix = "" }) {
   const [count, setCount] = useState(0);
+  const elementRef = useRef(null);
 
   useEffect(() => {
     let startTime = null;
+    let animationFrameId = null;
     const finalNumber = parseInt(endValue.replace(/[^0-9]/g, ""), 10);
 
     const animate = (timestamp) => {
@@ -17,21 +20,40 @@ function CountUp({ endValue, duration = 2000, suffix = "" }) {
       setCount(Math.floor(easeOutProgress * finalNumber));
 
       if (progress < duration) {
-        requestAnimationFrame(animate);
+        animationFrameId = requestAnimationFrame(animate);
       }
     };
 
-    requestAnimationFrame(animate);
+    // Create intersection observer to delay execution until the element is scrolled into view
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          animationFrameId = requestAnimationFrame(animate);
+          observer.unobserve(entry.target); // Unobserve immediately after trigger so it runs once
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (elementRef.current) {
+      observer.observe(elementRef.current);
+    }
+
+    return () => {
+      if (observer) observer.disconnect();
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
   }, [endValue, duration]);
 
   return (
-    <span>
+    <span ref={elementRef}>
       {count}
       {suffix}
     </span>
   );
 }
 
+// 2. Interactive Card Layout Schema
 const HERO_INTERACTIVE_CARDS = [
   {
     targetId: "#shariah-compliance",
@@ -57,6 +79,7 @@ const HERO_INTERACTIVE_CARDS = [
   },
 ];
 
+// 3. Complete Primary Hero Component Section
 export default function HeroSection() {
   return (
     <section className="zamzam-hero-viewport d-flex align-items-center">
@@ -201,63 +224,42 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* LOWER ROW: Natural baseline space for Actions and Stats metrics */}
+        {/* LOWER ROW: Centered Upscaled Metrics Section */}
         <div className="row">
           <div className="col-12">
-            <div className="hero-action-triple-set d-flex flex-wrap gap-3 mb-5">
-              <a
-                href="#shariah-compliance"
-                className="btn zamzam-btn-outline py-3 px-4"
-              >
-                Explore Screener
-              </a>
-              <a href="#pricing" className="btn zamzam-btn-outline py-3 px-4">
-                View Trading Plans
-              </a>
-              <a
-                href="https://zamzamcapital.smallcase.com/"
-                className="btn zamzam-btn-outline py-3 px-4"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Browse smallcases
-              </a>
-            </div>
-
-            {/* METRICS ROW */}
-            <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center gap-4 gap-sm-5 pt-4">
+            <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-center gap-4 gap-sm-5 pt-4 text-center">
               <div className="metric-inline-item">
-                <div className="metric-large-number fw-bold text-dark">
+                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
                   <CountUp endValue="1800" suffix="+" />
                 </div>
-                <div className="metric-sub-label text-muted fw-medium mt-1">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
                   Stocks Screened
                 </div>
               </div>
 
               <div className="metric-inline-item">
-                <div className="metric-large-number fw-bold text-dark">
+                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
                   ₹<CountUp endValue="5" suffix="Cr +" />
                 </div>
-                <div className="metric-sub-label text-muted fw-medium mt-1">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
                   Assets Managed
                 </div>
               </div>
 
               <div className="metric-inline-item">
-                <div className="metric-large-number fw-bold text-dark">
+                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
                   <CountUp endValue="98" suffix="%" />
                 </div>
-                <div className="metric-sub-label text-muted fw-medium mt-1">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
                   Client Satisfaction
                 </div>
               </div>
 
               <div className="metric-inline-item">
-                <div className="metric-large-number fw-bold text-dark">
+                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
                   <CountUp endValue="5000" suffix="+" />
                 </div>
-                <div className="metric-sub-label text-muted fw-medium mt-1">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
                   Investor Community
                 </div>
               </div>
