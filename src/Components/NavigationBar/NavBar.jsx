@@ -8,9 +8,9 @@ const NAV_TABS = [
     id: "about",
     label: "About",
     href: "#about",
-    title: "About Zamzam Capital",
+    title: "Who we are",
     description:
-      "Learn about our mission, Shariah advisory board, and our vision for ethical halal wealth generation.",
+      "Learn about our mission, vision & the strong experience of ourleadership team..",
   },
   {
     id: "shariah",
@@ -18,7 +18,7 @@ const NAV_TABS = [
     href: "#shariah-compliance",
     title: "Shariah Compliance Framework",
     description:
-      "Our rigorous screening methodology follows Mufti Taqi Usmani (DB) criteria, endorsed by leading Islamic seminaries in India.",
+      "Discover our unique 3-stage Shariah screening criteria approved by top Islamic institutions in India",
   },
   {
     id: "halal-stocks",
@@ -26,15 +26,15 @@ const NAV_TABS = [
     href: "#halal-stocks",
     title: "Halal Stocks List",
     description:
-      "Access our regularly updated list of Shariah-compliant NSE-listed stocks screened using our proprietary 3-stage process.",
+      "View our latest Halal list letter signed by members of our Shariah Board.",
   },
   {
     id: "stock-plans",
     label: "Stock Plans",
     href: "#stock-plans",
-    title: "Premium Stock Recommendation Service",
+    title: "Premium Stock Recommendation ",
     description:
-      "Browse categorized equities meeting strict debt-to-market-cap and liquid asset thresholds with expert research support.",
+      "Using our premium stock recommendation plans covering small, mid and large-cap stocks.",
   },
   {
     id: "smallcases",
@@ -42,15 +42,15 @@ const NAV_TABS = [
     href: "#smallcases",
     title: "Managed Ideabaskets",
     description:
-      "Invest instantly in diversified Shariah-vetted smallcases via your existing stockbroker account.",
+      "Invest in our smallcase portfolios as per your preferred theme or sector for a flat subscription fee. ",
   },
   {
     id: "screener",
-    label: "Screener",
+    label: "Halal Screener",
     href: "#screener",
-    title: "Instant Financial Screener",
+    title: "Sharia Stock Screener",
     description:
-      "Type any NSE ticker name to query real-time Shariah conformity status using our screening algorithms.",
+      "Get the latest Shariah status for any stock in our screening universe including latest IPOs.",
   },
   {
     id: "blog",
@@ -58,13 +58,14 @@ const NAV_TABS = [
     href: "#blog",
     title: "Insights & Market Analysis",
     description:
-      "Read editorial write-ups, current Islamic finance breakdowns, and market commentary.",
+      "Gain valuable insights to Shariah compliant investments and Islamic finance with a focus on India.",
   },
   {
     id: "tools",
     label: "Tools",
     href: "#tools",
-    title: "Tools for financial needs",
+    title:
+      "Benefit from Zamzam Capital’s proprietary calculators to aid your trading and Shariah compliance.",
     links: [
       { label: "Zakat Calculator", href: "#zakat-calc" },
       { label: "Position Size Calculator", href: "#position-calc" },
