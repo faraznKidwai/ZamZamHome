@@ -59,6 +59,20 @@ const VIDEOS = [
     title:
       "Shariah Stock Screening: How are Shariah Screening Ratios Derived? Stock Market Fiqh - Pt 1",
   },
+  {
+    id: "iI0LD8wPS_g",
+    title:
+      "Zamzam Capital: Shariah Compliant Stocks Screener | Our Screening Process for Halal Stocks is Unique",
+  },
+  {
+    id: "kbrRJ0QLJbk",
+    title: "Basic Principles of Islamic Investments",
+  },
+  {
+    id: "ihonfqu2y8M",
+    title:
+      "Shariah Stock Screening: How are Shariah Screening Ratios Derived? Stock Market Fiqh - Pt 1",
+  },
 ];
 
 export default function KnowledgeCenter() {
@@ -66,11 +80,8 @@ export default function KnowledgeCenter() {
     <section className="zz-knowledge-section py-5" id="tools">
       <div className="container">
         <div className="mb-5">
-          <span className="authority-pill d-inline-block mb-3 text-uppercase fw-bold">
-            Knowledge Center
-          </span>
           <h2 className="authority-main-heading fw-extrabold mb-2">
-            Comprehensive Free Books, Guides &amp; Calculators
+            Free Books, Guides &amp; Calculators
           </h2>
         </div>
 

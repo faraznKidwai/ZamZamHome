@@ -3,34 +3,33 @@ import "../styles.css";
 
 const STEPS = [
   {
-    step: "STEP 1",
-    title: "Business Activity Check",
-    question: "Is the main business halal?",
+    step: "STAGE 1",
+    title: "Business Sector Check",
+    question:
+      "Is the company’s main business sector or industry (> 50%) Halal?",
     details: [
-      "HALAL: Tech, healthcare, education, logistics",
-      "HARAM: Alcohol, gambling, pork, interest-based banks",
+      "Non - Halal: & finance, investments, insurance, alcohol, impermissible entertainment, pork, gambling and tobacco",
+      "HALAL: Everything Else",
     ],
   },
   {
-    step: "STEP 2",
-    title: "Financial Ratio Check (AAOIFI)",
+    step: "STAGE 2",
+    title: "Financial Ratio Check",
+    question:
+      "For companies that pass stage 1, all these five (5) financial ratios need to be satisfied in order to pass to the next stage",
     details: [
       { label: "Interest-bearing debt", value: "< 33% of total assets" },
       { label: "Non-compliant investments", value: "< 33% of total assets" },
       { label: "Non-halal revenue", value: "< 5% of total revenue" },
+      { label: "Non-liquid assets", value: "≥ 20% of total assets" },
+      { label: "Market capitalization", value: "> net liquid assets" },
     ],
   },
   {
-    step: "STEP 3",
+    step: "STAGE 3",
     title: "Quantitative Screening Check",
-    details: [
-      { label: "Non-liquid assets", value: "≥ 20% of total assets" },
-      {
-        label: "Market cap vs net liquid assets",
-        value: "Market cap > net liquid assets",
-      },
-      { label: "Qualitative review", value: "Manual scholar verification" },
-    ],
+    question:
+      "Our key differentiator as we look deeper into every company that reaches this stage to spot any meaningful activity that can be considered Shariah non-compliant. Example: That’s why Reliance, Wipro, Infosys, defence stocks such as MAZDOCK, PARAS, GRSE, etc. are excluded from our Halal list.",
   },
 ];
 
@@ -38,19 +37,20 @@ const STATUS_BOXES = [
   {
     className: "status-halal",
     header: "Halal (Green)",
-    desc: "Company passes all business operations and financial ratio screens smoothly.",
+    desc: "Company passes our 3-stage screening in all parameters with no doubt or discrepancy. When in doubt or if information is not available we choose the safer side and do not risk falling into Haram.",
   },
   {
     className: "status-doubtful",
     header: "Doubtful (Yellow)",
     desc: "This text will be blurred out visually by the structural layout overlay block sitting on top of it.",
     hasOverlay: true,
-    overlayText: "ZamZam believes in giving clarity, not doubtfulness.",
+    overlayText:
+      "Zamzam Capital believes in giving clarity in Shariah status, not creating further doubt in the minds of its audience.",
   },
   {
     className: "status-haram",
-    header: "Haram (Red)",
-    desc: "Company fails essential structural thresholds or core activities rely heavily on interest.",
+    header: "Non Halal (Red)",
+    desc: "Company fails Shariah compliance either at the business sector stage or by failing at least one of our 6 financial ratio screens. The Company could also be given a non-Halal status if it fails at final step of qualitative screening even after passing the previous two stages.",
   },
 ];
 

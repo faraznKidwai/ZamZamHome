@@ -3,10 +3,26 @@ import "../styles.css";
 
 export default function StockScreenerModule() {
   const stockList = [
-    { ticker: "RELIANCE", name: "Reliance Industries Limited", status: "Non Halal" },
-    { ticker: "ABFRL", name: "Aditya Birla Fashion and Retail Limited", status: "Halal" },
-    { ticker: "TCS", name: "Tata Consultancy Services Limited", status: "Non Halal" },
-    { ticker: "SBI", name: "State Bank Of India", status: "Non Halal" },
+    {
+      ticker: "RELIANCE",
+      name: "Reliance Industries Limited",
+      status: "Non-Halal",
+    },
+    {
+      ticker: "ABFRL",
+      name: "Aditya Birla Fashion and Retail Limited",
+      status: "Halal",
+    },
+    {
+      ticker: "HINDALCO",
+      name: "Hindalco Industries Limited",
+      status: "Halal",
+    },
+    {
+      ticker: "TCS",
+      name: "Tata Consultancy Services Limited",
+      status: "Non-Halal",
+    },
   ];
 
   const handleScreenerRedirect = () => {
@@ -18,7 +34,10 @@ export default function StockScreenerModule() {
   };
 
   return (
-    <section className="zz-screener-hero-section py-5 px-3 px-md-5" id="screener">
+    <section
+      className="zz-screener-hero-section py-5 px-3 px-md-5"
+      id="screener"
+    >
       <div className="container-fluid max-w-1200 mx-auto">
         <div className="row g-4 align-items-center reverse-mobile-layout">
           <div className="col-lg-6 col-12 text-start d-flex flex-column justify-content-center order-1 mobile-top-center">
@@ -33,7 +52,7 @@ export default function StockScreenerModule() {
               than 500 Cr market cap.) screened as per Zamzam Capital&apos;s
               Shariah screening criteria using our unique 3-stage screening
               process. Filter by sector, industry, stock name or ticker. Updated
-              for Mainboard IPOs and bi-annually every year.
+              for Mainboard IPOs and updated entirely every 6 months.
             </p>
             <button
               className="btn btn-screener-action py-2.5 px-4 rounded-3 fw-bold text-white d-inline-flex align-items-center justify-content-center gap-2 text-nowrap"
