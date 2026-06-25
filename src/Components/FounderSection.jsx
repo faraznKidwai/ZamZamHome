@@ -26,13 +26,13 @@ export default function FounderSection() {
 
           <div className="col-lg-8 col-md-7 col-12">
             <span className="authority-pill d-inline-block mb-3 text-uppercase fw-bold">
-              Leadership
+              Leadership Quote
             </span>
             <blockquote className="founder-quote mb-0">
               <p className="founder-quote-text mb-3">
                 &ldquo;Wealth creation should never come at a cost of one's
-                ethical values. Zamzam capital bridges the gap between financial
-                excellence and Sharia Integrity&rdquo;
+                ethical values. At Zamzam Capital we bridge this gap between
+                financial excellence and Shariah integrity.&rdquo;
               </p>
             </blockquote>
           </div>
