@@ -34,9 +34,6 @@ export default function FounderSection() {
                 ethical values. Zamzam capital bridges the gap between financial
                 excellence and Sharia Integrity&rdquo;
               </p>
-              <footer className="founder-quote-footer text-muted">
-                — Saif Ahmed, Founder &amp; Managing Partner, Zamzam Capital
-              </footer>
             </blockquote>
           </div>
         </div>

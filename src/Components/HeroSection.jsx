@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../styles.css";
 
-// 1. Updated Scroll-Triggered CountUp Component
+// 1. Scroll-Triggered CountUp Component with Localized Formatting
 function CountUp({ endValue, duration = 2000, suffix = "" }) {
   const [count, setCount] = useState(0);
   const elementRef = useRef(null);
@@ -24,12 +24,11 @@ function CountUp({ endValue, duration = 2000, suffix = "" }) {
       }
     };
 
-    // Create intersection observer to delay execution until the element is scrolled into view
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           animationFrameId = requestAnimationFrame(animate);
-          observer.unobserve(entry.target); // Unobserve immediately after trigger so it runs once
+          observer.unobserve(entry.target);
         }
       },
       { threshold: 0.1 }
@@ -47,35 +46,67 @@ function CountUp({ endValue, duration = 2000, suffix = "" }) {
 
   return (
     <span ref={elementRef}>
-      {count}
+      {count.toLocaleString("en-IN")}
       {suffix}
     </span>
   );
 }
 
-// 2. Interactive Card Layout Schema
+// 2. Interactive Card Layout Schema (Updated Targets & Icons)
 const HERO_INTERACTIVE_CARDS = [
   {
-    targetId: "#shariah-compliance",
+    targetId: "#knowledge-hub", // 1st box: opens Knowledge hub
     iconPath: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
-    frontTitle: "I want to Learn Investing",
-    backTitle: "Check out ZamZam tools and knowledge bases",
-    backAction: "Explore Knowledge Hub →",
+    isCustomSvg: false,
+    frontTitle: "I want to learn about Islamic Finance & Investments",
+    backTitle: "Check out Zamzam Capital’s free knowledge hub section",
+    backAction: "EXPLORE KNOWLEDGE HUB →",
   },
   {
-    targetId: "#pricing",
+    targetId: "#investment-section", // 2nd box: opens investment section
     iconPath: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
-    frontTitle: "I want to start Shariah Trading",
-    backTitle: "Unlock premium halal signals and asset plans",
-    backAction: "View Trading Plans →",
+    isCustomSvg: false,
+    frontTitle: "I want to start Halal short-term trading",
+    backTitle: "Get top quality stock recommendations for swing trading",
+    backAction: "VIEW STOCK PLANS →",
   },
   {
-    targetId: "#shariah-compliance",
+    targetId: "#investment-section",
+    isCustomSvg: true,
+    customSvg: (
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Column 1 (Left / Shortest) */}
+        <rect x="3" y="14" width="4" height="7" rx="1" />
+
+        {/* Column 2 (Middle) */}
+        <rect x="10" y="9" width="4" height="12" rx="1" />
+
+        {/* Column 3 (Right / Tallest) */}
+        <rect x="17" y="4" width="4" height="17" rx="1" />
+      </svg>
+    ),
+    frontTitle: "I want to Start Halal Long-Term Investing",
+    backTitle:
+      "Build a long-term equity portfolio through our various smallcases",
+    backAction: "VIEW SMALLCASES →",
+  },
+  {
+    targetId: "#screener-section", // 4th box: opens screener
     iconPath:
       "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.952 11.952 0 01-7.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    frontTitle: "Verify My Custom Portfolio",
-    backTitle: "Run deep quantitative checks on your equities",
-    backAction: "Open Strict Screener →",
+    isCustomSvg: false,
+    frontTitle: "I want my Portfolio Checked for Shariah Compliance",
+    backTitle: "Check a stock’s Halal status by name, industry or sector",
+    backAction: "OPEN HALAL SCREENER →",
   },
 ];
 
@@ -118,7 +149,7 @@ export default function HeroSection() {
                   </svg>
                 </span>
                 <span className="checkmark-item-text">
-                  <strong> Discover halal stocks </strong>as per our strict
+                  <strong> Discover Halal stocks </strong>as per our strict
                   Shariah screening criteria
                 </span>
               </li>
@@ -136,7 +167,7 @@ export default function HeroSection() {
                   </svg>
                 </span>
                 <span className="checkmark-item-text">
-                  <strong>Trade in halal stocks </strong> using one of our
+                  <strong>Trade in Halal stocks </strong> using one of our
                   trading plans
                 </span>
               </li>
@@ -174,18 +205,22 @@ export default function HeroSection() {
                     {/* FRONT FACE */}
                     <div className="zz-flip-face zz-flip-front d-flex align-items-center">
                       <div className="panel-icon-box front-icon-box d-flex align-items-center justify-content-center me-4">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        >
-                          <path d={card.iconPath} />
-                        </svg>
+                        {card.isCustomSvg ? (
+                          card.customSvg
+                        ) : (
+                          <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
+                            <path d={card.iconPath} />
+                          </svg>
+                        )}
                       </div>
                       <div className="card-typography-block">
                         <h4 className="interactive-card-title m-0">
@@ -230,6 +265,15 @@ export default function HeroSection() {
             <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-center gap-4 gap-sm-5 pt-4 text-center">
               <div className="metric-inline-item">
                 <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+                  <CountUp endValue="900" suffix="+" />
+                </div>
+                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                  Halal Stocks
+                </div>
+              </div>
+
+              <div className="metric-inline-item">
+                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
                   <CountUp endValue="1800" suffix="+" />
                 </div>
                 <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
@@ -239,7 +283,8 @@ export default function HeroSection() {
 
               <div className="metric-inline-item">
                 <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
-                  ₹<CountUp endValue="5" suffix="Cr +" />
+                  {"₹"}
+                  <CountUp endValue="10" suffix={"\u00a0Cr +"} />
                 </div>
                 <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
                   Assets Managed

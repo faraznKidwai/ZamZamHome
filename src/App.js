@@ -26,12 +26,21 @@ function App() {
       <SocialMarquee />
       <Authority />
       <FounderSection />
-      <InvestmentSchema />
+
+      <section id="investment-section">
+        <InvestmentSchema />
+      </section>
+
       <ScreeningSection />
-      <Screener />
+      <section id="screener-section">
+        <Screener />
+      </section>
       <Testimonials />
       <Insights />
-      <KnowledgeCenter />
+      <section id="knowledge-hub">
+        <KnowledgeCenter />
+      </section>
+
       <FAQs />
       <ContactSection />
       <Footer />
