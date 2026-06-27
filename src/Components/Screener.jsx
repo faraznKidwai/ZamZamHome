@@ -9,8 +9,8 @@ export default function StockScreenerModule() {
       status: "Non-Halal",
     },
     {
-      ticker: "ABFRL",
-      name: "Aditya Birla Fashion and Retail Limited",
+      ticker: "ABB",
+      name: "ABB India Limited",
       status: "Halal",
     },
     {
@@ -35,7 +35,8 @@ export default function StockScreenerModule() {
 
   return (
     <section
-      className="zz-screener-hero-section py-5 px-3 px-md-5"
+      className="zz-screener-hero-section px-3 px-md-5"
+      style={{ paddingTop: "5.5rem", paddingBottom: "5.5rem" }}
       id="screener"
     >
       <div className="container-fluid max-w-1200 mx-auto">
@@ -45,9 +46,9 @@ export default function StockScreenerModule() {
               Halal Stock Screener
             </span>
             <h2 className="screener-main-title fw-extrabold text-white mb-3">
-              Know if your stocks are Shariah-compliant?
+              Check if Your Portfolio is Shariah Compliant?
             </h2>
-            <p className="screener-support-desc text-white-50 mb-4">
+            <p className="screener-support-desc text-white-50 mb-5">
               Check the Shariah status of over 2,000 NSE-listed stocks (greater
               than 500 Cr market cap.) screened as per Zamzam Capital&apos;s
               Shariah screening criteria using our unique 3-stage screening
@@ -58,7 +59,7 @@ export default function StockScreenerModule() {
               className="btn btn-screener-action py-2.5 px-4 rounded-3 fw-bold text-white d-inline-flex align-items-center justify-content-center gap-2 text-nowrap"
               onClick={handleScreenerRedirect}
             >
-              Open Screener
+              Open Halal Screener
               <span className="screener-btn-arrow">→</span>
             </button>
           </div>

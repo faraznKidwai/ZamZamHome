@@ -207,7 +207,7 @@ export default function InvestmentSchema() {
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ic5D3pxQHUN3H4x-a5LPBfZbLmldoHqixyFbBzYp-w&s=10"
               alt="smallcase"
               style={{
-                width: "120px",
+                width: "100px",
                 height: "auto",
                 objectFit: "contain",
               }}

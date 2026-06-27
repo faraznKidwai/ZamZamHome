@@ -8,28 +8,29 @@ const STEPS = [
     question:
       "Is the company’s main business sector or industry (> 50%) Halal?",
     details: [
-      "Non - Halal: & finance, investments, insurance, alcohol, impermissible entertainment, pork, gambling and tobacco",
-      "HALAL: Everything Else",
+      "Non-Halal sectors: Banking & finance, investments, insurance, alcohol, impermissible entertainment, pork, gambling and tobacco",
+      "Halal sectors: Everything else",
     ],
   },
   {
     step: "STAGE 2",
     title: "Financial Ratio Check",
     question:
-      "For companies that pass stage 1, all these five (5) financial ratios need to be satisfied in order to pass to the next stage",
+      "For companies that pass stage 1, all these five (5) financial ratios need to be satisfied in order to pass to the next stage:",
     details: [
       { label: "Interest-bearing debt", value: "< 33% of total assets" },
       { label: "Non-compliant investments", value: "< 33% of total assets" },
-      { label: "Non-halal revenue", value: "< 5% of total revenue" },
+      { label: "Non-Halal revenue", value: "< 5% of total revenue" },
       { label: "Non-liquid assets", value: "≥ 20% of total assets" },
       { label: "Market capitalization", value: "> net liquid assets" },
     ],
   },
   {
     step: "STAGE 3",
-    title: "Quantitative Screening Check",
+    title: "Qualitative Screening Check",
     question:
-      "Our key differentiator as we look deeper into every company that reaches this stage to spot any meaningful activity that can be considered Shariah non-compliant. Example: That’s why Reliance, Wipro, Infosys, defence stocks such as MAZDOCK, PARAS, GRSE, etc. are excluded from our Halal list.",
+      "This is our key differentiator - as we look deeper into every company that reaches this stage to spot any business activity that can be considered as Shariah non-compliant. Example: reason why RELIANCE, WIPRO, INFY, defence stocks such as MAZDOCK, PARAS, GRSE, some sugar companies, etc. are excluded from our Halal stocks list.",
+    isUnboldedQuestion: true,
   },
 ];
 
@@ -37,20 +38,23 @@ const STATUS_BOXES = [
   {
     className: "status-halal",
     header: "Halal (Green)",
-    desc: "Company passes our 3-stage screening in all parameters with no doubt or discrepancy. When in doubt or if information is not available we choose the safer side and do not risk falling into Haram.",
+    desc: "Company passes our 3-stage screening in all parameters with no doubt or discrepancy. When in doubt or if information is not available, we choose the safer side and do not risk falling into Haram.",
+    fontSizeBoost: true,
   },
   {
     className: "status-doubtful",
-    header: "Doubtful (Yellow)",
+    header: "DOUBTFUL (YELLOW)",
     desc: "This text will be blurred out visually by the structural layout overlay block sitting on top of it.",
     hasOverlay: true,
     overlayText:
-      "Zamzam Capital believes in giving clarity in Shariah status, not creating further doubt in the minds of its audience.",
+      "Zamzam Capital believes in giving clarity in Shariah status, not creating further doubts in the minds of its audience.",
+    fontSizeBoost: false,
   },
   {
     className: "status-haram",
-    header: "Non Halal (Red)",
-    desc: "Company fails Shariah compliance either at the business sector stage or by failing at least one of our 6 financial ratio screens. The Company could also be given a non-Halal status if it fails at final step of qualitative screening even after passing the previous two stages.",
+    header: "NON-HALAL (Red)",
+    desc: "Company fails Shariah compliance either at the business sector stage or by failing at least one of our five (5) financial ratio screens. The Company could also be given a non-Halal status if it fails at the final step of qualitative screening (stage 3).",
+    fontSizeBoost: true,
   },
 ];
 
@@ -79,7 +83,11 @@ export default function ScreeningSection() {
                 </span>
                 <h3 className="screening-step-title fw-bold">{item.title}</h3>
                 {item.question && (
-                  <p className="screening-step-question fw-semibold mb-2">
+                  <p
+                    className={`screening-step-question mb-2 ${
+                      item.isUnboldedQuestion ? "fw-normal" : "fw-semibold"
+                    }`}
+                  >
                     {item.question}
                   </p>
                 )}
@@ -118,7 +126,7 @@ export default function ScreeningSection() {
                 <span
                   className={`status-box-header ${
                     box.hasOverlay
-                      ? "text-decoration-line-through opacity-50"
+                      ? "text-decoration-line-through opacity-50 fw-normal"
                       : ""
                   }`}
                   style={{ position: "relative", zIndex: 3 }}
@@ -135,12 +143,19 @@ export default function ScreeningSection() {
                     height: "100%",
                   }}
                 >
-                  <p className="status-box-desc">{box.desc}</p>
+                  <p
+                    className="status-box-desc"
+                    style={{
+                      fontSize: box.fontSizeBoost ? "1.15rem" : "inherit",
+                    }}
+                  >
+                    {box.desc}
+                  </p>
 
                   {/* Conditional Rendering for the Blur Layer */}
                   {box.hasOverlay && (
                     <div className="status-disabled-overlay">
-                      <p className="status-overlay-message">
+                      <p className="status-overlay-message fw-normal">
                         {box.overlayText}
                       </p>
                     </div>
