@@ -113,10 +113,10 @@ export default function ScreeningSection() {
           </div>
 
           {/* RIGHT COLUMN: DYNAMIC DATA STATUS CARDS */}
-          <div className="screening-status-column">
+          <div className="screening-status-column custom-spaced-column">
             {STATUS_BOXES.map((box, index) => (
               <div
-                className={`screening-status-box ${box.className}`}
+                className={`screening-status-box custom-status-box ${box.className}`}
                 key={index}
               >
                 {/* 1. HEADER */}
@@ -131,7 +131,7 @@ export default function ScreeningSection() {
                   {box.header}
                 </span>
 
-                {/* 2. BODY CONTENT: Enforced consistent 0.9rem sizing across all text boxes */}
+                {/* 2. BODY CONTENT */}
                 <div
                   className="status-body-wrap"
                   style={{
@@ -145,6 +145,7 @@ export default function ScreeningSection() {
                     className="status-box-desc"
                     style={{
                       fontSize: "0.9rem",
+                      margin: 0,
                     }}
                   >
                     {box.desc}
@@ -164,6 +165,24 @@ export default function ScreeningSection() {
           </div>
         </div>
       </div>
+
+      {/* Scoped CSS styling override to scale outer whitespace independently */}
+      <style>{`
+        /* Forces the container to lay items out using flexbox or grid with expanded gaps */
+        .custom-spaced-column {
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 1.75rem !important; /* Increases external white space equally between boxes */
+          justify-content: flex-start !important;
+        }
+
+        /* Protects and guarantees internal buffer space remains untouched */
+        .custom-status-box {
+          padding: 1.5rem !important; /* Locks structural gap between text and container borders */
+          margin: 0 !important;       /* Removes old baseline margins to let the explicit gap handle alignment */
+          box-sizing: border-box !important;
+        }
+      `}</style>
     </section>
   );
 }
