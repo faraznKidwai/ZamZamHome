@@ -63,7 +63,7 @@ const HERO_INTERACTIVE_CARDS = [
     backAction: "EXPLORE KNOWLEDGE HUB →",
   },
   {
-    targetId: "#investment-section", // 2nd box: opens investment section
+    targetId: "https://invest.zamzam-capital.com/", // 2nd box: opens investment section
     iconPath: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
     isCustomSvg: false,
     frontTitle: "I want to start Halal short-term trading",
@@ -265,19 +265,19 @@ export default function HeroSection() {
             <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-center gap-4 gap-sm-5 pt-4 text-center">
               <div className="metric-inline-item">
                 <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
-                  <CountUp endValue="900" suffix="+" />
+                  <CountUp endValue="1800" suffix="+" />
                 </div>
                 <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
-                  Halal Stocks
+                  Stocks Screened
                 </div>
               </div>
 
               <div className="metric-inline-item">
                 <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
-                  <CountUp endValue="1800" suffix="+" />
+                  <CountUp endValue="900" suffix="+" />
                 </div>
                 <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
-                  Stocks Screened
+                  Halal Stocks
                 </div>
               </div>
 

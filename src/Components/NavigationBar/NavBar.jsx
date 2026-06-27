@@ -3,14 +3,16 @@ import "../../styles.css";
 import TopBar from "./TopBar.jsx";
 import TickerBar from "./TickerBar.jsx";
 
+// Revised Navigation config matching the exact mockup requirements
 const NAV_TABS = [
   {
     id: "about",
     label: "About",
     href: "#about",
-    title: "Who we are",
+    title: "Who We Are",
     description:
-      "Learn about our mission, vision & the strong experience of ourleadership team..",
+      "Learn about our mission, vision & the strong experience of our leadership team.",
+    isSmallCaps: true,
   },
   {
     id: "shariah",
@@ -18,7 +20,8 @@ const NAV_TABS = [
     href: "#shariah-compliance",
     title: "Shariah Compliance Framework",
     description:
-      "Discover our unique 3-stage Shariah screening criteria approved by top Islamic institutions in India",
+      "Discover our unique 3-stage Shariah screening criteria approved by top Islamic institutions.",
+    isSmallCaps: true,
   },
   {
     id: "halal-stocks",
@@ -27,30 +30,34 @@ const NAV_TABS = [
     title: "Halal Stocks List",
     description:
       "View our latest Halal list letter signed by members of our Shariah Board.",
+    isSmallCaps: true,
   },
   {
     id: "stock-plans",
     label: "Stock Plans",
     href: "#stock-plans",
-    title: "Premium Stock Recommendation ",
+    title: "Stock Plans",
     description:
-      "Using our premium stock recommendation plans covering small, mid and large-cap stocks.",
+      "Trade using our premium stock recommendation plans covering small, mid and large-cap stocks.",
+    isSmallCaps: true,
   },
   {
     id: "smallcases",
     label: "smallcases",
     href: "#smallcases",
-    title: "Managed Ideabaskets",
+    title: "Managed Model Portfolios",
     description:
-      "Invest in our smallcase portfolios as per your preferred theme or sector for a flat subscription fee. ",
+      "Invest for the long-term through our smallcase portfolios as per your preferred theme or sector for a flat subscription fee.",
+    isSmallCaps: true,
   },
   {
     id: "screener",
     label: "Halal Screener",
     href: "#screener",
-    title: "Sharia Stock Screener",
+    title: "Check Shariah Compliance Status",
     description:
-      "Get the latest Shariah status for any stock in our screening universe including latest IPOs.",
+      "Check the latest Shariah compliance status for any stock in our screening universe including the latest mainboard IPOs.",
+    isSmallCaps: true,
   },
   {
     id: "blog",
@@ -58,24 +65,65 @@ const NAV_TABS = [
     href: "#blog",
     title: "Insights & Market Analysis",
     description:
-      "Gain valuable insights to Shariah compliant investments and Islamic finance with a focus on India.",
+      "Gain valuable insights into Shariah compliant investments and Islamic finance in India.",
+    isSmallCaps: true,
   },
   {
     id: "tools",
     label: "Tools",
     href: "#tools",
-    title:
-      "Benefit from Zamzam Capital’s proprietary calculators to aid your trading and Shariah compliance.",
-    links: [
-      { label: "Zakat Calculator", href: "#zakat-calc" },
-      { label: "Position Size Calculator", href: "#position-calc" },
-    ],
+    title: "Our Knowledge Hub",
+    description:
+      "Benefit from our free books, guides, videos & proprietary calculators to aid your trading and Shariah compliance.",
+    isSmallCaps: true,
+    // Note: Action buttons inside dropdown for tools have been removed as requested.
   },
 ];
+
+// Helper to format text with smallcaps while preserving case for explicit keywords
+function renderFormattedTitle(text) {
+  if (!text) return "";
+  const keywords = ["I", "Islamic", "Halal", "Shariah"];
+  return text.split(/(\s+)/).map((word, index) => {
+    const cleanWord = word.trim();
+    if (!cleanWord) return word; // preserve spaces
+    if (keywords.includes(cleanWord)) {
+      return <span key={index}>{cleanWord}</span>;
+    }
+    return (
+      <span
+        key={index}
+        style={{ fontVariant: "small-caps", textTransform: "lowercase" }}
+      >
+        {cleanWord.charAt(0).toUpperCase() + cleanWord.slice(1)}
+      </span>
+    );
+  });
+}
 
 export default function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeUnderbar, setActiveUnderbar] = useState(null);
+
+  // Custom inline style styles to reduce button size by 30% and set green background
+  const halalListBtnStyle = {
+    fontSize: "13px",
+    padding: "6px 14px",
+    backgroundColor: "#0fa978", // Solid green
+    color: "#ffffff",
+    border: "1px solid #0fa978",
+    transition: "all 0.2s ease-in-out",
+  };
+
+  const handleBtnMouseEnter = (e) => {
+    e.target.style.backgroundColor = "transparent";
+    e.target.style.color = "#0fa978";
+  };
+
+  const handleBtnMouseLeave = (e) => {
+    e.target.style.backgroundColor = "#0fa978";
+    e.target.style.color = "#ffffff";
+  };
 
   return (
     <div className="Entirebar">
@@ -105,21 +153,31 @@ export default function MainNavbar() {
             </a>
           </div>
 
+          {/* Centered navigation items with increased font size (+1pt -> 17px/1.05rem) */}
           <ul
             className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-3"
-            style={{ position: "relative" }}
+            style={{
+              position: "relative",
+              height: "100%",
+              alignSelf: "center",
+            }}
           >
             {NAV_TABS.map((tab) => (
               <li
                 key={tab.id}
-                className="zamzam-nav-item-host"
-                style={{ paddingBottom: "15px", marginBottom: "-15px" }}
+                className="zamzam-nav-item-host d-flex align-items-center"
+                style={{
+                  paddingBottom: "15px",
+                  marginBottom: "-15px",
+                  height: "100%",
+                }}
                 onMouseEnter={() => setActiveUnderbar(tab.id)}
                 onMouseLeave={() => setActiveUnderbar(null)}
               >
                 <a
                   href={tab.href}
                   className="nav-heading-link nav-static-link fw-semibold text-decoration-none"
+                  style={{ fontSize: "17px" }}
                 >
                   {tab.label}
                 </a>
@@ -142,33 +200,20 @@ export default function MainNavbar() {
                         className="underbar-title fw-bold text-dark mb-2"
                         style={{ fontSize: "16px" }}
                       >
-                        {tab.title}
+                        {tab.isSmallCaps
+                          ? renderFormattedTitle(tab.title)
+                          : tab.title}
                       </h5>
-                      {tab.links ? (
-                        <div className="d-flex flex-wrap align-items-center gap-3 mt-3">
-                          {tab.links.map((link, idx) => (
-                            <a
-                              key={idx}
-                              href={link.href}
-                              className="btn zamzam-btn-outline px-3 py-2 fw-medium text-decoration-none"
-                              style={{ fontSize: "14px" }}
-                            >
-                              {link.label}
-                            </a>
-                          ))}
-                        </div>
-                      ) : (
-                        <p
-                          className="underbar-text text-muted mb-0"
-                          style={{
-                            fontSize: "14px",
-                            maxWidth: "600px",
-                            lineHeight: "1.5",
-                          }}
-                        >
-                          {tab.description}
-                        </p>
-                      )}
+                      <p
+                        className="underbar-text text-muted mb-0"
+                        style={{
+                          fontSize: "14px",
+                          maxWidth: "600px",
+                          lineHeight: "1.5",
+                        }}
+                      >
+                        {tab.description}
+                      </p>
                     </div>
                   </div>
                 )}
@@ -179,7 +224,10 @@ export default function MainNavbar() {
           <div className="desktop-actions d-none d-lg-flex align-items-center gap-3">
             <a
               href="mailto:support@zamzam-capital.com"
-              className="btn zamzam-btn-outline"
+              className="btn fw-medium text-decoration-none rounded"
+              style={halalListBtnStyle}
+              onMouseEnter={handleBtnMouseEnter}
+              onMouseLeave={handleBtnMouseLeave}
             >
               Halal Stocks List
             </a>
@@ -219,7 +267,7 @@ export default function MainNavbar() {
                   Menu Navigation
                 </span>
                 <button
-                  className="border-0 bg-transparent fs-3 text-muted p-1 line-height-none"
+                  className="border-0 bg-transparent fs-3 text-muted p-1"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   &times;
@@ -232,25 +280,11 @@ export default function MainNavbar() {
                     <a
                       href={tab.href}
                       className="nav-static-link d-block py-2 text-decoration-none"
+                      style={{ fontSize: "16px" }}
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {tab.label}
                     </a>
-                    {tab.links && (
-                      <div className="ps-3 d-flex flex-column gap-2 my-1 border-start border-start-brand">
-                        {tab.links.map((link, idx) => (
-                          <a
-                            key={idx}
-                            href={link.href}
-                            className="nav-static-link py-1 text-muted text-decoration-none"
-                            style={{ fontSize: "13px" }}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                          >
-                            {link.label}
-                          </a>
-                        ))}
-                      </div>
-                    )}
                   </div>
                 ))}
               </div>
@@ -258,7 +292,8 @@ export default function MainNavbar() {
               <div className="mobile-drawer-auth-actions d-flex flex-column gap-3 mt-5">
                 <a
                   href="mailto:support@zamzam-capital.com"
-                  className="btn zamzam-btn-outline"
+                  className="btn text-center text-decoration-none rounded"
+                  style={{ ...halalListBtnStyle, width: "100%" }}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Halal Stocks List
