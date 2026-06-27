@@ -10,10 +10,9 @@ const ContactSection = () => {
     <section className="zamzam-contact-section">
       <div className="zamzam-contact-container">
         {/* Heading */}
-        <h2 className="zamzam-contact-heading">Still have doubts?</h2>
-
-        {/* Subheading */}
-        <p className="zamzam-contact-subheading">Contact us directly anytime</p>
+        <h2 className="zamzam-contact-heading">
+          Still have doubts? Contact us directly anytime
+        </h2>
 
         {/* Buttons Container */}
         <div className="zamzam-button-group">

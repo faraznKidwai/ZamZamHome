@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "../styles.css";
 
 const TESTIMONIALS = [
@@ -117,10 +117,65 @@ const TESTIMONIALS = [
 ];
 
 export default function Testimonials() {
-  const dualStream = [...TESTIMONIALS, ...TESTIMONIALS];
+  const scrollContainerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+
+  // Triple the array elements to make seamless scrolling mathematically bulletproof
+  const tripleStream = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
+
+  useEffect(() => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    // Set fallback initial position to middle set of items so moving backward via arrow works instantly
+    const singleSetWidth = container.scrollWidth / 3;
+    if (container.scrollLeft === 0) {
+      container.scrollLeft = singleSetWidth;
+    }
+
+    let animationFrameId;
+    // Lower speed means slower creep. 0.75 gives a perfect steady scroll pace
+    const crawlSpeed = 0.75;
+
+    const renderCrawlLoop = () => {
+      if (!isPaused) {
+        container.scrollLeft += crawlSpeed;
+
+        // Reset positions smoothly without visual flicker once boundary limits hit
+        if (container.scrollLeft >= singleSetWidth * 2) {
+          container.scrollLeft = singleSetWidth;
+        } else if (container.scrollLeft <= 0) {
+          container.scrollLeft = singleSetWidth;
+        }
+      }
+      animationFrameId = requestAnimationFrame(renderCrawlLoop);
+    };
+
+    animationFrameId = requestAnimationFrame(renderCrawlLoop);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused]);
+
+  // Handle Manual Nav Clicks on Computers
+  const handleManualScroll = (direction) => {
+    const container = scrollContainerRef.current;
+    if (!container) return;
+
+    const cardStepSize = 350 + 24; // Card width + layout gap
+    const nextTarget =
+      container.scrollLeft +
+      (direction === "left" ? -cardStepSize : cardStepSize);
+
+    container.scrollTo({
+      left: nextTarget,
+      behavior: "smooth",
+    });
+  };
 
   return (
-    <section className="zz-testimonials-section py-5">
+    <section
+      className="zz-testimonials-section py-5"
+      style={{ position: "relative" }}
+    >
       <div className="container text-center mb-4">
         <span className="authority-pill d-inline-block mb-3 text-uppercase fw-bold">
           Testimonials
@@ -135,31 +190,76 @@ export default function Testimonials() {
         </p>
       </div>
 
-      <div className="zz-testimonial-marquee-viewport overflow-hidden">
-        <div className="zz-testimonial-marquee-track">
-          {dualStream.map((item, idx) => (
+      {/* Manual Desktop Override Arrows */}
+
+      {/* Infinite Crawl Viewport Container */}
+      <div
+        ref={scrollContainerRef}
+        className="zz-testimonial-marquee-viewport"
+        onMouseEnter={() => setIsPaused(true)}
+        onMouseLeave={() => setIsPaused(false)}
+        onTouchStart={() => setIsPaused(true)}
+        onTouchEnd={() => {
+          // Add a short timeout before resuming automatic creep after user releases touch swipe
+          setTimeout(() => setIsPaused(false), 2000);
+        }}
+        style={{
+          overflowX: "auto",
+          whiteSpace: "nowrap",
+          display: "flex",
+          gap: "1.5rem",
+          padding: "1rem 2rem",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+          WebkitOverflowScrolling: "touch",
+        }}
+      >
+        {tripleStream.map((item, idx) => (
+          <div
+            className="zz-testimonial-card"
+            key={`testimonial-${idx}`}
+            style={{
+              height: "auto",
+              alignSelf: "flex-start",
+              paddingTop: "1rem",
+              flex: "0 0 350px",
+              whiteSpace: "normal",
+            }}
+          >
             <div
-              className="zz-testimonial-card"
-              key={`testimonial-${idx}`}
-              style={{ height: "auto", alignSelf: "flex-start" }}
+              className="testimonial-quote-icon brand-text-green mb-1"
+              style={{
+                fontSize: "2.5rem",
+                lineHeight: "1",
+                marginTop: "-0.5rem",
+              }}
             >
-              <div className="testimonial-quote-icon brand-text-green mb-3">
-                &ldquo;
-              </div>
-              <p className="testimonial-text mb-4">{item.quote}</p>
-              <div className="d-flex align-items-center gap-3">
-                <div className="testimonial-avatar">{item.initials}</div>
-                <div className="text-start">
-                  <div className="testimonial-name fw-bold">{item.name}</div>
-                  <div className="testimonial-role text-muted small">
-                    {item.role}
-                  </div>
+              &ldquo;
+            </div>
+            <p
+              className="testimonial-text mb-4"
+              style={{ marginTop: "-0.25rem" }}
+            >
+              {item.quote}
+            </p>
+            <div className="d-flex align-items-center gap-3">
+              <div className="testimonial-avatar">{item.initials}</div>
+              <div className="text-start">
+                <div className="testimonial-name fw-bold">{item.name}</div>
+                <div className="testimonial-role text-muted small">
+                  {item.role}
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
+
+      <style>{`
+        .zz-testimonial-marquee-viewport::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </section>
   );
 }
