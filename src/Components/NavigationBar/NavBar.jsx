@@ -18,9 +18,9 @@ const NAV_TABS = [
     id: "shariah",
     label: "Shariah Compliance",
     href: "#shariah-compliance",
-    title: "Shariah Compliance Framework",
+    title: "shariah Compliance Framework",
     description:
-      "Discover our unique 3-stage Shariah screening criteria approved by top Islamic institutions.",
+      "Discover our unique 3-stage Ahariah screening criteria approved by top Islamic institutions.",
     isSmallCaps: true,
   },
   {
@@ -54,7 +54,7 @@ const NAV_TABS = [
     id: "screener",
     label: "Halal Screener",
     href: "#screener",
-    title: "Check Shariah Compliance Status",
+    title: "Check shariah compliance status",
     description:
       "Check the latest Shariah compliance status for any stock in our screening universe including the latest mainboard IPOs.",
     isSmallCaps: true,

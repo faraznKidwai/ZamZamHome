@@ -213,7 +213,7 @@ export default function Testimonials() {
             <div className="card-profile-sidebar">
               <div className="testimonial-avatar">{item.initials}</div>
               <div className="testimonial-name fw-bold">{item.name}</div>
-              <div className="testimonial-role text-muted small">
+              <div className="testimonial-role text-muted small fst-italic">
                 {item.role}
               </div>
             </div>

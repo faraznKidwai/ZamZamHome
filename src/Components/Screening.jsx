@@ -39,7 +39,6 @@ const STATUS_BOXES = [
     className: "status-halal",
     header: "Halal (Green)",
     desc: "Company passes our 3-stage screening in all parameters with no doubt or discrepancy. When in doubt or if information is not available, we choose the safer side and do not risk falling into Haram.",
-    fontSizeBoost: true,
   },
   {
     className: "status-doubtful",
@@ -48,13 +47,11 @@ const STATUS_BOXES = [
     hasOverlay: true,
     overlayText:
       "Zamzam Capital believes in giving clarity in Shariah status, not creating further doubts in the minds of its audience.",
-    fontSizeBoost: false,
   },
   {
     className: "status-haram",
     header: "NON-HALAL (Red)",
     desc: "Company fails Shariah compliance either at the business sector stage or by failing at least one of our five (5) financial ratio screens. The Company could also be given a non-Halal status if it fails at the final step of qualitative screening (stage 3).",
-    fontSizeBoost: true,
   },
 ];
 
@@ -124,9 +121,9 @@ export default function ScreeningSection() {
               >
                 {/* 1. HEADER */}
                 <span
-                  className={`status-box-header ${
+                  className={`status-box-header fw-bold ${
                     box.hasOverlay
-                      ? "text-decoration-line-through opacity-50 fw-normal"
+                      ? "text-decoration-line-through opacity-50"
                       : ""
                   }`}
                   style={{ position: "relative", zIndex: 3 }}
@@ -134,7 +131,7 @@ export default function ScreeningSection() {
                   {box.header}
                 </span>
 
-                {/* 2. BODY CONTENT: Reduced base size by 1pt (from 1rem to 0.9rem) */}
+                {/* 2. BODY CONTENT: Enforced consistent 0.9rem sizing across all text boxes */}
                 <div
                   className="status-body-wrap"
                   style={{
@@ -147,7 +144,7 @@ export default function ScreeningSection() {
                   <p
                     className="status-box-desc"
                     style={{
-                      fontSize: box.fontSizeBoost ? "1.05rem" : "0.9rem",
+                      fontSize: "0.9rem",
                     }}
                   >
                     {box.desc}
