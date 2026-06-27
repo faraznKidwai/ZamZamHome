@@ -120,28 +120,28 @@ export default function Testimonials() {
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
 
-  // Triple the array elements to make seamless scrolling mathematically bulletproof
   const tripleStream = [...TESTIMONIALS, ...TESTIMONIALS, ...TESTIMONIALS];
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    // Set fallback initial position to middle set of items so moving backward via arrow works instantly
-    const singleSetWidth = container.scrollWidth / 3;
+    const calculateWidths = () => {
+      return container.scrollWidth / 3;
+    };
+
+    let singleSetWidth = calculateWidths();
     if (container.scrollLeft === 0) {
       container.scrollLeft = singleSetWidth;
     }
 
     let animationFrameId;
-    // Lower speed means slower creep. 0.75 gives a perfect steady scroll pace
     const crawlSpeed = 0.75;
 
     const renderCrawlLoop = () => {
       if (!isPaused) {
         container.scrollLeft += crawlSpeed;
 
-        // Reset positions smoothly without visual flicker once boundary limits hit
         if (container.scrollLeft >= singleSetWidth * 2) {
           container.scrollLeft = singleSetWidth;
         } else if (container.scrollLeft <= 0) {
@@ -152,24 +152,17 @@ export default function Testimonials() {
     };
 
     animationFrameId = requestAnimationFrame(renderCrawlLoop);
-    return () => cancelAnimationFrame(animationFrameId);
+
+    const handleResize = () => {
+      singleSetWidth = calculateWidths();
+    };
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener("resize", handleResize);
+    };
   }, [isPaused]);
-
-  // Handle Manual Nav Clicks on Computers
-  const handleManualScroll = (direction) => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const cardStepSize = 350 + 24; // Card width + layout gap
-    const nextTarget =
-      container.scrollLeft +
-      (direction === "left" ? -cardStepSize : cardStepSize);
-
-    container.scrollTo({
-      left: nextTarget,
-      behavior: "smooth",
-    });
-  };
 
   return (
     <section
@@ -190,8 +183,6 @@ export default function Testimonials() {
         </p>
       </div>
 
-      {/* Manual Desktop Override Arrows */}
-
       {/* Infinite Crawl Viewport Container */}
       <div
         ref={scrollContainerRef}
@@ -200,7 +191,6 @@ export default function Testimonials() {
         onMouseLeave={() => setIsPaused(false)}
         onTouchStart={() => setIsPaused(true)}
         onTouchEnd={() => {
-          // Add a short timeout before resuming automatic creep after user releases touch swipe
           setTimeout(() => setIsPaused(false), 2000);
         }}
         style={{
@@ -216,48 +206,106 @@ export default function Testimonials() {
       >
         {tripleStream.map((item, idx) => (
           <div
-            className="zz-testimonial-card"
+            className="zz-testimonial-card horizontal-card"
             key={`testimonial-${idx}`}
-            style={{
-              height: "auto",
-              alignSelf: "flex-start",
-              paddingTop: "1rem",
-              flex: "0 0 350px",
-              whiteSpace: "normal",
-            }}
           >
-            <div
-              className="testimonial-quote-icon brand-text-green mb-1"
-              style={{
-                fontSize: "2.5rem",
-                lineHeight: "1",
-                marginTop: "-0.5rem",
-              }}
-            >
-              &ldquo;
-            </div>
-            <p
-              className="testimonial-text mb-4"
-              style={{ marginTop: "-0.25rem" }}
-            >
-              {item.quote}
-            </p>
-            <div className="d-flex align-items-center gap-3">
+            {/* Left Side: Avatar Profile Area */}
+            <div className="card-profile-sidebar">
               <div className="testimonial-avatar">{item.initials}</div>
-              <div className="text-start">
-                <div className="testimonial-name fw-bold">{item.name}</div>
-                <div className="testimonial-role text-muted small">
-                  {item.role}
-                </div>
+              <div className="testimonial-name fw-bold">{item.name}</div>
+              <div className="testimonial-role text-muted small">
+                {item.role}
               </div>
+            </div>
+
+            {/* Right Side: Quote Narrative Area */}
+            <div className="card-quote-body">
+              <div className="testimonial-quote-icon brand-text-green">
+                &ldquo;
+              </div>
+              <p className="testimonial-text">{item.quote}</p>
             </div>
           </div>
         ))}
       </div>
 
+      {/* Embedded Component Responsive CSS Styles */}
       <style>{`
         .zz-testimonial-marquee-viewport::-webkit-scrollbar {
           display: none;
+        }
+
+        /* Base Card Configuration (Mobile First default layout) */
+        .zz-testimonial-card.horizontal-card {
+          flex: 0 0 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          white-space: normal;
+          background: #ffffff;
+          border-radius: 12px;
+          padding: 1.5rem;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+          border: 1px solid #f0f0f0;
+          box-sizing: border-box;
+        }
+
+        .card-profile-sidebar {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          min-width: 130px;
+        }
+
+        .card-quote-body {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+          position: relative;
+        }
+
+        .testimonial-quote-icon {
+          font-size: 2.5rem;
+          line-height: 1;
+          margin-bottom: -0.25rem;
+        }
+
+        .testimonial-text {
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin: 0;
+          color: #444444;
+        }
+
+        /* Desktop Media Query: Force Absolute Uniform Alignment & Spacing */
+        @media (min-width: 992px) {
+          .zz-testimonial-card.horizontal-card {
+            flex: 0 0 calc(50% - 0.75rem); /* Exactly 2 cards side-by-side factoring layout gaps */
+            flex-direction: row;
+            align-items: stretch;
+            height: 240px; /* Rigid static height to force layout uniformity */
+            padding: 1.75rem;
+          }
+
+          .card-profile-sidebar {
+            border-right: 1px solid #eaeaea;
+            padding-right: 1.25rem;
+            justify-content: center;
+            text-align: left;
+            align-items: flex-start;
+          }
+
+          .card-quote-body {
+            padding-left: 0.5rem;
+            overflow-y: auto; /* Handles varying text lengths elegantly without expanding the outer box layout */
+            scrollbar-width: none;
+          }
+
+          .card-quote-body::-webkit-scrollbar {
+            display: none;
+          }
         }
       `}</style>
     </section>

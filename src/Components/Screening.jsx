@@ -43,7 +43,7 @@ const STATUS_BOXES = [
   },
   {
     className: "status-doubtful",
-    header: "DOUBTFUL (YELLOW)",
+    header: "DOUBTFUL/MUTE (YELLOW)",
     desc: "This text will be blurred out visually by the structural layout overlay block sitting on top of it.",
     hasOverlay: true,
     overlayText:
@@ -122,7 +122,7 @@ export default function ScreeningSection() {
                 className={`screening-status-box ${box.className}`}
                 key={index}
               >
-                {/* 1. HEADER: Placed at the top layer with explicit inline z-index context */}
+                {/* 1. HEADER */}
                 <span
                   className={`status-box-header ${
                     box.hasOverlay
@@ -134,28 +134,29 @@ export default function ScreeningSection() {
                   {box.header}
                 </span>
 
-                {/* 2. BODY CONTENT: Wrapped to isolate the blur boundaries */}
+                {/* 2. BODY CONTENT: Reduced base size by 1pt (from 1rem to 0.9rem) */}
                 <div
                   className="status-body-wrap"
                   style={{
                     position: "relative",
                     width: "100%",
                     height: "100%",
+                    textAlign: "left",
                   }}
                 >
                   <p
                     className="status-box-desc"
                     style={{
-                      fontSize: box.fontSizeBoost ? "1.15rem" : "inherit",
+                      fontSize: box.fontSizeBoost ? "1.05rem" : "0.9rem",
                     }}
                   >
                     {box.desc}
                   </p>
 
-                  {/* Conditional Rendering for the Blur Layer */}
+                  {/* Conditional Rendering for Yellow Box Blur Layer */}
                   {box.hasOverlay && (
                     <div className="status-disabled-overlay">
-                      <p className="status-overlay-message fw-normal">
+                      <p className="status-overlay-message fw-bold text-start">
                         {box.overlayText}
                       </p>
                     </div>

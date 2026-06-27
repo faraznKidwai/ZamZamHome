@@ -58,7 +58,7 @@ const HERO_INTERACTIVE_CARDS = [
     targetId: "#knowledge-hub", // 1st box: opens Knowledge hub
     iconPath: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
     isCustomSvg: false,
-    frontTitle: "I want to learn about Islamic Finance & Investments",
+    frontTitle: "I want to learn about Islamic finance & investments",
     backTitle: "Check out Zamzam Capital’s free knowledge hub section",
     backAction: "EXPLORE KNOWLEDGE HUB →",
   },
@@ -66,7 +66,7 @@ const HERO_INTERACTIVE_CARDS = [
     targetId: "https://invest.zamzam-capital.com/", // 2nd box: opens investment section
     iconPath: "M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
     isCustomSvg: false,
-    frontTitle: "I want to start Halal short-term trading",
+    frontTitle: "I want to start Halal short term trading",
     backTitle: "Get top quality stock recommendations for swing trading",
     backAction: "VIEW STOCK PLANS →",
   },
@@ -92,7 +92,7 @@ const HERO_INTERACTIVE_CARDS = [
         <rect x="17" y="4" width="4" height="17" rx="1" />
       </svg>
     ),
-    frontTitle: "I want to Start Halal Long-Term Investing",
+    frontTitle: "I want to start Halal long term investing",
     backTitle:
       "Build a long-term equity portfolio through our various smallcases",
     backAction: "VIEW SMALLCASES →",
@@ -102,7 +102,7 @@ const HERO_INTERACTIVE_CARDS = [
     iconPath:
       "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.952 11.952 0 01-7.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
     isCustomSvg: false,
-    frontTitle: "I want my Portfolio Checked for Shariah Compliance",
+    frontTitle: "I want my portfolio checked for Shariah compliance",
     backTitle: "Check a stock’s Halal status by name, industry or sector",
     backAction: "OPEN HALAL SCREENER →",
   },
