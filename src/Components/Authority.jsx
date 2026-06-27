@@ -32,8 +32,8 @@ export default function AuthoritySection() {
               </div>
               <h3 className="strict-card-title fw-bold mb-3">SEBI Regulated</h3>
               <p className="strict-card-desc mb-0">
-                Fully licensed as an Investment Research Analyst under SEBI (
-                INH000016199 ), providing institutional-grade security and
+                Fully licensed as a Research Analyst under SEBI (INH000016199),
+                providing institutional-grade analysis, risk management &
                 transparency.
               </p>
             </div>
@@ -108,8 +108,9 @@ export default function AuthoritySection() {
                 Model Portfolios
               </h3>
               <p className="strict-card-desc mb-0">
-                Curated smallcase portfolios optimized through rebalancing with
-                SIP options for long-term returns.
+                Curated smallcase portfolios optimized through regular monthly &
+                quarterly rebalancing, with a Systematic Investment Plan (SIP)
+                facility designed for long-term investors.
               </p>
             </div>
           </div>

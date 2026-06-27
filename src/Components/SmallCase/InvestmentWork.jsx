@@ -65,7 +65,6 @@ export default function InvestmentSchema() {
   const [isMobile, setIsMobile] = useState(false);
   const autoPlayRef = useRef(null);
 
-  // Dynamically calculate screen size for accurate layout shifting
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -103,10 +102,9 @@ export default function InvestmentSchema() {
       return prev - 1;
     });
   };
-  // Listen for the slide transition finishing to cleanly snap loops behind the scenes
+
   useEffect(() => {
     if (currentIndex >= originalLength) {
-      // FIX: Changed from 6000ms to 600ms to match the 0.6s CSS animation speed perfectly
       const timer = setTimeout(() => {
         setIsTransitioning(false);
         setCurrentIndex(0);
@@ -115,6 +113,15 @@ export default function InvestmentSchema() {
       return () => clearTimeout(timer);
     }
   }, [currentIndex, originalLength]);
+
+  useEffect(() => {
+    if (!isTransitioning && currentIndex === 0) {
+      const resetTransitionTimer = setTimeout(() => {
+        setIsTransitioning(true);
+      }, 50);
+      return () => clearTimeout(resetTransitionTimer);
+    }
+  }, [isTransitioning, currentIndex]);
 
   useEffect(() => {
     startAutoPlay();
@@ -128,12 +135,12 @@ export default function InvestmentSchema() {
     >
       <div className="container mb-5">
         <h2 className="schema-main-heading fw-extrabold mb-3 text-white">
-          Choose Your Long-Term Investment Strategy with Our Model Portfolios{" "}
+          Plan Your Long-Term Investments Through Our Model Portfolios
         </h2>
         <p className="schema-subtext text-white max-w-600 mx-auto">
-          Each basket is carefully constructed by our research team with proven
-          strategies, strict Shariah compliance, and transparent performance
-          tracking.
+          Each portfolio basket is carefully constructed by our research team
+          with proven strategies, strict Shariah compliance, and transparent
+          performance tracking.
         </p>
       </div>
 
@@ -185,22 +192,23 @@ export default function InvestmentSchema() {
             ))}
           </div>
         </div>
-        {/* Powered By Badge (Bottom Right Alignment Block) */}
+
+        {/* Powered By Badge Block - Shifted left slightly via negative right margin to match perfect card container bounds */}
         <div className="d-flex justify-content-end align-items-center mt-3 pe-md-2">
           <a
-            href="https://zamzamcapital.smallcase.com/"
+            href="https://www.smallcase.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="d-flex align-items-center text-decoration-none text-white hover-opacity-100 transition-all small"
-            style={{ fontSize: "0.85rem" }}
+            className="d-flex align-items-center text-decoration-none text-white transition-all small"
+            style={{ fontSize: "0.85rem", marginRight: "-4px" }}
           >
-            <span className="me-2 fw-medium">powered by</span>
+            <span className="me-2 fw-medium text-white-100">powered by:</span>
             <img
-              src="data:image/png;base64,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"
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ic5D3pxQHUN3H4x-a5LPBfZbLmldoHqixyFbBzYp-w&s=10"
               alt="smallcase"
               style={{
-                height: "40px",
-                width: "auto",
+                width: "120px",
+                height: "auto",
                 objectFit: "contain",
               }}
             />

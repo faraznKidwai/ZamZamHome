@@ -86,10 +86,8 @@ const HERO_INTERACTIVE_CARDS = [
       >
         {/* Column 1 (Left / Shortest) */}
         <rect x="3" y="14" width="4" height="7" rx="1" />
-
         {/* Column 2 (Middle) */}
         <rect x="10" y="9" width="4" height="12" rx="1" />
-
         {/* Column 3 (Right / Tallest) */}
         <rect x="17" y="4" width="4" height="17" rx="1" />
       </svg>
@@ -259,52 +257,87 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* LOWER ROW: Centered Upscaled Metrics Section */}
+        {/* LOWER ROW: Centered Metrics Section with -2pt font reduction and wider spacing gap-sm-5 */}
         <div className="row">
           <div className="col-12">
             <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-center gap-4 gap-sm-5 pt-4 text-center">
-              <div className="metric-inline-item">
-                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+              {/* Box 1: Screened Stocks */}
+              <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
+                <div
+                  className="metric-large-number fw-extrabold text-dark"
+                  style={{
+                    fontSize:
+                      "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
+                  }}
+                >
                   <CountUp endValue="1800" suffix="+" />
                 </div>
-                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Stocks Screened
                 </div>
               </div>
 
-              <div className="metric-inline-item">
-                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+              {/* Box 2: Halal Stocks */}
+              <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
+                <div
+                  className="metric-large-number fw-extrabold text-dark"
+                  style={{
+                    fontSize:
+                      "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
+                  }}
+                >
                   <CountUp endValue="900" suffix="+" />
                 </div>
-                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Halal Stocks
                 </div>
               </div>
 
-              <div className="metric-inline-item">
-                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+              {/* Box 3: Assets Managed */}
+              <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
+                <div
+                  className="metric-large-number fw-extrabold text-dark"
+                  style={{
+                    fontSize:
+                      "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
+                  }}
+                >
                   {"₹"}
                   <CountUp endValue="10" suffix={"\u00a0Cr +"} />
                 </div>
-                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Assets Managed
                 </div>
               </div>
 
-              <div className="metric-inline-item">
-                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+              {/* Box 4: Client Satisfaction */}
+              <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
+                <div
+                  className="metric-large-number fw-extrabold text-dark"
+                  style={{
+                    fontSize:
+                      "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
+                  }}
+                >
                   <CountUp endValue="98" suffix="%" />
                 </div>
-                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Client Satisfaction
                 </div>
               </div>
 
-              <div className="metric-inline-item">
-                <div className="metric-large-number fw-extrabold text-dark custom-metric-size">
+              {/* Box 5: Investor Community */}
+              <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
+                <div
+                  className="metric-large-number fw-extrabold text-dark"
+                  style={{
+                    fontSize:
+                      "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
+                  }}
+                >
                   <CountUp endValue="5000" suffix="+" />
                 </div>
-                <div className="metric-sub-label text-muted fw-semibold mt-1 custom-label-size">
+                <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Investor Community
                 </div>
               </div>

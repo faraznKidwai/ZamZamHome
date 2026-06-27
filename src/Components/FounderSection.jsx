@@ -31,7 +31,7 @@ export default function FounderSection() {
             <blockquote className="founder-quote mb-0">
               <p className="founder-quote-text mb-3">
                 &ldquo;Wealth creation should never come at a cost of one's
-                ethical values. At Zamzam Capital we bridge this gap between
+                ethical values. At Zamzam Capital, we bridge this gap between
                 financial excellence and Shariah integrity.&rdquo;
               </p>
             </blockquote>
