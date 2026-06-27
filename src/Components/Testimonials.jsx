@@ -115,6 +115,7 @@ const TESTIMONIALS = [
     initials: "MA",
   },
 ];
+
 export default function Testimonials() {
   const dualStream = [...TESTIMONIALS, ...TESTIMONIALS];
 
@@ -137,7 +138,11 @@ export default function Testimonials() {
       <div className="zz-testimonial-marquee-viewport overflow-hidden">
         <div className="zz-testimonial-marquee-track">
           {dualStream.map((item, idx) => (
-            <div className="zz-testimonial-card" key={`testimonial-${idx}`}>
+            <div
+              className="zz-testimonial-card"
+              key={`testimonial-${idx}`}
+              style={{ height: "auto", alignSelf: "flex-start" }}
+            >
               <div className="testimonial-quote-icon brand-text-green mb-3">
                 &ldquo;
               </div>

@@ -13,14 +13,22 @@ const RESOURCES = [
   {
     num: "02",
     title:
-      "The Definitive Guide to Halal Investing in India by Zamzam Capital (2026)",
-    desc: "A detailed coverage of current state of Shariah compliant investments available in the Indian market.",
+      "A Primer on Islamic Finance by The Research Foundation of CFA Institute",
+    desc: "A detailed introduction to Islamic finance covering basic concepts, products, and Shariah standards in different countries.",
     action: "Download PDF (1.1 MB)",
     href: "#",
     type: "pdf",
   },
   {
     num: "03",
+    title: "The Definitive Guide to Halal Investing in India by Zamzam Capital",
+    desc: "A detailed overview of the current status of Shariah-compliant investments available in the Indian market.",
+    action: "Download PDF (1.1 MB)",
+    href: "#",
+    type: "pdf",
+  },
+  {
+    num: "04",
     title: "Zamzam Capital Guide to Shariah Screening Criteria for Stocks",
     desc: "A presentation detailing the key guidelines & financial ratios followed by Zamzam Capital to construct its Halal Stocks List.",
     action: "Download PDF (1.1 MB)",
@@ -28,19 +36,19 @@ const RESOURCES = [
     type: "pdf",
   },
   {
-    num: "04",
-    title: "Zakat Calculator",
-    desc: "Calculate your Zakat online with Zamzam Capital's easy-to-use Zakat Calculator for India in Rupees.",
+    num: "05",
+    title: "Zamzam Capital Zakat Calculator",
+    desc: "Calculate your Zakat online with Zamzam Capital's easy-to-use Zakat Calculator.",
     action: "Open Calculator",
-    href: "#zakat-calc",
+    href: "https://zamzam-capital.com/zakat-calculator/",
     type: "calc",
   },
   {
-    num: "05",
-    title: "Position Size Calculator",
+    num: "06",
+    title: "Zamzam Capital Position Size Calculator",
     desc: "Calculate the right quantity of a stock to buy based on your capital, portfolio risk boundaries and stop-loss levels.",
     action: "Open Calculator",
-    href: "#position-calc",
+    href: "https://zamzam-capital.com/positon-size-calculator",
     type: "calc",
   },
 ];
@@ -69,7 +77,7 @@ const VIDEOS = [
     title: "Basic Principles of Islamic Investments",
   },
   {
-    id: "ihonfqu2y8M",
+    id: "-rnZkYLG_5g",
     title:
       "Shariah Stock Screening: How are Shariah Screening Ratios Derived? Stock Market Fiqh - Pt 1",
   },
@@ -106,6 +114,8 @@ export default function KnowledgeCenter() {
                 <div className="col-lg-auto">
                   <a
                     href={item.href}
+                    target={item.type === "calc" ? "_blank" : "_self"}
+                    rel={item.type === "calc" ? "noopener noreferrer" : ""}
                     className="btn text-white fw-semibold text-nowrap"
                     style={
                       item.type === "pdf"
@@ -123,9 +133,13 @@ export default function KnowledgeCenter() {
 
         <div className="knowledge-vault-block pt-4">
           <h3 className="authority-main-heading fw-extrabold mb-2 text-center">
-            From the Zamzam Capital Knowledge Vault
+            From the Zamzam Capital YouTube Channel
           </h3>
-          <p className="authority-subtext mx-auto text-center mb-4">
+          <p className="authority-subtext mx-auto text-center mb-4 text-nowrap d-none d-md-block">
+            We don&apos;t just invest — we educate. Here are some of our most
+            valuable insights and resources.
+          </p>
+          <p className="authority-subtext mx-auto text-center mb-4 d-block d-md-none">
             We don&apos;t just invest — we educate. Here are some of our most
             valuable insights and resources.
           </p>
