@@ -130,7 +130,6 @@ export default function KnowledgeCenter() {
             </div>
           ))}
         </div>
-
         <div className="knowledge-vault-block pt-4">
           <h3 className="authority-main-heading fw-extrabold mb-2 text-center">
             From the Zamzam Capital YouTube Channel
@@ -175,6 +174,19 @@ export default function KnowledgeCenter() {
               </div>
             ))}
           </div>
+        </div>
+
+        {/* Centering Wrapper Container with Top Margin Spacing */}
+        <div className="d-flex justify-content-center mt-5">
+          <a
+            href="https://www.youtube.com/@zamzamcapital"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="yt-see-more-btn"
+          >
+            <span style={{ marginRight: "8px", fontSize: "12px" }}>▶</span>
+            See more videos
+          </a>
         </div>
       </div>
     </section>

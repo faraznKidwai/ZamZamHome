@@ -3,7 +3,6 @@ import "../../styles.css";
 import TopBar from "./TopBar.jsx";
 import TickerBar from "./TickerBar.jsx";
 
-// Revised Navigation config matching the exact mockup requirements
 const NAV_TABS = [
   {
     id: "about",
@@ -76,7 +75,7 @@ const NAV_TABS = [
     description:
       "Benefit from our free books, guides, videos & proprietary calculators to aid your trading and Shariah compliance.",
     isSmallCaps: true,
-    // Note: Action buttons inside dropdown for tools have been removed as requested.
+    isToolsDropdown: true, // Unique flag to render the interactive layout with buttons
   },
   {
     id: "Contact",
@@ -88,13 +87,12 @@ const NAV_TABS = [
   },
 ];
 
-// Helper to format text with smallcaps while preserving case for explicit keywords
 function renderFormattedTitle(text) {
   if (!text) return "";
   const keywords = ["I", "Islamic", "Halal", "Shariah"];
   return text.split(/(\s+)/).map((word, index) => {
     const cleanWord = word.trim();
-    if (!cleanWord) return word; // preserve spaces
+    if (!cleanWord) return word;
     if (keywords.includes(cleanWord)) {
       return <span key={index}>{cleanWord}</span>;
     }
@@ -113,11 +111,10 @@ export default function MainNavbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeUnderbar, setActiveUnderbar] = useState(null);
 
-  // Custom inline style styles to reduce button size by 30% and set green background
   const halalListBtnStyle = {
     fontSize: "13px",
     padding: "6px 14px",
-    backgroundColor: "#0fa978", // Solid green
+    backgroundColor: "#0fa978",
     color: "#ffffff",
     border: "1px solid #0fa978",
     transition: "all 0.2s ease-in-out",
@@ -140,9 +137,15 @@ export default function MainNavbar() {
         <TickerBar />
       </div>
 
-      <nav className="zamzam-main-navbar sticky-top bg-white border-bottom shadow-sm">
-        <div className="container d-flex align-items-center justify-content-between py-3">
-          <div className="brand-logo-placeholder d-flex align-items-center justify-content-center">
+      <nav
+        className="zamzam-main-navbar sticky-top bg-white border-bottom shadow-sm"
+        style={{ position: "relative" }}
+      >
+        <div
+          className="container d-flex align-items-center justify-content-between py-0"
+          style={{ height: "70px" }}
+        >
+          <div className="brand-logo-placeholder d-flex align-items-center">
             <a
               href="/"
               className="navbar-brand-logo d-flex align-items-center text-decoration-none"
@@ -152,7 +155,7 @@ export default function MainNavbar() {
                 alt="Zamzam Capital Logo"
                 className="img-fluid brand-logo-img"
                 style={{
-                  height: "auto",
+                  height: "38px",
                   maxHeight: "38px",
                   width: "auto",
                   objectFit: "contain",
@@ -161,13 +164,10 @@ export default function MainNavbar() {
             </a>
           </div>
 
-          {/* Centered navigation items with increased font size (+1pt -> 17px/1.05rem) */}
           <ul
-            className="desktop-nav-menu d-none d-lg-flex align-items-center list-unstyled mb-0 gap-3"
+            className="desktop-nav-menu d-none d-lg-flex align-items-stretch list-unstyled mb-0 gap-3"
             style={{
-              position: "relative",
               height: "100%",
-              alignSelf: "center",
             }}
           >
             {NAV_TABS.map((tab) => (
@@ -175,8 +175,6 @@ export default function MainNavbar() {
                 key={tab.id}
                 className="zamzam-nav-item-host d-flex align-items-center"
                 style={{
-                  paddingBottom: "15px",
-                  marginBottom: "-15px",
                   height: "100%",
                 }}
                 onMouseEnter={() => setActiveUnderbar(tab.id)}
@@ -184,8 +182,8 @@ export default function MainNavbar() {
               >
                 <a
                   href={tab.href}
-                  className="nav-heading-link nav-static-link fw-semibold text-decoration-none"
-                  style={{ fontSize: "17px" }}
+                  className="nav-heading-link nav-static-link fw-semibold text-decoration-none d-flex align-items-center"
+                  style={{ fontSize: "17px", height: "100%" }}
                 >
                   {tab.label}
                 </a>
@@ -198,30 +196,85 @@ export default function MainNavbar() {
                       left: 0,
                       right: 0,
                       top: "100%",
-                      width: "100vw",
-                      marginLeft: "calc(-50vw + 50%)",
+                      width: "100%",
                       zIndex: 1000,
                     }}
                   >
                     <div className="container py-4 text-start">
-                      <h5
-                        className="underbar-title fw-bold text-dark mb-2"
-                        style={{ fontSize: "16px" }}
-                      >
-                        {tab.isSmallCaps
-                          ? renderFormattedTitle(tab.title)
-                          : tab.title}
-                      </h5>
-                      <p
-                        className="underbar-text text-muted mb-0"
-                        style={{
-                          fontSize: "14px",
-                          maxWidth: "600px",
-                          lineHeight: "1.5",
-                        }}
-                      >
-                        {tab.description}
-                      </p>
+                      <div className="row align-items-center">
+                        {/* Text and context details column */}
+                        <div
+                          className={
+                            tab.isToolsDropdown ? "col-lg-8" : "col-12"
+                          }
+                        >
+                          <h5
+                            className="underbar-title fw-bold text-dark mb-2"
+                            style={{ fontSize: "16px" }}
+                          >
+                            {tab.isSmallCaps
+                              ? renderFormattedTitle(tab.title)
+                              : tab.title}
+                          </h5>
+                          <p
+                            className="underbar-text text-muted mb-0"
+                            style={{
+                              fontSize: "14px",
+                              maxWidth: "600px",
+                              lineHeight: "1.5",
+                            }}
+                          >
+                            {tab.description}
+                          </p>
+                        </div>
+
+                        {/* Interactive dual-button overlay actions injected exclusively back into the Tools tab container */}
+                        {tab.isToolsDropdown && (
+                          <div className="col-lg-4 d-flex justify-content-lg-end gap-3 mt-3 mt-lg-0">
+                            <a
+                              href="#calculators"
+                              className="btn fw-medium text-decoration-none rounded d-inline-flex align-items-center"
+                              style={{
+                                fontSize: "13px",
+                                padding: "8px 16px",
+                                backgroundColor: "#0fa978",
+                                color: "#ffffff",
+                                border: "1px solid #0fa978",
+                                transition: "all 0.2s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.target.style.backgroundColor = "#0c8e64";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.target.style.backgroundColor = "#0fa978";
+                              }}
+                            >
+                              Our Calculators
+                            </a>
+                            <a
+                              href="#knowledge-hub"
+                              className="btn fw-medium text-decoration-none rounded d-inline-flex align-items-center"
+                              style={{
+                                fontSize: "13px",
+                                padding: "8px 16px",
+                                backgroundColor: "transparent",
+                                color: "#0fa978",
+                                border: "1px solid #0fa978",
+                                transition: "all 0.2s ease",
+                              }}
+                              onMouseEnter={(e) => {
+                                e.target.style.backgroundColor =
+                                  "rgba(15, 169, 120, 0.05)";
+                              }}
+                              onMouseLeave={(e) => {
+                                e.target.style.backgroundColor = "transparent";
+                              }}
+                            >
+                              Free Guides
+                            </a>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 )}
@@ -232,7 +285,7 @@ export default function MainNavbar() {
           <div className="desktop-actions d-none d-lg-flex align-items-center gap-3">
             <a
               href="mailto:support@zamzam-capital.com"
-              className="btn fw-medium text-decoration-none rounded"
+              className="btn fw-medium text-decoration-none rounded d-inline-flex align-items-center"
               style={halalListBtnStyle}
               onMouseEnter={handleBtnMouseEnter}
               onMouseLeave={handleBtnMouseLeave}
@@ -242,7 +295,7 @@ export default function MainNavbar() {
           </div>
 
           <button
-            className="mobile-hamburger-trigger d-lg-none border-0 bg-transparent p-2"
+            className="mobile-hamburger-trigger d-lg-none border-0 bg-transparent p-2 align-self-center"
             onClick={() => setIsMobileMenuOpen(true)}
             aria-label="Toggle navigation overlay drawer"
           >
@@ -261,6 +314,7 @@ export default function MainNavbar() {
           </button>
         </div>
 
+        {/* Mobile menu overlay */}
         {isMobileMenuOpen && (
           <div
             className="mobile-drawer-overlay"

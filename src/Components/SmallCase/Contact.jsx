@@ -2,18 +2,16 @@ import React from "react";
 import "../../styles.css";
 
 const ContactSection = () => {
-  const whatsappNumber = "1234567890";
-  const phoneNumber = "+1234567890";
+  const whatsappNumber = "+91 86940-10200";
+  const phoneNumber = "+91 86940-10200";
   const emailAddress = "support@zamzam.com";
 
   return (
     <section className="zamzam-contact-section">
       <div className="zamzam-contact-container">
         {/* Heading */}
-        <h2 className="zamzam-contact-heading">
-          Still have doubts? Contact us directly anytime
-        </h2>
-
+        <h2 className="zamzam-contact-heading">Still have doubts?</h2>
+        <h3 className="zamzam-contact-subheading"> Contact us directly </h3>
         {/* Buttons Container */}
         <div className="zamzam-button-group">
           {/* WhatsApp Button */}
