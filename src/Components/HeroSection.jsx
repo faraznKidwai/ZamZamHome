@@ -103,7 +103,8 @@ const HERO_INTERACTIVE_CARDS = [
       "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.952 11.952 0 01-7.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
     isCustomSvg: false,
     frontTitle: "I want my portfolio checked for Shariah compliance",
-    backTitle: "Check a stock’s Halal status by name, industry or sector",
+    backTitle:
+      "Check a stock’s Halal status by name, industry or sector for free",
     backAction: "OPEN HALAL SCREENER →",
   },
 ];
@@ -165,7 +166,7 @@ export default function HeroSection() {
                   </svg>
                 </span>
                 <span className="checkmark-item-text">
-                  <strong>Trade in Halal stocks </strong> using one of our
+                  <strong>Trade in Halal stocks </strong> using one of our swing
                   trading plans
                 </span>
               </li>

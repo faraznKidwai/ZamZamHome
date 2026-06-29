@@ -10,7 +10,7 @@ export default function AuthoritySection() {
         </h2>
 
         <p className="authority-subtext mx-auto">
-          A holistic approach to ethical wealth creation
+          A holistic approach to ethical wealth creation.
         </p>
       </div>
 
@@ -82,9 +82,9 @@ export default function AuthoritySection() {
               </div>
               <h3 className="strict-card-title fw-bold mb-3">Deep Analytics</h3>
               <p className="strict-card-desc mb-0">
-                Quantitative and qualitative analysis that goes beyond simple
-                screening. Fundamental & technical research merged with Shariah
-                compliant filters.
+                Quantitative & qualitative research and not just simple
+                screening using AI tools. Fundamental & technical analysis
+                merged with Shariah compliant filters.
               </p>
             </div>
           </div>
