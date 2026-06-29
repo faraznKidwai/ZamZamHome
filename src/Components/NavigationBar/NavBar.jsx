@@ -78,6 +78,14 @@ const NAV_TABS = [
     isSmallCaps: true,
     // Note: Action buttons inside dropdown for tools have been removed as requested.
   },
+  {
+    id: "Contact",
+    label: "Contact",
+    href: "https://zamzam-capital.com/contact/",
+    title: "CONTACT US DIRECTLY",
+    description: "We aim to respond to your queries within a 24-hour period",
+    isSmallCaps: true,
+  },
 ];
 
 // Helper to format text with smallcaps while preserving case for explicit keywords
