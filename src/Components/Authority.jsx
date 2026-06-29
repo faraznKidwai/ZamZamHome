@@ -108,9 +108,7 @@ export default function AuthoritySection() {
                 Model Portfolios
               </h3>
               <p className="strict-card-desc mb-0">
-                Curated smallcase portfolios optimized through regular monthly &
-                quarterly rebalancing, with a Systematic Investment Plan (SIP)
-                facility designed for long-term investors.
+                Expertly crafted.... SIP facility.
               </p>
             </div>
           </div>

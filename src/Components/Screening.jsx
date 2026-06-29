@@ -29,7 +29,7 @@ const STEPS = [
     step: "STAGE 3",
     title: "Qualitative Screening Check",
     question:
-      "This is our key differentiator - as we look deeper into every company that reaches this stage to spot any business activity that can be considered as Shariah non-compliant. This is the reason why RELIANCE, WIPRO, INFY, defence stocks such as MAZDOCK, PARAS, GRSE, some sugar companies, etc. are excluded from our Halal stocks list.",
+      "Our key differentiator - we look deeper into every company that reaches this stage to spot any business activity that can be considered as Shariah non-compliant. This is the reason why RELIANCE, WIPRO, INFY, defence stocks such as MAZDOCK, PARAS, GRSE, some sugar companies, etc. are excluded from our Halal stocks list.",
     isUnboldedQuestion: true,
   },
 ];
@@ -46,7 +46,7 @@ const STATUS_BOXES = [
     desc: "This text will be blurred out visually by the structural layout overlay block sitting on top of it.",
     hasOverlay: true,
     overlayText:
-      "A stock is either Halal or Non-Halal! Zamzam Capital believes in giving clarity in Shariah status, not in creating further doubts in the minds of its audience.",
+      "A stock is either Halal or Non-Halal! Zamzam Capital believes in giving clarity about Shariah status, not in creating further doubts in the minds of its audience.",
   },
   {
     className: "status-haram",
