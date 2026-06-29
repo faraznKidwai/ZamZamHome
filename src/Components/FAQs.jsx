@@ -28,7 +28,7 @@ const FAQ_ITEMS = [
   },
   {
     q: "What makes a stock Shariah compliant?",
-    a: "A Shariah compliant stock must be from a business with a Halal primary activity, maintain acceptable levels of debt, impure income, non-compliant investments, illiquid assets, and liquidity, and avoid promoting non-Sharia compliant activities. Our screening criteria follows the methodology of Mufti Taqi Usmani (DB).",
+    a: "A Shariah compliant stock must be from a business with a Halal primary activity, maintain acceptable levels of debt, impure income, non-compliant investments, illiquid assets, and liquidity, and avoid promoting non-Shariah compliant activities. Our screening criteria follows the methodology of Mufti Taqi Usmani (DB).",
   },
   {
     q: "Is intraday trading Halal or Haram?",

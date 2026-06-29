@@ -136,12 +136,12 @@ export default function KnowledgeCenter() {
             From the Zamzam Capital YouTube Channel
           </h3>
           <p className="authority-subtext mx-auto text-center mb-4 text-nowrap d-none d-md-block">
-            We don&apos;t just invest — we educate. Here are some of our most
-            valuable insights and resources.
+            We don&apos;t just invest — we also educate. Here are some of our
+            most valuable insights and resources.
           </p>
           <p className="authority-subtext mx-auto text-center mb-4 d-block d-md-none">
-            We don&apos;t just invest — we educate. Here are some of our most
-            valuable insights and resources.
+            We don&apos;t just invest — we also educate. Here are some of our
+            most valuable insights and resources.
           </p>
 
           <div className="row g-4">

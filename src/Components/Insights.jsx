@@ -5,26 +5,26 @@ const ARTICLES = [
   {
     tag: "INVESTING",
     readTime: "12 min read",
-    title: "The Complete Guide to Halal Investing in India",
+    title: "Halal Shares Vs Conventional Shares - Key Differences",
     excerpt:
-      "A comprehensive overview of Shariah-compliant equity investing, screening criteria, and portfolio construction strategies for Indian markets.",
-    href: "#blog",
+      "If you are a muslim investor, navigating indian stock market it's very important for you to understand the difference between halal and conventional shares",
+    href: "https://zamzam-capital.com/blog/halal-shares-vs-conventional-shares-what-muslim-investors-need-to-know/",
   },
   {
     tag: "ISLAMIC FINANCE",
     readTime: "8 min read",
-    title: "Understanding Shariah Screening for Stocks",
+    title: "How to build Halal stock portfolio in India - Step by Step guide",
     excerpt:
-      "Learn how business activity checks, financial ratios, and purification rules determine whether a stock qualifies as Halal.",
-    href: "#blog",
+      "If you are a Muslim looking to build wealth without compromising your faith but don't know where to start, click here",
+    href: "https://zamzam-capital.com/blog/how-to-build-a-halal-stock-portfolio-in-india-step-by-step/",
   },
   {
     tag: "ECONOMY",
     readTime: "6 min read",
-    title: "Market Outlook: Halal Sectors to Watch",
+    title: "Shariah Investing Vs ESG: What's the difference",
     excerpt:
-      "Expert analysis on emerging sectors aligned with Islamic finance principles and their potential for ethical wealth creation.",
-    href: "#blog",
+      "Even though both shariah investing and ESG investing are ethics driven, they are not the same",
+    href: "https://zamzam-capital.com/blog/shariah-investing-vs-esg-whats-the-difference/",
   },
 ];
 
@@ -62,7 +62,6 @@ export default function Insights() {
               >
                 <div className="insights-card-body p-4 rounded-4 h-100">
                   <div className="d-flex align-items-center gap-2 mb-3">
-                    <span className="insights-tag fw-bold">{article.tag}</span>
                     <span className="insights-read-time text-muted small">
                       {article.readTime}
                     </span>
