@@ -335,7 +335,7 @@ export default function HeroSection() {
                       "calc(var(--metric-large-font-size, 2.5rem) - 2px)",
                   }}
                 >
-                  <CountUp endValue="5000" suffix="+" />
+                  <CountUp endValue="20000" suffix="+" />
                 </div>
                 <div className="metric-sub-label text-muted fw-semibold mt-1 text-center w-100">
                   Investor Community

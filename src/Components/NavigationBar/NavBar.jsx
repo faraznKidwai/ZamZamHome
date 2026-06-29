@@ -19,7 +19,7 @@ const NAV_TABS = [
     href: "#shariah-compliance",
     title: "shariah Compliance Framework",
     description:
-      "Discover our unique 3-stage Ahariah screening criteria approved by top Islamic institutions.",
+      "Discover our unique 3-stage Shariah screening criteria approved by top Islamic institutions.",
     isSmallCaps: true,
   },
   {
@@ -28,14 +28,14 @@ const NAV_TABS = [
     href: "#halal-stocks",
     title: "Halal Stocks List",
     description:
-      "View our latest Halal list letter signed by members of our Shariah Board.",
+      "View our latest Halal stocks list letter signed by members of our Shariah Board.",
     isSmallCaps: true,
   },
   {
     id: "stock-plans",
     label: "Stock Plans",
     href: "#stock-plans",
-    title: "Stock Plans",
+    title: "Swing Trading Plans",
     description:
       "Trade using our premium stock recommendation plans covering small, mid and large-cap stocks.",
     isSmallCaps: true,
@@ -53,7 +53,7 @@ const NAV_TABS = [
     id: "screener",
     label: "Halal Screener",
     href: "#screener",
-    title: "Check shariah compliance status",
+    title: "Shariah compliance status",
     description:
       "Check the latest Shariah compliance status for any stock in our screening universe including the latest mainboard IPOs.",
     isSmallCaps: true,
