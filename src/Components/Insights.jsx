@@ -7,15 +7,15 @@ const ARTICLES = [
     readTime: "12 min read",
     title: "Halal Shares vs Conventional Shares - Key Differences",
     excerpt:
-      "If you are a Muslim investor, navigating Indian stock market it's very important for you to understand the difference between halal and conventional shares.",
+      "If you are a Muslim investor who is navigating the Indian stock market, it's very important to understand the differences between Halal and conventional shares.",
     href: "https://zamzam-capital.com/blog/halal-shares-vs-conventional-shares-what-muslim-investors-need-to-know/",
   },
   {
     tag: "ISLAMIC FINANCE",
     readTime: "8 min read",
-    title: "How to Build Halal Stock Portfolio in India - Step by Step Guide",
+    title: "How to Build a Halal Stock Portfolio in India - Step by Step Guide",
     excerpt:
-      "If you are a looking to build wealth without compromising your faith but don't know where to start, this guide is for you.",
+      "If you are a looking to build wealth without compromising your faith but don't know where to start, this guide will help you do so.",
     href: "https://zamzam-capital.com/blog/how-to-build-a-halal-stock-portfolio-in-india-step-by-step/",
   },
   {
@@ -23,7 +23,7 @@ const ARTICLES = [
     readTime: "6 min read",
     title: "Shariah Investing vs ESG: What's the Difference?",
     excerpt:
-      "Even though both Shariah investing and ESG investing are ethics driven, they are not the same. Find out thier key differences in this article.",
+      "Even though both Shariah investing and ESG investing are ethics driven, they are not the same. Find out their key differences in this article.",
     href: "https://zamzam-capital.com/blog/shariah-investing-vs-esg-whats-the-difference/",
   },
 ];
