@@ -113,11 +113,10 @@ export default function ScreeningSection() {
           </div>
 
           {/* RIGHT COLUMN: DYNAMIC DATA STATUS CARDS */}
-          {/* FIXED: Added d-flex flex-column to make sure flex: 1 works on mobile viewports too */}
           <div className="screening-status-column d-flex flex-column">
             {STATUS_BOXES.map((box, index) => (
               <div
-                className={`screening-status-box ${box.className}`}
+                className={`screening-status-box pb-5 pb-lg-4 ${box.className}`}
                 key={index}
               >
                 {/* 1. HEADER */}
@@ -142,9 +141,7 @@ export default function ScreeningSection() {
 
                   {/* Conditional Rendering for Yellow Box Blur Layer */}
                   {box.hasOverlay && (
-                    <div className="status-disabled-overlay">
-                      {/* FIXED: Swapped your CSS global .status-overlay-message class text handling here */}
-                      {/* Removed fw-bold completely and replaced with fw-normal to un-bold */}
+                    <div className="status-disabled-overlay px-4 py-3">
                       <p className="status-overlay-message fw-normal text-start">
                         {box.overlayText}
                       </p>
