@@ -1930,7 +1930,7 @@ Investment Contact section
   text-align: center;
   line-height: 1.45;
   margin: 0;
-  z-index: 4; /* Keeps the warning message explicitly at the absolute front */
+  z-index: 4;
 }
 
 /* When the header is inside the doubtful box, cleanly apply the line-through */
