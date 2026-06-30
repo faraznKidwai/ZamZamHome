@@ -26,7 +26,7 @@ const NAV_TABS = [
     id: "halal-stocks",
     label: "Halal Stocks",
     href: "#halal-stocks",
-    title: "Halal Stocks List",
+    title: "Halal Stocks List ",
     description:
       "View our latest Halal stocks list letter signed by members of our Shariah Board.",
     isSmallCaps: true,
@@ -37,7 +37,7 @@ const NAV_TABS = [
     href: "#stock-plans",
     title: "Swing Trading Plans",
     description:
-      "Trade using our premium stock recommendation plans covering small, mid and large-cap stocks.",
+      "Trade using our premium, short-term stock recommendations covering small, mid and large-cap stocks..",
     isSmallCaps: true,
   },
   {
@@ -55,7 +55,7 @@ const NAV_TABS = [
     href: "#screener",
     title: "Shariah compliance status",
     description:
-      "Check the latest Shariah compliance status for any stock in our screening universe including the latest mainboard IPOs.",
+      "Check the Halal status of any stock in our screening universe including the latest mainboard IPOs.",
     isSmallCaps: true,
   },
   {

@@ -113,19 +113,16 @@ export default function ScreeningSection() {
           </div>
 
           {/* RIGHT COLUMN: DYNAMIC DATA STATUS CARDS */}
-          <div className="screening-status-column custom-spaced-column">
+          {/* FIXED: Added d-flex flex-column to make sure flex: 1 works on mobile viewports too */}
+          <div className="screening-status-column d-flex flex-column">
             {STATUS_BOXES.map((box, index) => (
               <div
-                className={`screening-status-box custom-status-box ${box.className}`}
+                className={`screening-status-box ${box.className}`}
                 key={index}
               >
                 {/* 1. HEADER */}
                 <span
-                  className={`status-box-header fw-bold ${
-                    box.hasOverlay
-                      ? "text-decoration-line-through opacity-50"
-                      : ""
-                  }`}
+                  className="status-box-header"
                   style={{ position: "relative", zIndex: 3 }}
                 >
                   {box.header}
@@ -141,20 +138,14 @@ export default function ScreeningSection() {
                     textAlign: "left",
                   }}
                 >
-                  <p
-                    className="status-box-desc"
-                    style={{
-                      fontSize: "0.9rem",
-                      margin: 0,
-                    }}
-                  >
-                    {box.desc}
-                  </p>
+                  <p className="status-box-desc">{box.desc}</p>
 
                   {/* Conditional Rendering for Yellow Box Blur Layer */}
                   {box.hasOverlay && (
                     <div className="status-disabled-overlay">
-                      <p className="status-overlay-message fw-bold text-start">
+                      {/* FIXED: Swapped your CSS global .status-overlay-message class text handling here */}
+                      {/* Removed fw-bold completely and replaced with fw-normal to un-bold */}
+                      <p className="status-overlay-message fw-normal text-start">
                         {box.overlayText}
                       </p>
                     </div>
@@ -165,24 +156,6 @@ export default function ScreeningSection() {
           </div>
         </div>
       </div>
-
-      {/* Scoped CSS styling override to scale outer whitespace independently */}
-      <style>{`
-        /* Forces the container to lay items out using flexbox or grid with expanded gaps */
-        .custom-spaced-column {
-          display: flex !important;
-          flex-direction: column !important;
-          gap: 1.75rem !important; /* Increases external white space equally between boxes */
-          justify-content: flex-start !important;
-        }
-
-        /* Protects and guarantees internal buffer space remains untouched */
-        .custom-status-box {
-          padding: 1.5rem !important; /* Locks structural gap between text and container borders */
-          margin: 0 !important;       /* Removes old baseline margins to let the explicit gap handle alignment */
-          box-sizing: border-box !important;
-        }
-      `}</style>
     </section>
   );
 }

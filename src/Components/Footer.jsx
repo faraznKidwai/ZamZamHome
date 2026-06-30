@@ -4,9 +4,11 @@ import "../styles.css";
 export default function CorporateFooter() {
   return (
     <footer className="zamzam-sebi-exact-footer py-5 px-3 px-md-5">
-      <div className="container-fluid max-w-1200 mx-auto text-start">
+      <div className="container-fluid max-w-1200 mx-auto ">
         {/* ==================== UPPER SECTION: 3-COLUMN COMPLIANCE ADDRESS MATRIX ==================== */}
-        <div className="row g-4 mb-4 exact-footer-grid">
+        {/* Added justify-content-center to balance columns cleanly on medium viewports */}
+        <div className="row g-4 mb-4 exact-footer-grid justify-content-center text-center">
+          {/* Column 1: Analyst Details */}
           <div className="col-lg-4 col-md-6 col-12">
             <h5 className="exact-grid-heading fw-bold mb-2">
               SEBI Registered Research Analyst Details:
@@ -29,6 +31,7 @@ export default function CorporateFooter() {
             </p>
           </div>
 
+          {/* Column 2: SEBI Office Address */}
           <div className="col-lg-4 col-md-6 col-12">
             <h5 className="exact-grid-heading fw-bold mb-2">
               SEBI Office Address:
@@ -51,6 +54,7 @@ export default function CorporateFooter() {
             </p>
           </div>
 
+          {/* Column 3: Registered Address */}
           <div className="col-lg-4 col-md-6 col-12">
             <h5 className="exact-grid-heading fw-bold mb-2">
               Registered Address:
