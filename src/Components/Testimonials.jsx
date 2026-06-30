@@ -190,7 +190,7 @@ export default function Testimonials() {
           Testimonials
         </span>
         <h2 className="authority-main-heading fw-extrabold mb-3">
-          Trusted by clients in India &amp; Abroad
+          Trusted by Clients in India &amp; Abroad
         </h2>
         <p className="authority-subtext mx-auto">
           Hear from our community of ethical investors & traders who have
