@@ -108,7 +108,10 @@ export default function AuthoritySection() {
                 Model Portfolios
               </h3>
               <p className="strict-card-desc mb-0">
-                Expertly crafted.... SIP facility.
+                Four expertly crafted smallcase portfolios based on investment
+                strategies designed to help you build long-term wealth through
+                systematic, research-driven approaches with regular rebalancing
+                and SIP facility.{" "}
               </p>
             </div>
           </div>

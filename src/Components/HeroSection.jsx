@@ -258,9 +258,11 @@ export default function HeroSection() {
         </div>
 
         {/* LOWER ROW: Centered Metrics Section with -2pt font reduction and wider spacing gap-sm-5 */}
+        {/* LOWER ROW: Centered Metrics Section with -2pt font reduction and wider spacing */}
         <div className="row">
           <div className="col-12">
-            <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-center gap-4 gap-sm-5 pt-4 text-center">
+            {/* Swapped justify-content-center to justify-content-between to expand across the full band */}
+            <div className="hero-metrics-inline-row d-flex flex-wrap align-items-center justify-content-between hero-metric-distributed-row pt-4 text-center">
               {/* Box 1: Screened Stocks */}
               <div className="metric-inline-item d-flex flex-column align-items-center justify-content-center text-center">
                 <div

@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "../../styles.css";
+import logo from "./smallcase.jfif";
+import BrokerMarquee from "./BrokerMar";
 
 const SMALLCASES = [
   {
@@ -135,17 +137,17 @@ export default function InvestmentSchema() {
     >
       <div className="container mb-5">
         <h2 className="schema-main-heading fw-extrabold mb-3 text-white">
-          Plan Your Long-Term Investments Through Our Model Portfolios
+          Explore Our Long-term Investment Strategies{" "}
         </h2>
         <p className="schema-subtext text-white max-w-600 mx-auto">
-          Each portfolio basket is carefully constructed by our research team
-          with proven strategies, strict Shariah compliance, and transparent
+          Choose from our diverse range of Shariah-compliant portfolios tailored
+          to different investment goals and risk profiles with transparent
           performance tracking.
         </p>
       </div>
 
       <div
-        className="position-relative px-md-5 max-w-1200 mx-auto mb-5 slider-interactive-container"
+        className="position-relative px-md-5 max-w-1200 mx-auto mb-2 slider-interactive-container"
         onMouseEnter={stopAutoPlay}
         onMouseLeave={startAutoPlay}
       >
@@ -192,22 +194,24 @@ export default function InvestmentSchema() {
             ))}
           </div>
         </div>
+      </div>
 
-        {/* Powered By Badge Block - Shifted left slightly via negative right margin to match perfect card container bounds */}
-        <div className="d-flex justify-content-end align-items-center mt-3 pe-md-2">
+      {/* FIXED: Powered By Badge Block now replicates slider container boundaries with precise internal padding corrections */}
+      <div className="max-w-1200 mx-auto mb-5 px-3 px-md-5">
+        <div className="d-flex justify-content-end align-items-center pe-1">
           <a
             href="https://www.smallcase.com"
             target="_blank"
             rel="noopener noreferrer"
             className="d-flex align-items-center text-decoration-none text-white transition-all small"
-            style={{ fontSize: "0.85rem", marginRight: "-4px" }}
+            style={{ fontSize: "0.85rem" }}
           >
-            <span className="me-2 fw-medium text-white-100">powered by:</span>
+            <span className="me-2 fw-medium text-white-50">powered by:</span>
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Ic5D3pxQHUN3H4x-a5LPBfZbLmldoHqixyFbBzYp-w&s=10"
+              src={logo}
               alt="smallcase"
               style={{
-                width: "100px",
+                width: "90px",
                 height: "auto",
                 objectFit: "contain",
               }}
@@ -215,6 +219,8 @@ export default function InvestmentSchema() {
           </a>
         </div>
       </div>
+
+      <BrokerMarquee />
     </section>
   );
 }

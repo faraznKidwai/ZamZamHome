@@ -12,6 +12,7 @@
   --zz-border-color: #eef0f2;
   --zz-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     sans-serif;
+  --marquee-scale: 0.85;
 }
 
 /* Base App Wrapper Context Reset */
@@ -400,6 +401,20 @@
 /* ==========================================================================
        8. HERO ROW GRID STRUCTURE & RESPONSIVE VERTICAL FIXES
        ========================================================================== */
+
+/* Layout rule to distribute metrics equally across the entire horizontal band width */
+.hero-metric-distributed-row {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+}
+
+/* Individual metric box behavior mechanics */
+.hero-metric-distributed-row .metric-inline-item {
+  flex: 1; /* Forces each metric module box to grow and split the band space equally */
+  min-width: 140px; /* Safety fallback boundary width to handle smooth wrapping on smaller device displays */
+  padding: 0 10px;
+}
 .zamzam-hero-viewport {
   min-height: auto;
   padding: 40px 0; /* Reduced to pull elements closer together vertically */
@@ -2245,4 +2260,93 @@ Investment Contact section
 
 .yt-see-more-btn:hover {
   background-color: #cc0000;
+}
+
+/*-------------------------------------------
+Broker Marque
+----------------------------------*/
+.broker-section-layout {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Stationary Text Box Style Layout Rules */
+.marquee-stationary-label {
+  background-color: #ffffff;
+  padding: 0 20px;
+  font-size: calc(14px * var(--marquee-scale));
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #666666;
+  white-space: nowrap;
+  position: relative;
+  z-index: 10;
+  box-shadow: 10px 0 15px -5px #ffffff; /* Smooth blur shadow block fade out */
+}
+
+.broker-marquee-container {
+  overflow: hidden;
+  display: flex;
+  width: 100%;
+  user-select: none;
+}
+
+.marquee-wrapper {
+  display: flex;
+  width: max-content;
+  flex-wrap: nowrap;
+  animation: scroll-infinite-engine 30s linear infinite;
+}
+
+/* Track matches natural flex metrics size boundaries instead of percentage defaults */
+.marquee-track {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: max-content;
+  gap: calc(24px * var(--marquee-scale)); /* Global scaling gap engine */
+  padding-right: calc(24px * var(--marquee-scale));
+}
+
+.broker-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(8px * var(--marquee-scale));
+  background: #ffffff;
+  padding: calc(6px * var(--marquee-scale)) calc(14px * var(--marquee-scale));
+  border-radius: 50px;
+  border: 1px solid #eaeaea;
+  flex-shrink: 0;
+}
+
+.broker-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transform: scale(var(--marquee-scale)); /* Scales the icons cleanly */
+}
+
+.broker-name {
+  font-size: calc(13px * var(--marquee-scale));
+  font-weight: 600;
+  color: #333333;
+  white-space: nowrap;
+}
+
+.broker-marquee-container:hover .marquee-wrapper {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-infinite-engine {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    /* Shifts exactly left by 50% width of the combined dual tracks seamlessly */
+    transform: translate3d(-50%, 0, 0);
+  }
 }
