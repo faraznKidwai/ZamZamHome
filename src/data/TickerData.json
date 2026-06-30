@@ -1,7 +1,302 @@
 [
-  { "id": 1, "symbol": "RELIANCE", "name": "Reliance", "changePercent": 1.25 },
-  { "id": 2, "symbol": "TCS", "name": "TCS", "changePercent": -0.45 },
-  { "id": 3, "symbol": "INFY", "name": "Infosys", "changePercent": 0.82 },
-  { "id": 4, "symbol": "HDFCBANK", "name": "HDFC Bank", "changePercent": -1.1 },
-  { "id": 5, "symbol": "SBIN", "name": "SBI", "changePercent": 0.3 }
+  {
+    "id": 1,
+    "symbol": "RELIANCE",
+    "name": "Reliance",
+    "changePercent": -2
+  },
+  {
+    "id": 2,
+    "symbol": "TCS",
+    "name": "Tcs",
+    "changePercent": 1.94
+  },
+  {
+    "id": 3,
+    "symbol": "INFY",
+    "name": "Infy",
+    "changePercent": 0.46
+  },
+  {
+    "id": 4,
+    "symbol": "HDFCBANK",
+    "name": "Hdfcbank",
+    "changePercent": -1.39
+  },
+  {
+    "id": 5,
+    "symbol": "SBIN",
+    "name": "Sbin",
+    "changePercent": 1.15
+  },
+  {
+    "id": 6,
+    "symbol": "ICICIBANK",
+    "name": "Icicibank",
+    "changePercent": -1.2
+  },
+  {
+    "id": 7,
+    "symbol": "BHARTIARTL",
+    "name": "Bhartiartl",
+    "changePercent": 0.68
+  },
+  {
+    "id": 8,
+    "symbol": "ITC",
+    "name": "Itc",
+    "changePercent": -0.75
+  },
+  {
+    "id": 9,
+    "symbol": "WIPRO",
+    "name": "Wipro",
+    "changePercent": -0.19
+  },
+  {
+    "id": 10,
+    "symbol": "HCLTECH",
+    "name": "Hcltech",
+    "changePercent": 1.57
+  },
+  {
+    "id": 11,
+    "symbol": "LT",
+    "name": "Lt",
+    "changePercent": -1.13
+  },
+  {
+    "id": 12,
+    "symbol": "BAJAJFINSV",
+    "name": "Bajajfinsv",
+    "changePercent": 1.77
+  },
+  {
+    "id": 13,
+    "symbol": "RELIANCE",
+    "name": "Reliance",
+    "changePercent": -0.44
+  },
+  {
+    "id": 14,
+    "symbol": "AXISBANK",
+    "name": "Axisbank",
+    "changePercent": -1.6
+  },
+  {
+    "id": 15,
+    "symbol": "MARUTI",
+    "name": "Maruti",
+    "changePercent": -1.91
+  },
+  {
+    "id": 16,
+    "symbol": "SUNPHARMA",
+    "name": "Sunpharma",
+    "changePercent": -1.38
+  },
+  {
+    "id": 17,
+    "symbol": "TITAN",
+    "name": "Titan",
+    "changePercent": -1.54
+  },
+  {
+    "id": 18,
+    "symbol": "ULTRACEMCO",
+    "name": "Ultracemco",
+    "changePercent": -1.08
+  },
+  {
+    "id": 19,
+    "symbol": "ASIANPAINT",
+    "name": "Asianpaint",
+    "changePercent": 1.49
+  },
+  {
+    "id": 20,
+    "symbol": "NTPC",
+    "name": "Ntpc",
+    "changePercent": -1.54
+  },
+  {
+    "id": 21,
+    "symbol": "TATASTEEL",
+    "name": "Tatasteel",
+    "changePercent": 1.2
+  },
+  {
+    "id": 22,
+    "symbol": "POWERGRID",
+    "name": "Powergrid",
+    "changePercent": 1.93
+  },
+  {
+    "id": 23,
+    "symbol": "M&M",
+    "name": "M&m",
+    "changePercent": 0.5
+  },
+  {
+    "id": 24,
+    "symbol": "KOTAKBANK",
+    "name": "Kotakbank",
+    "changePercent": 0.64
+  },
+  {
+    "id": 25,
+    "symbol": "ADANIENT",
+    "name": "Adanient",
+    "changePercent": -1.21
+  },
+  {
+    "id": 26,
+    "symbol": "HINDALCO",
+    "name": "Hindalco",
+    "changePercent": 1.96
+  },
+  {
+    "id": 27,
+    "symbol": "GRASIM",
+    "name": "Grasim",
+    "changePercent": -0.96
+  },
+  {
+    "id": 28,
+    "symbol": "COALINDIA",
+    "name": "Coalindia",
+    "changePercent": -1.5
+  },
+  {
+    "id": 29,
+    "symbol": "JIOFIN",
+    "name": "Jiofin",
+    "changePercent": -1.88
+  },
+  {
+    "id": 30,
+    "symbol": "BPCL",
+    "name": "Bpcl",
+    "changePercent": 0.1
+  },
+  {
+    "id": 31,
+    "symbol": "ONGC",
+    "name": "Ongc",
+    "changePercent": 1.01
+  },
+  {
+    "id": 32,
+    "symbol": "JSWSTEEL",
+    "name": "Jswsteel",
+    "changePercent": -0.61
+  },
+  {
+    "id": 33,
+    "symbol": "TATAMOTORS",
+    "name": "Tatamotors",
+    "changePercent": 0.05
+  },
+  {
+    "id": 34,
+    "symbol": "ADANIPORTS",
+    "name": "Adaniports",
+    "changePercent": 2
+  },
+  {
+    "id": 35,
+    "symbol": "BAJAJ-AUTO",
+    "name": "Bajaj-auto",
+    "changePercent": -1.37
+  },
+  {
+    "id": 36,
+    "symbol": "CIPLA",
+    "name": "Cipla",
+    "changePercent": -0.68
+  },
+  {
+    "id": 37,
+    "symbol": "DRREDDY",
+    "name": "Drreddy",
+    "changePercent": -0.77
+  },
+  {
+    "id": 38,
+    "symbol": "APOLLOHOSP",
+    "name": "Apollohosp",
+    "changePercent": -0.95
+  },
+  {
+    "id": 39,
+    "symbol": "DIVISLAB",
+    "name": "Divislab",
+    "changePercent": 1.11
+  },
+  {
+    "id": 40,
+    "symbol": "EICHERMOT",
+    "name": "Eichermot",
+    "changePercent": -0.67
+  },
+  {
+    "id": 41,
+    "symbol": "HEROMOTOCO",
+    "name": "Heromotoco",
+    "changePercent": 1.11
+  },
+  {
+    "id": 42,
+    "symbol": "INDUSINDBK",
+    "name": "Indusindbk",
+    "changePercent": -1.73
+  },
+  {
+    "id": 43,
+    "symbol": "NESTLEIND",
+    "name": "Nestleind",
+    "changePercent": 1.09
+  },
+  {
+    "id": 44,
+    "symbol": "BRITANNIA",
+    "name": "Britannia",
+    "changePercent": 0.23
+  },
+  {
+    "id": 45,
+    "symbol": "TATACONSUM",
+    "name": "Tataconsum",
+    "changePercent": -0.83
+  },
+  {
+    "id": 46,
+    "symbol": "UPL",
+    "name": "Upl",
+    "changePercent": -0.69
+  },
+  {
+    "id": 47,
+    "symbol": "TECHM",
+    "name": "Techm",
+    "changePercent": 1.37
+  },
+  {
+    "id": 48,
+    "symbol": "WIPRO",
+    "name": "Wipro",
+    "changePercent": -1.86
+  },
+  {
+    "id": 49,
+    "symbol": "HDFCLIFE",
+    "name": "Hdfclife",
+    "changePercent": 0.61
+  },
+  {
+    "id": 50,
+    "symbol": "SBILIFE",
+    "name": "Sbilife",
+    "changePercent": 0.96
+  }
 ]
