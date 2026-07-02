@@ -89,13 +89,12 @@ const NAV_TABS = [
 
 function renderFormattedTitle(text) {
   if (!text) return "";
-  const keywords = ["I", "Islamic", "Halal", "Shariah"];
+
   return text.split(/(\s+)/).map((word, index) => {
     const cleanWord = word.trim();
-    if (!cleanWord) return word;
-    if (keywords.includes(cleanWord)) {
-      return <span key={index}>{cleanWord}</span>;
-    }
+    if (!cleanWord) return word; // Keeps spaces intact
+
+    // Apply the small-caps styling uniformly to EVERY word
     return (
       <span
         key={index}
