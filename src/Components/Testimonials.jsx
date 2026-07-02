@@ -132,6 +132,51 @@ const TESTIMONIALS = [
   },
 ];
 
+function TestimonialCard({ item, index }) {
+  const quoteBodyRef = useRef(null);
+  const [hasOverflow, setHasOverflow] = useState(false);
+
+  useEffect(() => {
+    const checkOverflow = () => {
+      const element = quoteBodyRef.current;
+      if (element) {
+        setHasOverflow(element.scrollHeight > element.clientHeight);
+      }
+    };
+
+    checkOverflow();
+    window.addEventListener("resize", checkOverflow);
+    return () => window.removeEventListener("resize", checkOverflow);
+  }, [item.quote]);
+
+  return (
+    <div
+      className="zz-testimonial-card horizontal-card"
+      key={`testimonial-${index}`}
+    >
+      <div className="card-profile-sidebar">
+        <div className="testimonial-avatar">{item.initials}</div>
+        <div className="testimonial-name fw-bold">{item.name}</div>
+        <div className="testimonial-role text-muted small fst-italic">
+          {item.role}
+        </div>
+        <div className="testimonial-role text-muted small">{item.city}</div>
+      </div>
+
+      {/* Box scroll track handles state classes natively */}
+      <div
+        ref={quoteBodyRef}
+        className={`card-quote-body ${
+          hasOverflow ? "has-scroll-indicator" : "no-scroll-needed"
+        }`}
+      >
+        <div className="testimonial-quote-icon brand-text-green">&ldquo;</div>
+        <p className="testimonial-text">{item.quote}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonials() {
   const scrollContainerRef = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
@@ -198,7 +243,6 @@ export default function Testimonials() {
         </p>
       </div>
 
-      {/* Infinite Crawl Viewport Container */}
       <div
         ref={scrollContainerRef}
         className="zz-testimonial-marquee-viewport"
@@ -220,41 +264,15 @@ export default function Testimonials() {
         }}
       >
         {tripleStream.map((item, idx) => (
-          <div
-            className="zz-testimonial-card horizontal-card"
-            key={`testimonial-${idx}`}
-          >
-            {/* Left Side: Avatar Profile Area */}
-            <div className="card-profile-sidebar">
-              <div className="testimonial-avatar">{item.initials}</div>
-              <div className="testimonial-name fw-bold">{item.name}</div>
-              <div className="testimonial-role text-muted small fst-italic">
-                {item.role}
-              </div>
-
-              <div className="testimonial-role text-muted small">
-                {item.city}
-              </div>
-            </div>
-
-            {/* Right Side: Quote Narrative Area */}
-            <div className="card-quote-body">
-              <div className="testimonial-quote-icon brand-text-green">
-                &ldquo;
-              </div>
-              <p className="testimonial-text">{item.quote}</p>
-            </div>
-          </div>
+          <TestimonialCard item={item} index={idx} key={`t-card-${idx}`} />
         ))}
       </div>
 
-      {/* Embedded Component Responsive CSS Styles */}
       <style>{`
         .zz-testimonial-marquee-viewport::-webkit-scrollbar {
           display: none;
         }
 
-        /* Base Card Configuration (Mobile First default layout) */
         .zz-testimonial-card.horizontal-card {
           flex: 0 0 100%;
           display: flex;
@@ -298,13 +316,12 @@ export default function Testimonials() {
           color: #444444;
         }
 
-        /* Desktop Media Query: Force Absolute Uniform Alignment & Spacing */
         @media (min-width: 992px) {
           .zz-testimonial-card.horizontal-card {
-            flex: 0 0 calc(50% - 0.75rem); /* Exactly 2 cards side-by-side factoring layout gaps */
+            flex: 0 0 calc(50% - 0.75rem);
             flex-direction: row;
             align-items: stretch;
-            height: 240px; /* Rigid static height to force layout uniformity */
+            height: 240px;
             padding: 1.75rem;
           }
 
@@ -318,12 +335,50 @@ export default function Testimonials() {
 
           .card-quote-body {
             padding-left: 0.5rem;
-            overflow-y: auto; /* Handles varying text lengths elegantly without expanding the outer box layout */
-            scrollbar-width: none;
+            padding-right: 14px; 
+            overflow-y: auto; 
           }
 
-          .card-quote-body::-webkit-scrollbar {
-            display: none;
+          /* --- Dynamic Moving Scrollbar System --- */
+          
+          /* 1. If text is long enough to overflow, turn on custom green scrollbar properties */
+          .card-quote-body.has-scroll-indicator {
+            scrollbar-width: thin;
+            scrollbar-color: #28a745 rgba(40, 167, 69, 0.1);
+          }
+
+          .card-quote-body.has-scroll-indicator::-webkit-scrollbar {
+            display: block; /* Turn scrollbar on only for cards that need it */
+            width: 4px;
+          }
+
+          .card-quote-body.has-scroll-indicator::-webkit-scrollbar-track {
+            background: rgba(40, 167, 69, 0.1);
+            border-radius: 4px;
+          }
+
+          .card-quote-body.has-scroll-indicator::-webkit-scrollbar-thumb {
+            background-color: #28a745;
+            border-radius: 4px;
+          }
+
+          /* 2. If the text fits entirely inside the box, show a full height silent passive track */
+          .card-quote-body.no-scroll-needed {
+            scrollbar-width: none; /* Hide standard system indicators completely */
+          }
+          
+          .card-quote-body.no-scroll-needed::-webkit-scrollbar {
+            display: block;
+            width: 4px;
+          }
+
+          .card-quote-body.no-scroll-needed::-webkit-scrollbar-track {
+            background: rgba(40, 167, 69, 0.15); /* Soft baseline full height frame */
+            border-radius: 4px;
+          }
+          
+          .card-quote-body.no-scroll-needed::-webkit-scrollbar-thumb {
+            background: transparent; /* No moving handle since there is nowhere to slide */
           }
         }
       `}</style>
